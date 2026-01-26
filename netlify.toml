@@ -1,0 +1,34 @@
+[build]
+  # Build command
+  command = "python3 build_docs.py && npm run build"
+  
+  # Directory to publish
+  publish = "build"
+
+[build.environment]
+  # Node version
+  NODE_VERSION = "20"
+  # Python version
+  PYTHON_VERSION = "3.11"
+
+# Redirects for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for caching
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

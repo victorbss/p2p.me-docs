@@ -16,11 +16,10 @@ export default function Home(): JSX.Element {
     >
       <CursorGlow />
       <header className={clsx("hero", styles.heroBanner)}>
-        <div className="container" style={{ zIndex: 1, position: 'relative' }}>
+        <div className="container" style={{ zIndex: 1, position: "relative" }}>
           <h1 className="hero-title">
             The Future of <br />
-            <span className={styles.highlight}>Decentralized</span>{" "}
-            Coordination
+            <span className={styles.highlight}>Decentralized</span> Coordination
           </h1>
           <p className="hero-subtitle">
             A protocol for trustless, privacy-preserving, and custodial-free
@@ -36,7 +35,7 @@ export default function Home(): JSX.Element {
             </Link>
             <Link
               className="button button--secondary button--lg"
-              to="https://github.com/p2p-foundation"
+              to="https://github.com/p2pdotme/Documentation"
             >
               View on GitHub
             </Link>
