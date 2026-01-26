@@ -1,5 +1,6 @@
 ---
-sidebar_position: 6
+id: 05-5-error-handling
+sidebar_position: 5
 title: "5. Error Handling"
 slug: error-handling
 ---

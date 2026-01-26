@@ -1,5 +1,6 @@
 ---
-sidebar_position: 14
+id: 12-12-accessing-p2pmehttpp2pme-clients-sdks
+sidebar_position: 13
 title: "12. Accessing [P2P.me](http://P2P.me): Clients & SDKs"
 slug: accessing-p2pmehttpp2pme-clients-sdks
 ---

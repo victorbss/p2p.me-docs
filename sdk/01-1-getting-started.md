@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+id: 01-1-getting-started
+sidebar_position: 0
 title: "1. Getting Started"
 slug: getting-started
 ---

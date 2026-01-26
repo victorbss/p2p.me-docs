@@ -1,5 +1,6 @@
 ---
-sidebar_position: 15
+id: 13-13-governance-upgradability
+sidebar_position: 14
 title: "13. Governance & Upgradability"
 slug: governance-upgradability
 ---

@@ -4,23 +4,12 @@ const sidebars: SidebarsConfig = {
   whitepaperSidebar: [
     {
         "type": "category",
-        "label": "P2P Protocol Whitepaper Update",
-        "collapsible": true,
-        "collapsed": true,
-        "link": {
-            "type": "doc",
-            "id": "p2p-protocol-whitepaper-update"
-        },
-        "items": []
-    },
-    {
-        "type": "category",
         "label": "Abstract",
         "collapsible": true,
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "abstract"
+            "id": "00-abstract"
         },
         "items": []
     },
@@ -31,7 +20,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "the-vision"
+            "id": "00-0-the-vision"
         },
         "items": [
             {
@@ -133,7 +122,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "design-goals-and-non-goals"
+            "id": "01-1-design-goals-and-non-goals"
         },
         "items": [
             {
@@ -155,7 +144,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "system-overview"
+            "id": "02-2-system-overview"
         },
         "items": [
             {
@@ -192,7 +181,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "cryptographic-primitives-proof-integration"
+            "id": "03-3-cryptographic-primitives-proof-integration"
         },
         "items": [
             {
@@ -219,7 +208,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "trade-protocol-on-and-off-ramp"
+            "id": "04-4-trade-protocol-on-and-off-ramp"
         },
         "items": [
             {
@@ -246,7 +235,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "proof-of-credibility-reputation-matching"
+            "id": "05-5-proof-of-credibility-reputation-matching"
         },
         "items": [
             {
@@ -273,7 +262,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "dispute-resolution"
+            "id": "06-6-dispute-resolution"
         },
         "items": []
     },
@@ -284,7 +273,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "pricing-oracle-mechanics"
+            "id": "07-7-pricing-oracle-mechanics"
         },
         "items": []
     },
@@ -295,7 +284,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "liquidity-market-design"
+            "id": "08-8-liquidity-market-design"
         },
         "items": []
     },
@@ -306,7 +295,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "security-model-tech-todo"
+            "id": "09-9-security-model-tech-todo"
         },
         "items": [
             {
@@ -328,7 +317,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "privacy-model-decentralization-todo"
+            "id": "10-10-privacy-model-decentralization-todo"
         },
         "items": []
     },
@@ -339,7 +328,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "compliance-policy-positioning-legal-todo"
+            "id": "11-11-compliance-policy-positioning-legal-todo"
         },
         "items": []
     },
@@ -350,7 +339,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "accessing-p2pmehttpp2pme-clients-sdks"
+            "id": "12-12-accessing-p2pmehttpp2pme-clients-sdks"
         },
         "items": [
             {
@@ -377,7 +366,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "governance-upgradability"
+            "id": "13-13-governance-upgradability"
         },
         "items": []
     },
@@ -388,7 +377,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "token-economics-for-tge-march-2026"
+            "id": "14-14-token-economics-for-tge-march-2026"
         },
         "items": [
             {
@@ -415,7 +404,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "disclosures-risks"
+            "id": "15-15-disclosures-risks"
         },
         "items": []
     },
@@ -426,7 +415,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "references"
+            "id": "16-16-references"
         },
         "items": []
     },
@@ -437,7 +426,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "appendices-to-be-expanded-later"
+            "id": "18-appendices-to-be-expanded-later"
         },
         "items": []
     }

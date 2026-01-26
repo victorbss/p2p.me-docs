@@ -1,5 +1,6 @@
 ---
-sidebar_position: 13
+id: 11-11-compliance-policy-positioning-legal-todo
+sidebar_position: 12
 title: "11. Compliance & Policy Positioning (LEGAL TODO)"
 slug: compliance-policy-positioning-legal-todo
 ---

@@ -1,5 +1,6 @@
 ---
-sidebar_position: 8
+id: 07-7-support
+sidebar_position: 7
 title: "7. Support"
 slug: support
 ---

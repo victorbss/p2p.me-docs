@@ -1,0 +1,49 @@
+{
+  "siteTitle": "P2P Foundation Docs",
+  "siteTagline": "Documentation for P2P Foundation",
+  "docs": [
+    {
+      "id": "whitepaper",
+      "source": "sources/whitepaper.md",
+      "outputDir": "docs",
+      "routeBasePath": "whitepaper",
+      "navbarLabel": "Whitepaper",
+      "navbarPosition": "left",
+      "sidebarId": "whitepaperSidebar",
+      "extractImages": true,
+      "splitByHeading": 1,
+      "numberSections": true,
+      "generateTocLinks": true,
+      "skipSections": ["P2P Protocol Whitepaper Update"]
+    },
+    {
+      "id": "sdk",
+      "source": "sources/sdk.md",
+      "outputDir": "sdk",
+      "routeBasePath": "sdk",
+      "navbarLabel": "SDK",
+      "navbarPosition": "left",
+      "sidebarId": "sdkSidebar",
+      "extractImages": true,
+      "splitByHeading": 1,
+      "numberSections": true,
+      "generateTocLinks": true,
+      "skipSections": ["P2P SDK Documentation"]
+    }
+  ],
+  "navbar": {
+    "logo": {
+      "alt": "P2P Foundation",
+      "src": "img/p2p-logo.svg"
+    }
+  },
+  "footer": {
+    "copyright": "P2P Foundation",
+    "socialLinks": {
+      "discord": "https://discord.gg/p2pfoundation",
+      "telegram": "https://t.me/P2Pdotme",
+      "twitter": "https://x.com/p2pdotfound",
+      "youtube": "https://www.youtube.com/@onchainbank"
+    }
+  }
+}

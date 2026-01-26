@@ -1,5 +1,6 @@
 ---
-sidebar_position: 10
+id: 08-8-liquidity-market-design
+sidebar_position: 9
 title: "8. Liquidity & Market Design"
 slug: liquidity-market-design
 ---

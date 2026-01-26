@@ -1,5 +1,6 @@
 ---
-sidebar_position: 9
+id: 07-7-pricing-oracle-mechanics
+sidebar_position: 8
 title: "7. Pricing & Oracle Mechanics"
 slug: pricing-oracle-mechanics
 ---

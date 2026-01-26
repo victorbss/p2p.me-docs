@@ -1,5 +1,6 @@
 ---
-sidebar_position: 4
+id: 02-2-system-overview
+sidebar_position: 3
 title: "2. System Overview"
 slug: system-overview
 ---

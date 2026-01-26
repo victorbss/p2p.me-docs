@@ -1,5 +1,6 @@
 ---
-sidebar_position: 2
+id: 00-0-the-vision
+sidebar_position: 1
 title: "0. The Vision"
 slug: the-vision
 ---

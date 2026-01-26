@@ -4,23 +4,12 @@ const sidebars: SidebarsConfig = {
   sdkSidebar: [
     {
         "type": "category",
-        "label": "P2P SDK Documentation",
-        "collapsible": true,
-        "collapsed": true,
-        "link": {
-            "type": "doc",
-            "id": "p2p-sdk-documentation"
-        },
-        "items": []
-    },
-    {
-        "type": "category",
         "label": "1. Getting Started",
         "collapsible": true,
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "getting-started"
+            "id": "01-1-getting-started"
         },
         "items": [
             {
@@ -37,7 +26,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "or"
+            "id": "01-or"
         },
         "items": [
             {
@@ -59,7 +48,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "authentication"
+            "id": "02-2-authentication"
         },
         "items": [
             {
@@ -81,7 +70,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "trading-api"
+            "id": "03-3-trading-api"
         },
         "items": [
             {
@@ -108,7 +97,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "webhooks"
+            "id": "04-4-webhooks"
         },
         "items": [
             {
@@ -130,7 +119,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "error-handling"
+            "id": "05-5-error-handling"
         },
         "items": [
             {
@@ -152,7 +141,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "best-practices"
+            "id": "06-6-best-practices"
         },
         "items": [
             {
@@ -174,7 +163,7 @@ const sidebars: SidebarsConfig = {
         "collapsed": true,
         "link": {
             "type": "doc",
-            "id": "support"
+            "id": "07-7-support"
         },
         "items": []
     }

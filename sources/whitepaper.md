@@ -1,7 +1,418 @@
+# **P2P Protocol Whitepaper Update**
+
+# **Abstract**
+
+Following the wake of centralized exchanges, early decentralized exchanges led the DeFi movement using order books and liquidity pools. Yet DeFi users still lacked a fully decentralized way to onramp from fiat to crypto and offramp back to fiat.
+
+[P2P Protocol](https://p2p.foundation) reflects a departure from fiat escrows and traditional custodians by using **zero-knowledge (ZK) proofs** for KYC norms and fiat transfer verification, making on/off-ramps **non-custodial, privacy-preserving**, and **governed by users’ collective interests.**
+
+Based on the **Base** network, [the P2P.me](http://P2P.me) decentralized app (DApp) trustlessly matches buyers and highly vetted merchants according to a **Proof-of-Credibility** reputation algorithm, settles trades with on-chain coordination, and resolves disputes through verifiable proofs rather than platform custody. This paper formalizes design goals, protocol flows, reputation, dispute resolution, pricing, security and privacy models, governance, and token economics in preparation for a **Token Generation Event (TGE) planned for March 2026**.
+
+The end-state is a credibility-based DeFi ecosystem where peers transact, save, and build services on top of an open Proof-of-Credibility graph—useful, easy to use, privacy-first, and not reliant on over-collateralized mechanics for every everyday action. This paper lays out that vision, the principles guiding it, what works today, and the path to a mature, protocol-neutral, global network by and beyond 2026\.
+
+# **0\. The Vision**
+
+## **0.1 From “ramps” to a privacy and credibility based economy**
+
+P2P.me starts with the most practical chokepoint—moving between fiat and stablecoins—without custodial escrow. The same rails, proofs, and incentives that make an honest ramp work at scale also enable the next layer: **credibility-based liquidity, bridging the gap between fiat and crypto currencies, for all DeFi**.
+
+In this model:
+
+* **Reputation is earned on-chain** through completed trades, clean dispute histories, and ZK-KYC tiers—*not* through centralized account vetting.  
+* **Privacy is preserved by default** via zero knowledge proofs that reveal *facts* (paid, verified, permitted) without revealing raw identities or bank data.  
+* **Usefulness beats theory:** micro-payments, everyday off-ramps, wages, remittances, and merchant payouts come first—designed to feel as simple as sending a message.
+
+## **0.2 What “good” looks like by 2026+**
+
+* A user in any supported country can **buy or sell stablecoins in \~minutes**—targeting sub-90-second completion on fast rails—*without* giving custody to anyone.  
+* Merchants across regions compete on spread and reliability, **ranked by Proof-of-Credibility**, not marketing.  
+* **ZK-KYC and ZK payment proofs** unlock higher limits and faster paths while keeping personal data off-chain.  
+* Third-party apps and wallets integrate the protocol through **open SDKs**; **Coins.me** is only a reference consumer front-end, not a privileged gateway.  
+* As credibility compounds, **new products** (installment payouts, escrowless commerce, cross-border salaries, dispute insurance) can be built without re-KYCing the world.
+
+## **0.3 First principles**
+
+* **Non-custodial by construction.** No fiat escrow. Crypto only held atomically for settlement where necessary.  
+* **Privacy-preserving.** Prove what’s needed; reveal nothing else.  
+* **Credible neutrality.** Open rules, upgradeable by governance; no special routes for any client.  
+* **Useful and simple.** The experience should feel like one tap to “Buy USDC” or “Cash out,” with the protocol handling the invisible complexity.  
+* **Protocol-agnostic.** The design does not hinge on any single L2, oracle, or proof vendor. Implementations can change without rewriting the whitepaper.
+
+## **0.4 What P2P.me is (and is not)**
+
+* **Is:** an open, decentralized **coordination layer** that trustlessly matches a buyer with a highly vetted merchant according to a transparent reputation system; settles trades using verifiable proofs; and routes fees and parameters through governance.
+
+* **Is not:** a custodian, a bank, or a data broker. P2P.me does not custody fiat, does not warehouse users’ personal information, and does not promise fixed yields.
+
+## **0.5 Why this matters now**
+
+Over the past decade, crypto solved programmatic finance but left the real world at the door. Today three curves finally cross:
+
+* **Instant local rails** (UPI/PIX/QRIS & peers) are mainstream.  
+* **Practical ZK** (including TLS-backed proofs) can attest to real-world facts without exposing the data.  
+* **L2s and stablecoins** have made small payments cheap enough to care about.
+
+P2P.me sits exactly at that intersection. It turns *trust me* into *prove it*, and it does so without handing anyone your money or your identity.
+
+## **0.6 North-star outcomes (what “good” looks like to us)**
+
+By 2026+:
+
+* **Sub-60s settlement** on fast rails, median cost **\< $0.20 per $100**.  
+* **\>99% disputes** resolved by proofs within the window, not by moderators.  
+* **Portable credibility**: your reputation and limits travel with you across clients and countries—without doxxing you.  
+* **Neutral access**: multiple wallets and apps, including Coins.me as a reference, all using the same permissionless SDKs atop the Protocol.  
+* **Everyday usefulness**: wages, remittances, marketplace payouts, and checkout—no custody, no paper KYC forms, no screenshots.
+
+## **0.7 Credibility-based DeFi (beyond over-collateralization)**
+
+Over-collateralization made early DeFi safe, but it makes the everyday world feel gated and expensive. P2P.me proposes a second pillar: **credibility**.
+
+* **Earned limits** and **better prices** come from clean history, completed trades, and ZK-KYC tiers, not from locking 200% collateral or gaming the system.  
+* **Privacy by default**: you reveal proofs of action, not identities.  
+* **Composability**: the same credibility graph supports installment payouts, escrowless commerce, and even lightweight credit primitives in the future.
+
+## **0.8 A protocol for people, not just power users**
+
+We design for someone who has a phone and a paycheck, not a Bloomberg terminal.
+
+* **Micro-friendly**: P2P.me must feel safe at $15 as much as at $1,500..  
+* **Dignity with Privacy**: selective disclosure in ZK verifications proves what’s necessary and nothing more, no Personal Identification revelation — protecting freelance workers, activists, and anyone who values privacy.
+
+## **0.9 Protocol-agnostic by design**
+
+Vendors and chains will change; the **principles** cannot. The whitepaper commits to:
+
+* No single L2, oracle, or proof provider baked into the logic.  
+* Clear **interfaces** (verifier registry, oracle adapter, rail registry) so parts can be swapped without rewriting the paper or the social contract.  
+* Open Sourcing and Decentralizing each part of the Protocol as public goods.
+
+## **0.10 Credibility but with Privacy**
+
+Think of P2P.me’s **Proof-of-Credibility** as a public good in itself:
+
+* It’s **earned**, **decays** over time, and is **hard to game**.  
+* It is **portable** across clients and countries via on-chain commitments, not PDFs in someone’s inbox.  
+* It’s **privacy-first**: only commitments and verdicts are public; raw evidence stays with you or your chosen verifier.
+
+## **0.11 Programmable compliance (policy without dossiers)**
+
+Most people want two things at once: privacy and legality. P2P.me makes this practical:
+
+* **Policy-as-parameters**: rails, timeouts, and proof requirements are governed on-chain by region and risk class.  
+* **ZK-KYC** tiers satisfy “permitted user” checks while keeping PII off-chain.  
+* **Travel-Rule-style needs** can be met via **selective disclosure** circuits when a counterparty is a registered business—without turning the protocol into a data broker.
+
+## **0.12 What gets unlocked if we get this right**
+
+* **Borderless income**: creators, contractors, and remote workers get paid where they live, without exchange custody.  
+* **Merchant payouts**: marketplaces settle to sellers in local rails instantaneously, at fair spreads, with no CSV juggling.  
+* **Community finance**: rotating savings, micro-loans, and escrowless marketplaces can build on a shared credibility and liquidity layer between the fiat and crypto currency domains.  
+* **Civic resilience**: people can move value privately and lawfully when the world gets shaky.
+
+## **0.13 Stewardship & governance philosophy**
+
+* **Credible neutrality** over convenience. Changes go through transparent governance with guardrails (timelocks, narrow pauses, audits).  
+* **Minimize governance** where possible: parametrize, don’t micromanage.  
+* **Public safety valves**: oracle circuit breakers, verifier sunsets, and emergency pauses with automatic expiry.  
+* **Open bounty mindset**: pay to find flaws early; publish fixes openly.
+
+## **0.14 What we won’t compromise on**
+
+* **Non-custody of fiat** (ever).  
+* **No honeypots of PII (Personal Identifiable Information) on-chain** (ever).  
+* **No privileged clients** (ever). Everyone uses the same pipes.  
+* **No “trust us” black boxes**. If it can’t be proven or audited, it doesn’t make core.
+
+## **0.15 Milestones that matter (vision-level, not dates)**
+
+* **Ubiquity**: a credible merchant presence in every major region/rail pair.  
+* **Composability**: third-party apps shipping useful features on the SDK without asking permission.  
+* **Self-serve legitimacy**: regulators and risk teams can read the spec, verify parameters on-chain, and understand **how** safety is achieved—without backdoors.
+
+## **0.16 A short manifesto**
+
+* **Privacy is a user interface problem as much as a math problem.**
+
+* **Reputation should be earned, portable, and revoke-able—never sold.**
+
+* **The best KYC is the one that proves what’s needed and nothing else.**
+
+* **If only power users can use it, it isn’t DeFi—it’s a gated club.**
+
 ---
-sidebar_position: 19
-title: "Appendices (to be expanded later)"
-slug: appendices-to-be-expanded-later
+
+## **How the protocol works today (high level, not vendor-locked)**
+
+1. **Placing orders.** A user clicks “Buy USDC” (or “Sell USDC”) and enters an amount. Users can import an existing wallet address to start transacting.  
+2. **Order matching.** An innovative **Proof-of-Credibility** algorithm keeps a list of carefully vetted stablecoin merchants queued for order matching. A fiat payment address is shared **over the smart contract, encrypted** via the user’s keys; for off-ramps, a wallet address is presented.  
+3. **Transfers and confirmation.** The payer completes the fiat or crypto transfer; the counterparty **acknowledges** or either party submits a **zero-knowledge proof** that the payment event occurred. Settlement completes **within minutes** in the common case.  
+4. **Disputes.** If a party files a dispute, the other party can issue and share a proof of payment (or non-payment) without disclosing extra identity or bank data. A smart contract settles the dispute automatically based on the availability (or lack) of valid proofs.  
+5. **On-chain operations.** The complete communication flow between merchant and buyer/seller takes place on-chain; proofs are verified by open verifiers with on-chain attestations, keeping the process secure and fully decentralized.
+
+---
+
+## **Why credibility matters (and why over-collateralization shouldn’t be the only answer)**
+
+Traditional DeFi often reaches for heavy collateral to feel safe. That works for some instruments, but it makes everyday finance clunky and exclusionary. **Credibility-based DeFi** says: let peers *earn* limits, speed, and price by behaving well over time, and let **ZK proofs** protect privacy while doing so.  
+This strikes a better balance: **useful** for real people, **privacy-preserving** for those who need it most, and **resilient** because reputation is distributed and portable—not trapped in a single platform’s database.
+
+# **1\. Design Goals and Non-Goals**
+
+## **1.1 Goals**
+
+* **Decentralized on/off-ramp** between fiat and stablecoins without fiat escrow.  
+* **Privacy by design** using ZK proofs to authenticate identity data and fiat payment events while keeping raw data off-chain.  
+* **Credible neutrality**: protocol-level rules are open, transparent, and upgradable via governance.  
+* **Fast settlement**: typical completion within minutes, targeting sub-\~90s for common rails as network, liquidity, and automation improve.  
+* **Safety & integrity**: explicit threat model, dispute flows, and rate/limit controls to minimize fraud.
+
+## **1.2 Non-Goals**
+
+* [P2P.me](http://P2P.me) does **not** hold customer fiat or crypto in custody.  
+* [P2P.me](http://P2P.me) does **not** guarantee price or liquidity; it coordinates peers and market inputs.  
+* [P2P.me](http://P2P.me) does **not** “store proofs on behalf of users” by default; the protocol **verifies** proofs and records necessary attestations on-chain while raw evidence can remain off-chain.
+
+# **2\. System Overview**
+
+## **2.1 Actors**
+
+* **Buyer/Seller (User):** initiates on- or off-ramp orders.  
+* **Merchant (Liquidity Peer):** mediates liquidity for stablecoin ↔ fiat.  
+* **Matcher/Protocol Contracts:** on-chain components that queue, match, verify states, and finalize outcomes.  
+* **Proof Verifier:** on-chain logic (and/or lightweight off-chain attesters) that check ZK/TLS-based proofs attached to disputes or compliance tasks.  
+* **Governance:** token-holder or council mechanisms that configure parameters, upgrades, and treasury.
+
+## **2.2 Components**
+
+* **Base L2 smart contracts** for order lifecycle, matching, dispute windows, parameter registry, and fee routing.  
+* **Reputation registry** implementing **Proof-of-Credibility** (inputs, scoring, decay).  
+* **Oracle adapter** for reference pricing and safeguards (median/TWAP, fallbacks, circuit breakers).  
+* **Client SDKs and reference apps** (e.g., [Coins.me](http://Coins.me)) that speak the protocol.
+
+## **2.3 High-Level Flow**
+
+1. **Placing Orders:** A user clicks “Buy USDC” (or “Sell USDC”) and enters amount; the user may import an existing Base USDC wallet.  
+2. **Order Matching:** A list of carefully vetted merchants is queued via **Proof-of-Credibility**. A fiat payment address is shared over the smart contract, encrypted with the user’s keys; for off-ramps, a Base USDC address is presented.  
+3. **Fiat/Stablecoin Transfer:** The payer performs the transfer on the designated rail.  
+4. **Confirmation/Settlement:** Within minutes, settlement succeeds once the counter-proof condition is met (e.g., merchant confirms receipt or buyer submits transfer proof). Wallet balances update accordingly.  
+5. **Dispute Window:** If a party contests, they submit a ZK/TLS-backed proof that a payment or action occurred (or did not). Smart contracts (and/or designated verifiers) resolve deterministically.
+
+## Onramp Flow Illustration![][image1]
+
+## Off-ramp Flow Illustration![][image2]
+
+# **3\. Cryptographic Primitives & Proof Integration**
+
+## **3.1 Proofs for Identity and Payments**
+
+[P2P.me](http://P2P.me) uses **ZK proofs** to validate transactions and identity data records. A new member can perform **trustless KYC** by sharing a ZK proof of their identity document; this bolsters on-chain reputation and transaction limits without revealing raw PII on-chain.
+
+## **3.2 TLS-Backed Evidence**
+
+To achieve maximum privacy, proofs harness the TLS layer of web sessions (e.g., TLS 1.2/1.3) so that a user or merchant can produce a **cryptographic witness** that a specific statement about a bank transfer page, PSP receipt, or KYC provider result is true, without exposing credentials or page contents.
+
+**Important:** [P2P.me](http://P2P.me) specifies **where proofs are verified**:
+
+* **On-chain verifier** for compact claims and attestation hashes.
+
+* **Off-chain verifier/relayer** (open-source reference) for complex or rail-specific statements, posting a succinct attestation back on-chain.
+
+   Raw proofs may remain with users; the chain stores minimal commitments and verdicts.
+
+## **3.3 Privacy Properties**
+
+* **Non-interactive disclosure:** share only the proof, not the underlying data.  
+* **Selective reveal:** only fields required by the verification circuit are exposed to the circuit.  
+* **Bounded linkage:** protocol IDs and commitments minimize cross-session linkability where feasible.
+
+---
+
+# **4\. Trade Protocol (On- and Off-Ramp)**
+
+We formalize the order lifecycle as a **state machine** with timeouts:
+
+**States:** `OPEN → MATCHED → FUNDED → PROOF_SUBMITTED? → SETTLED | DISPUTED → RESOLVED | EXPIRED`
+
+**Common Parameters (governed):**
+
+* `T_match` (max time to accept a match), `T_fiat` (max time to make fiat transfer), `T_proof` (proof submission window), `T_dispute` (challenge window).  
+* `B_bond_user`, `B_bond_merchant` (optional performance bonds/slashing weights by reputation tier and payment rail risk class).  
+* `min_amount`, `max_amount` per rail/region; fee schedules; quote expiry windows.
+
+## **4.1 On-Ramp (Fiat → USDC on Base)**
+
+1. **Open:** User opens BUY order with amount & rail.  
+2. **Match:** Protocol assigns a merchant (highest compatible **Proof-of-Credibility** and quote). Refundable bonds may lock.  
+3. **Fund Fiat:** User pays fiat to provided account within `T_fiat`.  
+4. **Merchant Ack / Proof:** Merchant confirms receipt; if delayed, user may present a TLS-backed payment proof.  
+5. **Settle:** Contract releases USDC to user; fees assessed; bonds unlocked.  
+6. **Dispute:** If conflict, parties submit proofs; resolver issues on-chain verdict.
+
+## **4.2 Off-Ramp (USDC on Base → Fiat)**
+
+1. **Open:** User opens SELL order; transfers USDC to escrowless settlement adapter (contract holds or streams atomically per design).  
+2. **Match:** Merchant accepts and posts quote/bond.  
+3. **Fund Crypto:** User’s USDC is locked for settlement.  
+4. **Merchant Pays Fiat:** Merchant pays fiat; submits proof; or user challenges.  
+5. **Settle/Dispute:** As above.
+
+## **4.3 Payment-Rail Risk Classes**
+
+Rails differ (instant/irreversible vs reversible/chargeback-prone). The protocol maps rails to **required proof strength**, bond multipliers, and longer/shorter windows.
+
+---
+
+# **5\. Proof-of-Credibility (Reputation & Matching)**
+
+[P2P.me](http://P2P.me) works using a unique on-chain reputation system which not only builds up user trust and privileges but actively helps prevent fraudulent activity.
+
+## **5.1 Inputs (illustrative, governed)**
+
+* Successful trades (size-weighted), age/decay, dispute history.  
+* KYC proof tier (ZK-KYC completed, source diversity).  
+* Rail diversity & geography; referral attestations.  
+* Slashed events (negative deltas), appeals outcomes.
+
+## **5.2 Outputs**
+
+* **Order limits** (min/max), **fee tiers**, **bond multipliers**, **matching priority**.  
+* **Regional caps** by compliance policy.
+
+## **5.3 Sybil & Gaming Resistance**
+
+* Weighted decay, diminishing returns, rail-mix requirements, and anti-gaming and fraud detection engine checks.  
+* Optional attested device/account fingerprints (privacy-respecting commitments).
+
+---
+
+# **6\. Dispute Resolution**
+
+Every instance of data sharing at [P2P.me](http://P2P.me) takes place via ZK principled evidence. If a user files a dispute within the DApp over the Protocol, the other party can issue and share a proof of their transaction without submitting additional personal data. A smart contract settles the dispute automatically when verifiers attest that the required statement has been proven; otherwise bonds and fees route per policy.
+
+**Windows & Burdens:** Default onus: *the party claiming completion provides the completion proof*. The challenger can present a counter-proof (e.g., bank statement show-non-receipt). Fail-to-prove paths trigger slashing or refunds according to the Protocol rules..
+
+---
+
+# **7\. Pricing & Oracle Mechanics**
+
+[P2P.me](http://P2P.me) determines indicative pricing using **built-in oracle adapters** that aggregate rates from selected exchanges and P2P venues into a median/TWAP with fallbacks. Parameters: source set, staleness bounds, deviation thresholds, and circuit breakers. Quotes carry an **expiry** to limit exposure; if the oracle fails or exceeds deviation limits, orders pause or re-quote.
+
+---
+
+# **8\. Liquidity & Market Design**
+
+The stablecoin liquidity is currently offered by carefully reviewed peers from all around the globe, following the **Proof-of-Credibility** algorithm. Liquidity is available around the clock with affordable fees, secure transactions, and ease of use.
+
+Future versions may introduce **merchant staking** or **LP incentives** using protocol tokens. Quote commitment, minimum depth, and cancellation penalties are governed to reduce adverse selection and no-shows.
+
+---
+
+# **9\. Security Model (TECH TODO)**
+
+## **9.1 Assumptions & Adversaries**
+
+* Network liveness on Base; oracle availability; honest-majority assumptions **not** required for fiat rails.  
+* Adversaries include chargeback fraudsters, proof forgers, oracle manipulators, griefers, and sybils.
+
+## **9.2 Mitigations**
+
+* Bonds/slashing; rail-class windows; proof verification requirements; oracle deviation guards; rate/limit throttles.  
+* **Audits & Bounty:** Core contracts, verifiers, and circuits will undergo independent audits; a public bounty program will operate pre- and post-TGE.
+
+---
+
+# **10\. Privacy Model ( DECENTRALIZATION TODO)**
+
+* **Data minimization:** contracts store only commitments, verdicts, and reputation deltas.  
+* **Selective disclosure:** ZK/TLS proofs reveal only predicates required for settlement or compliance tiers.  
+* **Retention & Access:** governance-set retention of attestations; no raw PII on-chain.  
+* **Linkability:** user-facing guidance to avoid unintended linkage across sessions where feasible.
+
+---
+
+# **11\. Compliance & Policy Positioning (LEGAL TODO)**
+
+Unsurprisingly, while [P2P.me](http://P2P.me) leads the P2P market with its decentralized model and seamless UI client software, it aims to remain in good standing with legal regulations. The user is responsible for legitimate usage and taxation in their jurisdiction.
+
+**Non-custodial stance:** [P2P.me](http://P2P.me) coordinates peers and verifies evidence; it does not take custody of fiat.
+
+**Risk controls:** transaction limits, reputation tiers, optional ZK-KYC, sanctions-screening interfaces for merchants, and governed regional parameter sets.
+
+**Disclosures:** [P2P.me](http://P2P.me) does not advocate tax evasion or illegal activity; violations remain the user’s liability.
+
+[P2P.me](http://P2P.me) aims to remain in completely good standing with legal regulations surrounding the use of the platform. To this end, the user is ultimately responsible for legitimate usage of the exchange and is solely responsible for taxation compliance. In short, [P2P.me](http://P2P.me) does not levy taxes on a user’s behalf, but the user is responsible for filing (or withholding) them all the same, subject to the jurisdiction they reside in.
+
+Likewise, it must be noted that [P2P.me](http://P2P.me) in no way intends to advocate tax evasion or related practices. As a trustless KYC solution for both on-ramp and off-ramp transactions, [P2P.me](http://P2P.me) merely attempts to preserve the privacy and anonymity of the user for fair transactions. In the event any illegal activity including but not limited to tax evasion occurs, the user shall be fully liable for the legal consequences within their jurisdiction.
+
+---
+
+# **12\. Accessing [P2P.me](http://P2P.me): Clients & SDKs**
+
+## **12.1 Clients and Ease of Use**
+
+Blockchain transactions have been traditionally notorious for high transfer fees and slow processing times. However, based on Base, [P2P.me](http://P2P.me) can afford to charge very nominal fees for its on- and off-ramps, thanks to the faster validation times and the cheaper MATIC working behind the scenes. The difference is especially pronounced for smaller transactions where newcomers routinely feel discouraged by the slow and expensive economics involved.
+
+Fortunately, [P2P.me](http://P2P.me)’s robust on-chain reputation management coupled with its transaction limits does more than just drive mass adoption of decentralized currencies and transactions. In fact, a sole emphasis on large transactions ironically coincides with the prospects of money laundering and other foul economic practices. [P2P.me](http://P2P.me) in the space particularly underscores the importance of micro-transactions instead, by making these both viable and useful for the community.
+
+Besides mass consumer adoption of cryptocurrencies, microtransactions enable newfound financial access through web3 for underrepresented communities in today's banking system. Specifically, it has been noted that nearly 1.2 billion people have mobile phones but lack any reliable access to banks. For them, being able to perform transactions in the neighborhood of $50-$500 in a way that is secure and egalitarian is paramount– a feat that the [P2P.me](http://P2P.me) protocol can readily help achieve.
+
+Indeed, the adoption of crypto for consumer payments has implications for both the Web2 and Web3 economies. Existing consumer tech companies can finally start accepting payments online using cryptocurrency. Likewise, the market can explore newly enabled ways of spending and deploying capital, thanks to a microtransaction economy powering fully decentralized finance.
+
+The most famous and easiest way to access the [P2P.me](http://P2P.me) protocol is to use the [**P2P.me**](http://P2P.me) **mobile app**. Getting started with on-ramps is as simple as buying stablecoins via a fiat transfer; off-ramps are just as reliable through a stablecoin deposit. Any entity can create and distribute a functional UI client for [P2P.me](http://P2P.me) to conduct fully decentralized on/off-ramp transactions.
+
+## **12.2 Client-Side SDKs (B2B Integration)**
+
+The [**P2P.me**](http://P2P.me) **SDK** in development currently, will let developers integrate the P2P protocol and on/off-ramp users directly into their platforms, enabling consumer micropayments in crypto, embedded within their own DApps.
+
+## **12.3 [Coins.me](http://Coins.me) (Consumer App)**
+
+[**Coins.me**](http://Coins.me) is presented as a **consumer product layer built on top of the protocol**—a reference front-end that demonstrates best practices, not a privileged gateway. Fees, routing, and features remain protocol-governed to encourage a healthy multi-client ecosystem.
+
+---
+
+ALL THINGS BELOW TODO FOR GOVERNANCE/DECENTRALIZATION TEAM
+
+# **13\. Governance & Upgradability** 
+
+* **Parameters:** fees, limits, rail risk weights, oracle sets, proof policies, bond schedules.  
+* **Upgrades:** contracts behind timelocks with public proposals; emergency pause limited to narrow scopes, with automatic sunset.  
+* **Pre-TGE:** multisig/council with published members and constraints.  
+* **Post-TGE:** token-holder governance of parameters, treasury, and roadmap.
+
+---
+
+# **14\. Token Economics (for TGE — March 2026\)**
+
+## **14.1 Roles & Utilities**
+
+* **Governance token:** vote on parameters, upgrades, oracle sets, and treasury.  
+* **Economic utility:** fee routing (rebates/discounts), **staking/bonds** for merchants and verifiers, dispute insurance pools, growth incentives.
+
+## **14.2 Issuance & Allocations (illustrative; to be finalized)**
+
+* Community incentives, contributors, treasury, market makers/merchants, ecosystem grants—each with cliff/vesting aligned to protocol health.
+
+## **14.3 Treasury & Fees**
+
+* A portion of protocol fees funds audits, bounties, grants, and liquidity programs, governed on-chain.
+
+---
+
+# **15\. Disclosures & Risks**
+
+* **Regulatory change risk:** jurisdictional shifts may limit features or coverage.  
+* **Liquidity risk:** thin books can widen spreads and delay matches.  
+* **Oracle risk:** data outages or manipulation; mitigated by deviation guards and fail-safes.  
+* **Payment rail risk:** reversals/chargebacks on certain rails; managed via risk classes, bonds, and windows.  
+* **Smart-contract risk:** despite audits and bounties, residual risk remains.
+
+---
+
+# **16\. References**
+
+(*Full citations to be populated in the production draft.*)
+
 ---
 
 # **Appendices (to be expanded later)**

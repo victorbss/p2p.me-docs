@@ -1,5 +1,6 @@
 ---
-sidebar_position: 4
+id: 03-3-trading-api
+sidebar_position: 3
 title: "3. Trading API"
 slug: trading-api
 ---

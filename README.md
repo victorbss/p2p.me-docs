@@ -1,41 +1,205 @@
-# Website
+# P2P Foundation Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Automated documentation pipeline for P2P Foundation using Docusaurus.
 
-## Installation
-
-```bash
-yarn
-```
-
-## Local Development
+## Quick Start
 
 ```bash
-yarn start
+# Install dependencies
+npm install
+
+# Build documentation from sources
+python3 build_docs.py
+
+# Start dev server
+npm run start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## Project Structure
 
-## Build
+```
+Documentation/                 # Git repository root
+├── sources/                   # 📁 SOURCE OF TRUTH - Add your MD files here
+│   ├── whitepaper.md         # Whitepaper documentation
+│   └── sdk.md                # SDK documentation
+│
+├── docs.config.json          # ⚙️ Configuration for all documentation
+├── build_docs.py             # 🔧 Build script
+│
+├── docs/                     # Generated whitepaper docs (auto-generated)
+├── sdk/                      # Generated SDK docs (auto-generated)
+├── sidebars/                 # Generated sidebars (auto-generated)
+├── docusaurus.config.ts      # Generated config (auto-generated)
+│
+├── src/                      # React components & styling
+├── static/                   # Static assets (images, etc.)
+├── package.json              # Node.js dependencies
+│
+└── .github/
+    └── workflows/
+        └── deploy.yml        # CI/CD pipeline
+```
+
+## Adding New Documentation
+
+### Step 1: Create your markdown file
+
+Add a new `.md` file to the `sources/` folder:
+
+```markdown
+# **My Documentation Title**
+
+Introduction text here.
+
+# **1. First Chapter**
+
+## **1.1 Subsection**
+
+Content here...
+
+# **2. Second Chapter**
+
+More content...
+```
+
+**Important:** Use `#` (H1) for main chapters and `##` (H2) for subsections.
+
+### Step 2: Add to configuration
+
+Edit `docs.config.json` and add your doc to the `docs` array:
+
+```json
+{
+  "docs": [
+    {
+      "id": "mydoc",
+      "source": "sources/mydoc.md",
+      "outputDir": "mydoc",
+      "routeBasePath": "mydoc",
+      "navbarLabel": "My Doc",
+      "navbarPosition": "left",
+      "sidebarId": "mydocSidebar",
+      "extractImages": true,
+      "splitByHeading": 1,
+      "numberSections": true,
+      "generateTocLinks": true,
+      "skipSections": ["My Documentation Title"]
+    }
+  ]
+}
+```
+
+### Step 3: Build
 
 ```bash
-yarn build
+python3 build_docs.py
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+That's it! Your documentation will be available at `/mydoc` with a navbar link.
 
-## Deployment
+## Configuration Options
 
-Using SSH:
+| Option | Type | Description |
+|--------|------|-------------|
+| `id` | string | Unique identifier for the doc |
+| `source` | string | Path to source markdown file |
+| `outputDir` | string | Where to generate the doc files |
+| `routeBasePath` | string | URL path (e.g., `/sdk`) |
+| `navbarLabel` | string | Label shown in navbar |
+| `navbarPosition` | string | `left` or `right` |
+| `sidebarId` | string | Sidebar identifier |
+| `extractImages` | boolean | Extract base64 images to files |
+| `splitByHeading` | number | Split on heading level (1 = H1) |
+| `numberSections` | boolean | Add number prefixes to files |
+| `generateTocLinks` | boolean | Generate TOC links in sidebar |
+| `skipSections` | array | Section titles to exclude |
+
+## Commands
 
 ```bash
-USE_SSH=true yarn deploy
+# Build all documentation
+python3 build_docs.py
+
+# Clean and rebuild
+python3 build_docs.py --clean
+
+# Start development server
+npm run start
+
+# Build for production
+npm run build
 ```
 
-Not using SSH:
+## CI/CD Pipeline
 
+The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that:
+
+1. **On every push to `main`:**
+   - Builds documentation from sources
+   - Builds the Docusaurus site
+   - Deploys to GitHub Pages
+
+2. **On pull requests:**
+   - Builds and validates (no deployment)
+
+### Setup GitHub Pages
+
+1. Go to your repo Settings → Pages
+2. Set Source to "GitHub Actions"
+3. Push to `main` branch to trigger deployment
+
+## Markdown Format Guidelines
+
+### Chapter Structure
+
+Use H1 (`#`) for main chapters:
+```markdown
+# **0. Vision**
+# **1. Getting Started**
+# **2. API Reference**
+```
+
+Use H2 (`##`) for subsections:
+```markdown
+## **1.1 Installation**
+## **1.2 Configuration**
+```
+
+### Images
+
+You can embed base64 images and they'll be automatically extracted:
+```markdown
+![Description][image1]
+
+[image1]: data:image/png;base64,iVBORw0KGgo...
+```
+
+### Code Blocks
+
+Standard markdown code blocks are supported:
+````markdown
+```typescript
+const client = new P2PClient({ apiKey: 'xxx' });
+```
+````
+
+## Deployment Options
+
+### GitHub Pages (included)
+Push to `main` branch - automatic deployment via GitHub Actions.
+
+### Vercel
 ```bash
-GIT_USER=<Your GitHub username> yarn deploy
+npm run build
+# Deploy the `build/` folder
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+### Netlify
+Connect your GitHub repo, set build command to:
+```
+python3 build_docs.py && npm run build
+```
+
+## License
+
+© P2P Foundation

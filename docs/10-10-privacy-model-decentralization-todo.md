@@ -1,5 +1,6 @@
 ---
-sidebar_position: 12
+id: 10-10-privacy-model-decentralization-todo
+sidebar_position: 11
 title: "10. Privacy Model ( DECENTRALIZATION TODO)"
 slug: privacy-model-decentralization-todo
 ---

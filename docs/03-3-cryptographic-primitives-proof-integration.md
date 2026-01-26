@@ -1,5 +1,6 @@
 ---
-sidebar_position: 5
+id: 03-3-cryptographic-primitives-proof-integration
+sidebar_position: 4
 title: "3. Cryptographic Primitives & Proof Integration"
 slug: cryptographic-primitives-proof-integration
 ---

@@ -1,5 +1,6 @@
 ---
-sidebar_position: 16
+id: 14-14-token-economics-for-tge-march-2026
+sidebar_position: 15
 title: "14. Token Economics (for TGE — March 2026)"
 slug: token-economics-for-tge-march-2026
 ---

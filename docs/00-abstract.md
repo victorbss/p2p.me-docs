@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+id: 00-abstract
+sidebar_position: 0
 title: "Abstract"
 slug: abstract
 ---

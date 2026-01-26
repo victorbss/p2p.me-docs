@@ -1,5 +1,6 @@
 ---
-sidebar_position: 11
+id: 09-9-security-model-tech-todo
+sidebar_position: 10
 title: "9. Security Model (TECH TODO)"
 slug: security-model-tech-todo
 ---
