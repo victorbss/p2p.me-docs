@@ -1,0 +1,23 @@
+.cursorGlow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0; /* Behind content but above base background */
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(73, 63, 238, 0.15),
+    transparent 40%
+  );
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Hide on mobile to save performance */
+@media (max-width: 996px) {
+  .cursorGlow {
+    display: none;
+  }
+}
