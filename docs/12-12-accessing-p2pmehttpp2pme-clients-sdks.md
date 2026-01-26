@@ -1,11 +1,12 @@
 ---
-title: 12. Clients & SDKs
-sidebar_label: 12. Clients
+sidebar_position: 14
+title: "12. Accessing [P2P.me](http://P2P.me): Clients & SDKs"
+slug: accessing-p2pmehttpp2pme-clients-sdks
 ---
 
-# 12. Accessing [P2P.me](http://P2P.me): Clients & SDKs
+# **12\. Accessing [P2P.me](http://P2P.me): Clients & SDKs**
 
-## 12.1 Clients and Ease of Use
+## **12.1 Clients and Ease of Use**
 
 Blockchain transactions have been traditionally notorious for high transfer fees and slow processing times. However, based on Base, [P2P.me](http://P2P.me) can afford to charge very nominal fees for its on- and off-ramps, thanks to the faster validation times and the cheaper MATIC working behind the scenes. The difference is especially pronounced for smaller transactions where newcomers routinely feel discouraged by the slow and expensive economics involved.
 
@@ -17,10 +18,14 @@ Indeed, the adoption of crypto for consumer payments has implications for both t
 
 The most famous and easiest way to access the [P2P.me](http://P2P.me) protocol is to use the [**P2P.me**](http://P2P.me) **mobile app**. Getting started with on-ramps is as simple as buying stablecoins via a fiat transfer; off-ramps are just as reliable through a stablecoin deposit. Any entity can create and distribute a functional UI client for [P2P.me](http://P2P.me) to conduct fully decentralized on/off-ramp transactions.
 
-## 12.2 Client-Side SDKs (B2B Integration)
+## **12.2 Client-Side SDKs (B2B Integration)**
 
 The [**P2P.me**](http://P2P.me) **SDK** in development currently, will let developers integrate the P2P protocol and on/off-ramp users directly into their platforms, enabling consumer micropayments in crypto, embedded within their own DApps.
 
-## 12.3 [Coins.me](http://Coins.me) (Consumer App)
+## **12.3 [Coins.me](http://Coins.me) (Consumer App)**
 
 [**Coins.me**](http://Coins.me) is presented as a **consumer product layer built on top of the protocol**—a reference front-end that demonstrates best practices, not a privileged gateway. Fees, routing, and features remain protocol-governed to encourage a healthy multi-client ecosystem.
+
+---
+
+ALL THINGS BELOW TODO FOR GOVERNANCE/DECENTRALIZATION TEAM

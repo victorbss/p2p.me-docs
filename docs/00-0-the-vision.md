@@ -1,21 +1,12 @@
 ---
-title: 0. Vision
-sidebar_label: 0. Vision
+sidebar_position: 2
+title: "0. The Vision"
+slug: the-vision
 ---
 
-# Abstract
+# **0\. The Vision**
 
-Following the wake of centralized exchanges, early decentralized exchanges led the DeFi movement using order books and liquidity pools. Yet DeFi users still lacked a fully decentralized way to onramp from fiat to crypto and offramp back to fiat.
-
-[P2P Protocol](https://p2p.foundation) reflects a departure from fiat escrows and traditional custodians by using **zero-knowledge (ZK) proofs** for KYC norms and fiat transfer verification, making on/off-ramps **non-custodial, privacy-preserving**, and **governed by users’ collective interests.**
-
-Based on the **Base** network, [the P2P.me](http://P2P.me) decentralized app (DApp) trustlessly matches buyers and highly vetted merchants according to a **Proof-of-Credibility** reputation algorithm, settles trades with on-chain coordination, and resolves disputes through verifiable proofs rather than platform custody. This paper formalizes design goals, protocol flows, reputation, dispute resolution, pricing, security and privacy models, governance, and token economics in preparation for a **Token Generation Event (TGE) planned for March 2026**.
-
-The end-state is a credibility-based DeFi ecosystem where peers transact, save, and build services on top of an open Proof-of-Credibility graph—useful, easy to use, privacy-first, and not reliant on over-collateralized mechanics for every everyday action. This paper lays out that vision, the principles guiding it, what works today, and the path to a mature, protocol-neutral, global network by and beyond 2026.
-
-# 0. The Vision
-
-## 0.1 From “ramps” to a privacy and credibility based economy
+## **0.1 From “ramps” to a privacy and credibility based economy**
 
 P2P.me starts with the most practical chokepoint—moving between fiat and stablecoins—without custodial escrow. The same rails, proofs, and incentives that make an honest ramp work at scale also enable the next layer: **credibility-based liquidity, bridging the gap between fiat and crypto currencies, for all DeFi**.
 
@@ -25,15 +16,15 @@ In this model:
 * **Privacy is preserved by default** via zero knowledge proofs that reveal *facts* (paid, verified, permitted) without revealing raw identities or bank data.  
 * **Usefulness beats theory:** micro-payments, everyday off-ramps, wages, remittances, and merchant payouts come first—designed to feel as simple as sending a message.
 
-## 0.2 What “good” looks like by 2026+
+## **0.2 What “good” looks like by 2026+**
 
-* A user in any supported country can **buy or sell stablecoins in ~minutes**—targeting sub-90-second completion on fast rails—*without* giving custody to anyone.  
+* A user in any supported country can **buy or sell stablecoins in \~minutes**—targeting sub-90-second completion on fast rails—*without* giving custody to anyone.  
 * Merchants across regions compete on spread and reliability, **ranked by Proof-of-Credibility**, not marketing.  
 * **ZK-KYC and ZK payment proofs** unlock higher limits and faster paths while keeping personal data off-chain.  
 * Third-party apps and wallets integrate the protocol through **open SDKs**; **Coins.me** is only a reference consumer front-end, not a privileged gateway.  
 * As credibility compounds, **new products** (installment payouts, escrowless commerce, cross-border salaries, dispute insurance) can be built without re-KYCing the world.
 
-## 0.3 First principles
+## **0.3 First principles**
 
 * **Non-custodial by construction.** No fiat escrow. Crypto only held atomically for settlement where necessary.  
 * **Privacy-preserving.** Prove what’s needed; reveal nothing else.  
@@ -41,13 +32,13 @@ In this model:
 * **Useful and simple.** The experience should feel like one tap to “Buy USDC” or “Cash out,” with the protocol handling the invisible complexity.  
 * **Protocol-agnostic.** The design does not hinge on any single L2, oracle, or proof vendor. Implementations can change without rewriting the whitepaper.
 
-## 0.4 What P2P.me is (and is not)
+## **0.4 What P2P.me is (and is not)**
 
 * **Is:** an open, decentralized **coordination layer** that trustlessly matches a buyer with a highly vetted merchant according to a transparent reputation system; settles trades using verifiable proofs; and routes fees and parameters through governance.
 
 * **Is not:** a custodian, a bank, or a data broker. P2P.me does not custody fiat, does not warehouse users’ personal information, and does not promise fixed yields.
 
-## 0.5 Why this matters now
+## **0.5 Why this matters now**
 
 Over the past decade, crypto solved programmatic finance but left the real world at the door. Today three curves finally cross:
 
@@ -57,17 +48,17 @@ Over the past decade, crypto solved programmatic finance but left the real world
 
 P2P.me sits exactly at that intersection. It turns *trust me* into *prove it*, and it does so without handing anyone your money or your identity.
 
-## 0.6 North-star outcomes (what “good” looks like to us)
+## **0.6 North-star outcomes (what “good” looks like to us)**
 
 By 2026+:
 
-* **Sub-60s settlement** on fast rails, median cost **< $0.20 per $100**.  
-* **>99% disputes** resolved by proofs within the window, not by moderators.  
+* **Sub-60s settlement** on fast rails, median cost **\< $0.20 per $100**.  
+* **\>99% disputes** resolved by proofs within the window, not by moderators.  
 * **Portable credibility**: your reputation and limits travel with you across clients and countries—without doxxing you.  
 * **Neutral access**: multiple wallets and apps, including Coins.me as a reference, all using the same permissionless SDKs atop the Protocol.  
 * **Everyday usefulness**: wages, remittances, marketplace payouts, and checkout—no custody, no paper KYC forms, no screenshots.
 
-## 0.7 Credibility-based DeFi (beyond over-collateralization)
+## **0.7 Credibility-based DeFi (beyond over-collateralization)**
 
 Over-collateralization made early DeFi safe, but it makes the everyday world feel gated and expensive. P2P.me proposes a second pillar: **credibility**.
 
@@ -75,22 +66,22 @@ Over-collateralization made early DeFi safe, but it makes the everyday world fee
 * **Privacy by default**: you reveal proofs of action, not identities.  
 * **Composability**: the same credibility graph supports installment payouts, escrowless commerce, and even lightweight credit primitives in the future.
 
-## 0.8 A protocol for people, not just power users
+## **0.8 A protocol for people, not just power users**
 
 We design for someone who has a phone and a paycheck, not a Bloomberg terminal.
 
 * **Micro-friendly**: P2P.me must feel safe at $15 as much as at $1,500..  
 * **Dignity with Privacy**: selective disclosure in ZK verifications proves what’s necessary and nothing more, no Personal Identification revelation — protecting freelance workers, activists, and anyone who values privacy.
 
-## 0.9 Protocol-agnostic by design
+## **0.9 Protocol-agnostic by design**
 
 Vendors and chains will change; the **principles** cannot. The whitepaper commits to:
 
-* **No single L2, oracle, or proof provider baked into the logic.  
-* **Clear interfaces** (verifier registry, oracle adapter, rail registry) so parts can be swapped without rewriting the paper or the social contract.  
-* **Open Sourcing and Decentralizing each part of the Protocol as public goods.
+* No single L2, oracle, or proof provider baked into the logic.  
+* Clear **interfaces** (verifier registry, oracle adapter, rail registry) so parts can be swapped without rewriting the paper or the social contract.  
+* Open Sourcing and Decentralizing each part of the Protocol as public goods.
 
-## 0.10 Credibility but with Privacy
+## **0.10 Credibility but with Privacy**
 
 Think of P2P.me’s **Proof-of-Credibility** as a public good in itself:
 
@@ -98,7 +89,7 @@ Think of P2P.me’s **Proof-of-Credibility** as a public good in itself:
 * It is **portable** across clients and countries via on-chain commitments, not PDFs in someone’s inbox.  
 * It’s **privacy-first**: only commitments and verdicts are public; raw evidence stays with you or your chosen verifier.
 
-## 0.11 Programmable compliance (policy without dossiers)
+## **0.11 Programmable compliance (policy without dossiers)**
 
 Most people want two things at once: privacy and legality. P2P.me makes this practical:
 
@@ -106,34 +97,34 @@ Most people want two things at once: privacy and legality. P2P.me makes this pra
 * **ZK-KYC** tiers satisfy “permitted user” checks while keeping PII off-chain.  
 * **Travel-Rule-style needs** can be met via **selective disclosure** circuits when a counterparty is a registered business—without turning the protocol into a data broker.
 
-## 0.12 What gets unlocked if we get this right
+## **0.12 What gets unlocked if we get this right**
 
 * **Borderless income**: creators, contractors, and remote workers get paid where they live, without exchange custody.  
 * **Merchant payouts**: marketplaces settle to sellers in local rails instantaneously, at fair spreads, with no CSV juggling.  
 * **Community finance**: rotating savings, micro-loans, and escrowless marketplaces can build on a shared credibility and liquidity layer between the fiat and crypto currency domains.  
 * **Civic resilience**: people can move value privately and lawfully when the world gets shaky.
 
-## 0.13 Stewardship & governance philosophy
+## **0.13 Stewardship & governance philosophy**
 
 * **Credible neutrality** over convenience. Changes go through transparent governance with guardrails (timelocks, narrow pauses, audits).  
 * **Minimize governance** where possible: parametrize, don’t micromanage.  
 * **Public safety valves**: oracle circuit breakers, verifier sunsets, and emergency pauses with automatic expiry.  
 * **Open bounty mindset**: pay to find flaws early; publish fixes openly.
 
-## 0.14 What we won’t compromise on
+## **0.14 What we won’t compromise on**
 
 * **Non-custody of fiat** (ever).  
 * **No honeypots of PII (Personal Identifiable Information) on-chain** (ever).  
 * **No privileged clients** (ever). Everyone uses the same pipes.  
 * **No “trust us” black boxes**. If it can’t be proven or audited, it doesn’t make core.
 
-## 0.15 Milestones that matter (vision-level, not dates)
+## **0.15 Milestones that matter (vision-level, not dates)**
 
 * **Ubiquity**: a credible merchant presence in every major region/rail pair.  
 * **Composability**: third-party apps shipping useful features on the SDK without asking permission.  
 * **Self-serve legitimacy**: regulators and risk teams can read the spec, verify parameters on-chain, and understand **how** safety is achieved—without backdoors.
 
-## 0.16 A short manifesto
+## **0.16 A short manifesto**
 
 * **Privacy is a user interface problem as much as a math problem.**
 
@@ -145,7 +136,7 @@ Most people want two things at once: privacy and legality. P2P.me makes this pra
 
 ---
 
-## How the protocol works today (high level, not vendor-locked)
+## **How the protocol works today (high level, not vendor-locked)**
 
 1. **Placing orders.** A user clicks “Buy USDC” (or “Sell USDC”) and enters an amount. Users can import an existing wallet address to start transacting.  
 2. **Order matching.** An innovative **Proof-of-Credibility** algorithm keeps a list of carefully vetted stablecoin merchants queued for order matching. A fiat payment address is shared **over the smart contract, encrypted** via the user’s keys; for off-ramps, a wallet address is presented.  
@@ -155,7 +146,7 @@ Most people want two things at once: privacy and legality. P2P.me makes this pra
 
 ---
 
-## Why credibility matters (and why over-collateralization shouldn’t be the only answer)
+## **Why credibility matters (and why over-collateralization shouldn’t be the only answer)**
 
 Traditional DeFi often reaches for heavy collateral to feel safe. That works for some instruments, but it makes everyday finance clunky and exclusionary. **Credibility-based DeFi** says: let peers *earn* limits, speed, and price by behaving well over time, and let **ZK proofs** protect privacy while doing so.  
 This strikes a better balance: **useful** for real people, **privacy-preserving** for those who need it most, and **resilient** because reputation is distributed and portable—not trapped in a single platform’s database.

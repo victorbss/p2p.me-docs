@@ -3,19 +3,17 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'P2P Foundation Whitepaper',
-  tagline: 'P2P Foundation Whitepaper',
-  favicon: 'img/favicon.svg', // Fallback favicon
+  title: 'P2P Foundation Docs',
+  tagline: 'Documentation for P2P Foundation',
+  favicon: 'img/favicon.svg',
 
-  // Set the production url of your site here
-  url: 'https://p2p.foundation',
+  url: 'https://docs.p2p.me',
   baseUrl: '/',
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   headTags: [
-    // Favicon for light mode (dark icon)
     {
       tagName: 'link',
       attributes: {
@@ -25,7 +23,6 @@ const config: Config = {
         media: '(prefers-color-scheme: light)',
       },
     },
-    // Favicon for dark mode (white/light icon)
     {
       tagName: 'link',
       attributes: {
@@ -50,10 +47,10 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
+          sidebarPath: './sidebars/whitepaper.ts',
           routeBasePath: 'whitepaper',
         },
-        blog: false, // Disable blog
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -61,24 +58,20 @@ const config: Config = {
     ],
   ],
 
-  themes: [
+  plugins: [
     [
-      '@easyops-cn/docusaurus-search-local',
+      '@docusaurus/plugin-content-docs',
       {
-        hashed: true,
-        docsRouteBasePath: '/whitepaper',
-        indexBlog: false,
-        highlightSearchTermsOnTargetPage: true,
-        searchResultLimits: 8,
-        searchBarShortcutHint: false,
+        id: 'sdk',
+        path: 'sdk',
+        routeBasePath: 'sdk',
+        sidebarPath: './sidebars/sdk.ts',
       },
-    ],
+    ]
   ],
-
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
-      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
       ({
         hashed: true,
         language: ["en"],
@@ -109,16 +102,23 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Whitepaper',
+                "type": "docSidebar",
+                "sidebarId": "whitepaperSidebar",
+                "position": "left",
+                "label": "Whitepaper"
         },
-      ],
+        {
+                "type": "docSidebar",
+                "sidebarId": "sdkSidebar",
+                "position": "left",
+                "label": "SDK",
+                "docsPluginId": "sdk"
+        }
+],
     },
     footer: {
       style: 'dark',
-      links: [], // Clear columns to use custom single-row alignment
+      links: [],
       copyright: `
         <div class="footer-row-container">
           <div class="footer-left">
