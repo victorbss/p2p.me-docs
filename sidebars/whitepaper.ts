@@ -164,13 +164,13 @@ const sidebars: SidebarsConfig = {
             },
             {
                 "type": "link",
-                "label": "Onramp Flow Illustration![][image1]",
-                "href": "/whitepaper/system-overview#onramp-flow-illustrationimage1"
+                "label": "Onramp Flow Illustration![](/img/whitepaper/image1.png)",
+                "href": "/whitepaper/system-overview#onramp-flow-illustrationimgwhitepaperimage1png"
             },
             {
                 "type": "link",
-                "label": "Off-ramp Flow Illustration![][image2]",
-                "href": "/whitepaper/system-overview#off-ramp-flow-illustrationimage2"
+                "label": "Off-ramp Flow Illustration![](/img/whitepaper/image2.png)",
+                "href": "/whitepaper/system-overview#off-ramp-flow-illustrationimgwhitepaperimage2png"
             }
         ]
     },

@@ -30,7 +30,7 @@ class DocBuilder:
         
     def _load_config(self) -> Dict[str, Any]:
         """Load the docs configuration file."""
-        with open(self.config_path, 'r') as f:
+        with open(self.config_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     
     def _slugify(self, text: str) -> str:
@@ -41,15 +41,23 @@ class DocBuilder:
         return slug
     
     def _extract_images(self, content: str, doc_id: str) -> Tuple[str, int]:
-        """Extract base64 images from markdown and save them as files."""
+        """Extract base64 images from markdown and save them as files.
+        
+        Also converts reference-style image syntax to inline syntax so images
+        work properly when the document is split into sections.
+        """
         output_dir = self.website_dir / "static" / "img" / doc_id
         output_dir.mkdir(parents=True, exist_ok=True)
         
-        # Pattern for reference-style base64 images: [imageN]: data:image/png;base64,DATA
-        pattern = r'\[image(\d+)\]:\s*data:image\/([a-zA-Z]+);base64,([a-zA-Z0-9+/=\s]+)'
+        # Pattern for reference-style base64 images: [imageN]: <data:image/png;base64,DATA>
+        # Note: angle brackets are optional to support both formats
+        pattern = r'\[image(\d+)\]:\s*<?data:image\/([a-zA-Z]+);base64,([a-zA-Z0-9+/=\s]+)>?'
         
+        # First pass: extract images and build a mapping of image numbers to file paths
+        image_map = {}
         image_count = 0
-        def replace_image(match):
+        
+        def extract_and_map(match):
             nonlocal image_count
             img_num = match.group(1)
             img_ext = match.group(2)
@@ -57,19 +65,34 @@ class DocBuilder:
             
             filename = f'image{img_num}.{img_ext}'
             filepath = output_dir / filename
+            img_path = f'/img/{doc_id}/{filename}'
             
             try:
                 with open(filepath, 'wb') as f:
                     f.write(base64.b64decode(img_data))
                 image_count += 1
+                image_map[img_num] = img_path
                 print(f"  📷 Extracted {filename}")
             except Exception as e:
                 print(f"  ⚠️ Error saving {filename}: {e}")
             
-            # Replace with file reference
-            return f'[image{img_num}]: /img/{doc_id}/{filename}'
+            # Remove the reference definition entirely (we'll use inline syntax)
+            return ''
         
-        new_content = re.sub(pattern, replace_image, content)
+        new_content = re.sub(pattern, extract_and_map, content)
+        
+        # Second pass: convert reference-style image usages to inline syntax
+        # Pattern: ![][imageN] or ![alt text][imageN]
+        def convert_to_inline(match):
+            alt_text = match.group(1) if match.group(1) else ''
+            img_num = match.group(2)
+            if img_num in image_map:
+                return f'![{alt_text}]({image_map[img_num]})'
+            return match.group(0)  # Keep original if not found
+        
+        usage_pattern = r'!\[([^\]]*)\]\[image(\d+)\]'
+        new_content = re.sub(usage_pattern, convert_to_inline, new_content)
+        
         return new_content, image_count
     
     def _get_chapter_number(self, title: str) -> Optional[str]:
@@ -202,7 +225,7 @@ slug: {url_slug}
 """
             content = frontmatter + section['content'].strip()
             
-            with open(filepath, 'w') as f:
+            with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(content)
             
             generated_files.append({
@@ -475,7 +498,7 @@ export default config;
                 print(f"  ⚠️ Source file not found: {source_path}")
                 continue
             
-            with open(source_path, 'r') as f:
+            with open(source_path, 'r', encoding='utf-8') as f:
                 content = f.read()
             
             # Extract images if enabled
@@ -505,7 +528,7 @@ export default config;
             # Generate sidebar
             sidebar_content = self._generate_sidebar(doc_config, files)
             sidebar_path = sidebars_dir / f"{doc_config['id']}.ts"
-            with open(sidebar_path, 'w') as f:
+            with open(sidebar_path, 'w', encoding='utf-8') as f:
                 f.write(sidebar_content)
             print(f"  📋 Generated sidebar: {sidebar_path.name}")
         
@@ -513,7 +536,7 @@ export default config;
         print(f"\n⚙️ Generating docusaurus.config.ts")
         config_content = self._generate_docusaurus_config()
         config_path = self.website_dir / "docusaurus.config.ts"
-        with open(config_path, 'w') as f:
+        with open(config_path, 'w', encoding='utf-8') as f:
             f.write(config_content)
         
         print("\n" + "=" * 50)

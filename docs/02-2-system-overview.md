@@ -30,6 +30,6 @@ slug: system-overview
 4. **Confirmation/Settlement:** Within minutes, settlement succeeds once the counter-proof condition is met (e.g., merchant confirms receipt or buyer submits transfer proof). Wallet balances update accordingly.  
 5. **Dispute Window:** If a party contests, they submit a ZK/TLS-backed proof that a payment or action occurred (or did not). Smart contracts (and/or designated verifiers) resolve deterministically.
 
-## Onramp Flow Illustration![][image1]
+## Onramp Flow Illustration![](/img/whitepaper/image1.png)
 
-## Off-ramp Flow Illustration![][image2]
+## Off-ramp Flow Illustration![](/img/whitepaper/image2.png)
