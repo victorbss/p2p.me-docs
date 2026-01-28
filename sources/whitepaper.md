@@ -1,4 +1,4 @@
-# P2P Protocol Whitepaper Update
+# P2P Protocol Whitepaper
 
 **P2P Protocol: Decentralized P2P On/Off Ramps & A Gateway to DeFi**
 
