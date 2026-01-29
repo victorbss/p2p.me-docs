@@ -431,7 +431,7 @@ const config: Config = {{
       logo: {{
         alt: '{navbar_config.get("logo", {}).get("alt", "P2P Foundation")}',
         src: '{navbar_config.get("logo", {}).get("src", "img/p2p-foundation-main.svg")}',
-        srcDark: '{navbar_config.get("logo", {}).get("srcDark", "img/p2p-logo.svg")}',
+        srcDark: '{navbar_config.get("logo", {}).get("srcDark", "img/p2p-foundation-2.svg")}',
       }},
       items: {json.dumps(navbar_items, indent=8)},
     }},

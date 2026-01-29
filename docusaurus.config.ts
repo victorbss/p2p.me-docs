@@ -102,7 +102,7 @@ const config: Config = {
       logo: {
         alt: "P2P Foundation",
         src: "img/p2p-foundation-main.svg",
-        srcDark: "img/p2p-logo.svg",
+        srcDark: "img/p2p-foundation-2.svg",
       },
       items: [
         {
