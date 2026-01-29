@@ -5,8 +5,6 @@ title: "5. Error Handling"
 slug: error-handling
 ---
 
-# **5. Error Handling**
-
 ## **5.1 Error Codes**
 
 ```typescript

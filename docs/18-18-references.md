@@ -5,8 +5,6 @@ title: "18. References"
 slug: references
 ---
 
-## 18. References
-
 1. **Reclaim Protocol** — https://www.reclaimprotocol.org/
 
 *(Additional citations to be populated in the production draft.)*

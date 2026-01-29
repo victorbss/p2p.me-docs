@@ -5,8 +5,6 @@ title: "4. Cryptographic Primitives & Proof Integration"
 slug: cryptographic-primitives-proof-integration
 ---
 
-## 4. Cryptographic Primitives & Proof Integration
-
 ### 4.1 Proofs for Identity and Payments
 
 P2P Protocol uses ZK proofs to validate transactions and identity data records. Besides facilitating anonymous transactions and dispute resolutions within the community, these ZK proofs help authenticate critical user activity on the Protocol.

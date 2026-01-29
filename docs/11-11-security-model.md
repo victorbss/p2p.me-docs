@@ -5,8 +5,6 @@ title: "11. Security Model"
 slug: security-model
 ---
 
-## 11. Security Model
-
 > *TECH TODO*
 
 ### 11.1 Assumptions & Adversaries

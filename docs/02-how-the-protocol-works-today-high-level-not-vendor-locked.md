@@ -5,8 +5,6 @@ title: "How the protocol works today (high level, not vendor-locked)"
 slug: how-the-protocol-works-today-high-level-not-vendor-locked
 ---
 
-## How the protocol works today (high level, not vendor-locked)
-
 1. **Placing orders.** A user clicks "Buy USDC" (or "Sell USDC") and enters an amount. Users can import an existing wallet address to start transacting.
 2. **Order matching.** An innovative Proof-of-Credibility algorithm keeps a list of carefully vetted stablecoin merchants queued for order matching. A fiat payment address is shared over the smart contract, encrypted via the user's keys; for off-ramps, a wallet address is presented.
 3. **Transfers and confirmation.** The payer completes the fiat or crypto transfer; the counterparty acknowledges or either party submits a zero-knowledge proof that the payment event occurred. Settlement completes within minutes in the common case.

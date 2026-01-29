@@ -242,7 +242,20 @@ slug: {url_slug}
 ---
 
 """
-            content = frontmatter + section['content'].strip()
+            # Remove the first heading line from content to avoid duplication
+            # (the title is already in frontmatter)
+            raw_content = section['content'].strip()
+            content_lines = raw_content.split('\n')
+            
+            # Skip the first line if it's the same heading we used for title
+            if content_lines and re.match(r'^#{1,6}\s+', content_lines[0]):
+                content_lines = content_lines[1:]
+            
+            # Also skip any empty lines right after the heading
+            while content_lines and not content_lines[0].strip():
+                content_lines = content_lines[1:]
+            
+            content = frontmatter + '\n'.join(content_lines)
             
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(content)

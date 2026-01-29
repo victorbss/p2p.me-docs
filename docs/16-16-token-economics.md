@@ -5,8 +5,6 @@ title: "16. Token Economics"
 slug: token-economics
 ---
 
-## 16. Token Economics
-
 The protocol token serves two primary purposes: governance and economic utility.
 
 As a governance token, holders participate in decisions that shape the protocol's evolution. This includes voting on parameter adjustments such as fee structures, transaction limits, and risk weights. Token holders also vote on protocol upgrades, oracle set configurations, and treasury allocations. The goal is to decentralize decision-making while maintaining the protocol's integrity and safety.

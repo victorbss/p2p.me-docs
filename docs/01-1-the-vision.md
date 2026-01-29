@@ -5,8 +5,6 @@ title: "1. The Vision"
 slug: the-vision
 ---
 
-## 1. The Vision
-
 ### 1.1 From "ramps" to a privacy and credibility based economy
 
 P2P Protocol starts with the most practical chokepoint—moving between fiat and stablecoins—without custodial escrow. The same rails, proofs, and incentives that make an honest ramp work at scale also enable the next layer: credibility-based liquidity, bridging the gap between fiat and crypto currencies, for all DeFi.

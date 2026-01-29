@@ -5,8 +5,6 @@ title: "10. Liquidity & Market Design"
 slug: liquidity-market-design
 ---
 
-## 10. Liquidity & Market Design
-
 ### 10.1 Current Liquidity Model
 
 The stablecoin liquidity is currently offered by carefully reviewed peers from all around the globe, following the Proof-of-Credibility algorithm. Liquidity is available around the clock with affordable fees, secure transactions, and ease of use.

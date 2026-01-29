@@ -5,8 +5,6 @@ title: "2. Design Goals and Non-Goals"
 slug: design-goals-and-non-goals
 ---
 
-## 2. Design Goals and Non-Goals
-
 ### 2.1 Goals
 
 - Decentralized on/off-ramp between fiat and stablecoins without fiat escrow.

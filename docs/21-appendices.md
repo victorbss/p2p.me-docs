@@ -5,8 +5,6 @@ title: "Appendices"
 slug: appendices
 ---
 
-## Appendices
-
 *(To be expanded later)*
 
 1. **State Machines & Sequence Diagrams** for on-/off-ramp and dispute flows.

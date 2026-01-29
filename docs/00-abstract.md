@@ -5,8 +5,6 @@ title: "Abstract"
 slug: abstract
 ---
 
-## Abstract
-
 Following the wake of centralized exchanges, early decentralized exchanges led the DeFi movement using order books and liquidity pools. Yet DeFi users still lacked a fully decentralized way to onramp from fiat to crypto and offramp back to fiat.
 
 P2P Protocol reflects a departure from fiat escrows and traditional custodians by using zero-knowledge (ZK) proofs for KYC norms and fiat transfer verification, making on/off-ramps non-custodial, privacy-preserving, and governed by users' collective interests.

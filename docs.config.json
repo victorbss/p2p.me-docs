@@ -14,7 +14,10 @@
       "splitByHeading": 2,
       "numberSections": true,
       "generateTocLinks": true,
-      "skipSections": ["P2P Protocol Whitepaper Update", "P2P Protocol Whitepaper"]
+      "skipSections": [
+        "P2P Protocol Whitepaper Update",
+        "P2P Protocol Whitepaper"
+      ]
     },
     {
       "id": "sdk",

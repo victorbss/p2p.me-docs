@@ -5,8 +5,6 @@ title: "3. Trading API"
 slug: trading-api
 ---
 
-# **3. Trading API**
-
 ## **3.1 Creating an Order**
 
 ```typescript

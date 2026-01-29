@@ -5,8 +5,6 @@ title: "14. Accessing P2P Protocol: Clients & SDKs"
 slug: accessing-p2p-protocol-clients-sdks
 ---
 
-## 14. Accessing P2P Protocol: Clients & SDKs
-
 ### 14.1 Clients and Ease of Use
 
 The primary clients for accessing P2P Protocol are the p2p.me and coins.me Progressive Web Apps (PWAs). These browser-based applications provide seamless access across devices, letting users import or export their wallet address for Base USDC (and any other chains supported in the future).

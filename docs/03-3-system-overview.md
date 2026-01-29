@@ -5,8 +5,6 @@ title: "3. System Overview"
 slug: system-overview
 ---
 
-## 3. System Overview
-
 ### 3.1 Actors
 
 The protocol involves several key participants working together to enable trustless peer-to-peer transactions.

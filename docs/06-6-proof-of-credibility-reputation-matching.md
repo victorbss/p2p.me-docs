@@ -5,8 +5,6 @@ title: "6. Proof-of-Credibility (Reputation & Matching)"
 slug: proof-of-credibility-reputation-matching
 ---
 
-## 6. Proof-of-Credibility (Reputation & Matching)
-
 P2P Protocol works using a unique on-chain reputation system which not only builds up user trust and privileges but actively helps prevent fraudulent activity within the P2P landscape.
 
 ### 6.1 Building Trust Through Reputation

@@ -5,8 +5,6 @@ title: "6. Best Practices"
 slug: best-practices
 ---
 
-# **6. Best Practices**
-
 ## **6.1 Security**
 
 - Never expose API keys in client-side code

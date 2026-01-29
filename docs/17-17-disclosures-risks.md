@@ -5,8 +5,6 @@ title: "17. Disclosures & Risks"
 slug: disclosures-risks
 ---
 
-## 17. Disclosures & Risks
-
 While the protocol is designed with safety and resilience in mind, users should understand the inherent risks of participating in decentralized finance.
 
 **Regulatory uncertainty** remains a factor in the evolving crypto landscape. Jurisdictional shifts in how regulators classify or restrict peer-to-peer transactions may limit protocol features or geographic coverage over time. The protocol aims to remain compliant through programmable policy parameters, but cannot guarantee future regulatory treatment.

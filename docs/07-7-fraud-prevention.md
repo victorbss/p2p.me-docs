@@ -5,8 +5,6 @@ title: "7. Fraud Prevention"
 slug: fraud-prevention
 ---
 
-## 7. Fraud Prevention
-
 ### 7.1 How Reputation Prevents Fraud
 
 Merely making the protocol fully anonymous would do little to preclude the possibility of users misusing the platform. However, combined with the strict reputation system for on-ramp transactions, the chances of a buyer committing impersonation fraud drop drastically, especially given the meager amounts they can transact with their expectedly suspicious on-chain reputation.

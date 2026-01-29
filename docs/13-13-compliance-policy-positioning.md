@@ -5,8 +5,6 @@ title: "13. Compliance & Policy Positioning"
 slug: compliance-policy-positioning
 ---
 
-## 13. Compliance & Policy Positioning
-
 > *LEGAL TODO*
 
 Unsurprisingly, while P2P Protocol leads the P2P market with its decentralized model and seamless UI client software, it aims to remain in good standing with legal regulations. The user is responsible for legitimate usage and taxation in their jurisdiction.

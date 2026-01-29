@@ -5,8 +5,6 @@ title: "5. Trade Protocol (On- and Off-Ramp)"
 slug: trade-protocol-on-and-off-ramp
 ---
 
-## 5. Trade Protocol (On- and Off-Ramp)
-
 We formalize the order lifecycle as a state machine with timeouts:
 
 **States:** `OPEN → MATCHED → FUNDED → PROOF_SUBMITTED? → SETTLED | DISPUTED → RESOLVED | EXPIRED`

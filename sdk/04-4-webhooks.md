@@ -5,8 +5,6 @@ title: "4. Webhooks"
 slug: webhooks
 ---
 
-# **4. Webhooks**
-
 ## **4.1 Setting Up Webhooks**
 
 Configure webhook endpoints to receive real-time notifications:

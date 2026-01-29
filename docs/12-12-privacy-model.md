@@ -5,8 +5,6 @@ title: "12. Privacy Model"
 slug: privacy-model
 ---
 
-## 12. Privacy Model
-
 > *DECENTRALIZATION TODO*
 
 - **Data minimization:** contracts store only commitments, verdicts, and reputation deltas.
