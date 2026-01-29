@@ -255,7 +255,20 @@ slug: {url_slug}
             while content_lines and not content_lines[0].strip():
                 content_lines = content_lines[1:]
             
-            content = frontmatter + '\n'.join(content_lines)
+            # Convert H3 headings to H2 for better visual hierarchy
+            # (since main title is now in frontmatter, subsections should be H2)
+            converted_lines = []
+            for line in content_lines:
+                if line.startswith('### '):
+                    converted_lines.append('## ' + line[4:])
+                elif line.startswith('#### '):
+                    converted_lines.append('### ' + line[5:])
+                elif line.startswith('##### '):
+                    converted_lines.append('#### ' + line[6:])
+                else:
+                    converted_lines.append(line)
+            
+            content = frontmatter + '\n'.join(converted_lines)
             
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(content)

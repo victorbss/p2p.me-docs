@@ -5,7 +5,7 @@ title: "3. System Overview"
 slug: system-overview
 ---
 
-### 3.1 Actors
+## 3.1 Actors
 
 The protocol involves several key participants working together to enable trustless peer-to-peer transactions.
 
@@ -19,14 +19,14 @@ The protocol involves several key participants working together to enable trustl
 
 **Governance** encompasses the mechanisms through which protocol parameters, upgrades, and treasury decisions are made. Initially managed through a multisig council, governance transitions to token-holder control following the protocol's maturation.
 
-### 3.2 Components
+## 3.2 Components
 
 - **Base L2 smart contracts** for order lifecycle, matching, dispute windows, parameter registry, and fee routing.
 - **Reputation registry** implementing Proof-of-Credibility (inputs, scoring, decay).
 - **Oracle adapter** for reference pricing and safeguards (median/TWAP, fallbacks, circuit breakers).
 - **Client SDKs** and reference apps (e.g., Coins.me) that speak the protocol.
 
-### 3.3 High-Level Flow
+## 3.3 High-Level Flow
 
 1. **Placing Orders:** A user clicks "Buy USDC" (or "Sell USDC") and enters amount; the user may import an existing Base USDC wallet.
 2. **Order Matching:** A list of carefully vetted merchants is queued via Proof-of-Credibility. A fiat payment address is shared over the smart contract, encrypted with the user's keys; for off-ramps, a Base USDC address is presented.
@@ -34,7 +34,7 @@ The protocol involves several key participants working together to enable trustl
 4. **Confirmation/Settlement:** Within minutes, settlement succeeds once the counter-proof condition is met (e.g., merchant confirms receipt or buyer submits transfer proof). Wallet balances update accordingly.
 5. **Dispute Window:** If a party contests, they submit a ZK/TLS-backed proof that a payment or action occurred (or did not). Smart contracts (and/or designated verifiers) resolve deterministically.
 
-### 3.4 On-Ramp Flow
+## 3.4 On-Ramp Flow
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -79,7 +79,7 @@ The protocol involves several key participants working together to enable trustl
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 3.5 Off-Ramp Flow
+## 3.5 Off-Ramp Flow
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -123,7 +123,7 @@ The protocol involves several key participants working together to enable trustl
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 3.6 Key Considerations
+## 3.6 Key Considerations
 
 - The **merchant** serves the function of mediating liquidity for the transactions.
 - The **onus of sharing ZK proof** always rests on the merchant (for off-ramps) or can be provided by either party.

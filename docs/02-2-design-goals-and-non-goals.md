@@ -5,7 +5,7 @@ title: "2. Design Goals and Non-Goals"
 slug: design-goals-and-non-goals
 ---
 
-### 2.1 Goals
+## 2.1 Goals
 
 - Decentralized on/off-ramp between fiat and stablecoins without fiat escrow.
 - Privacy by design using ZK proofs to authenticate identity data and fiat payment events while keeping raw data off-chain.
@@ -13,7 +13,7 @@ slug: design-goals-and-non-goals
 - Fast settlement: typical completion within minutes, targeting sub-~90s for common rails as network, liquidity, and automation improve.
 - Safety & integrity: explicit threat model, dispute flows, and rate/limit controls to minimize fraud.
 
-### 2.2 Non-Goals
+## 2.2 Non-Goals
 
 - The Protocol does not hold customer fiat or crypto in custody.
 - The Protocol does not guarantee price or liquidity; it coordinates peers and market inputs.
