@@ -129,10 +129,10 @@ h6 {
 
 /* Highlight Subheadings (H2) */
 .markdown h2 {
-  color: var(--p2p-blue-light);
-  font-size: 2rem;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  color: var(--ifm-color-primary);
+  font-size: 1.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
   position: relative;
   display: inline-block;
 }
@@ -146,6 +146,22 @@ h6 {
   height: 3px;
   background: var(--p2p-blue);
   border-radius: 2px;
+}
+
+/* Highlight Subheadings (H3) */
+.markdown h3 {
+  color: var(--p2p-blue-light);
+  font-size: 1.35rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Highlight Subheadings (H4) */
+.markdown h4 {
+  color: var(--ifm-color-primary);
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Navbar */
