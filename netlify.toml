@@ -1,6 +1,6 @@
 [build]
-  # Build command
-  command = "python3 build_docs.py && npm run build"
+  # Build command - clear cache first for clean search index
+  command = "python3 build_docs.py && npm run clear && npm run build"
   
   # Directory to publish
   publish = "build"
@@ -32,3 +32,9 @@
   for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Search index files - shorter cache for updates
+[[headers]]
+  for = "/search-index*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
