@@ -16,28 +16,16 @@ const sidebars: SidebarsConfig = {
                 "type": "link",
                 "label": "1.1 Installation",
                 "href": "/sdk/getting-started#11-installation"
-            }
-        ]
-    },
-    {
-        "type": "category",
-        "label": "or",
-        "collapsible": true,
-        "collapsed": true,
-        "link": {
-            "type": "doc",
-            "id": "01-or"
-        },
-        "items": [
+            },
             {
                 "type": "link",
                 "label": "1.2 Quick Start",
-                "href": "/sdk/or#12-quick-start"
+                "href": "/sdk/getting-started#12-quick-start"
             },
             {
                 "type": "link",
                 "label": "1.3 Configuration Options",
-                "href": "/sdk/or#13-configuration-options"
+                "href": "/sdk/getting-started#13-configuration-options"
             }
         ]
     },

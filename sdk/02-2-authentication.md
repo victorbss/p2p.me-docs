@@ -1,6 +1,6 @@
 ---
 id: 02-2-authentication
-sidebar_position: 2
+sidebar_position: 1
 title: "2. Authentication"
 slug: authentication
 ---

@@ -1,6 +1,6 @@
 ---
 id: 06-6-best-practices
-sidebar_position: 6
+sidebar_position: 5
 title: "6. Best Practices"
 slug: best-practices
 ---

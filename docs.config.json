@@ -11,10 +11,10 @@
       "navbarPosition": "left",
       "sidebarId": "whitepaperSidebar",
       "extractImages": true,
-      "splitByHeading": 1,
+      "splitByHeading": 2,
       "numberSections": true,
       "generateTocLinks": true,
-      "skipSections": ["P2P Protocol Whitepaper Update"]
+      "skipSections": ["P2P Protocol Whitepaper Update", "P2P Protocol Whitepaper"]
     },
     {
       "id": "sdk",

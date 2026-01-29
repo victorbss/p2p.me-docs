@@ -113,16 +113,35 @@ class DocBuilder:
         return clean.strip()
     
     def _parse_headings(self, content: str, split_level: int = 1) -> List[Dict[str, Any]]:
-        """Parse markdown headings and build document structure."""
+        """Parse markdown headings and build document structure.
+        
+        Properly handles code blocks to avoid treating comments like '# or' as headings.
+        """
         lines = content.split('\n')
         sections = []
         current_section = None
         current_content = []
+        in_code_block = False
         
         # Pattern for markdown headings
         heading_pattern = re.compile(r'^(#{1,6})\s+(.+)$')
+        # Pattern for code fence (``` or ~~~)
+        code_fence_pattern = re.compile(r'^(`{3,}|~{3,})')
         
         for line in lines:
+            # Check for code fence toggle
+            if code_fence_pattern.match(line):
+                in_code_block = not in_code_block
+                if current_section:
+                    current_content.append(line)
+                continue
+            
+            # Skip heading detection inside code blocks
+            if in_code_block:
+                if current_section:
+                    current_content.append(line)
+                continue
+            
             match = heading_pattern.match(line)
             if match:
                 level = len(match.group(1))
@@ -538,6 +557,106 @@ export default config;
 """
         return config
     
+    def _validate_markdown(self, content: str, doc_config: Dict) -> List[str]:
+        """Validate markdown content and return list of warnings/errors.
+        
+        Checks for:
+        - Proper heading hierarchy
+        - Code blocks are properly closed
+        - No headings inside code blocks (that would be parsed incorrectly)
+        - Consistent heading structure based on splitByHeading config
+        """
+        errors = []
+        warnings = []
+        lines = content.split('\n')
+        in_code_block = False
+        code_fence_line = 0
+        heading_levels_found = set()
+        split_level = doc_config.get('splitByHeading', 1)
+        
+        code_fence_pattern = re.compile(r'^(`{3,}|~{3,})')
+        heading_pattern = re.compile(r'^(#{1,6})\s+(.+)$')
+        
+        for i, line in enumerate(lines, 1):
+            # Track code blocks
+            fence_match = code_fence_pattern.match(line)
+            if fence_match:
+                if not in_code_block:
+                    in_code_block = True
+                    code_fence_line = i
+                else:
+                    in_code_block = False
+                continue
+            
+            # Check headings
+            heading_match = heading_pattern.match(line)
+            if heading_match and not in_code_block:
+                level = len(heading_match.group(1))
+                title = heading_match.group(2).strip()
+                heading_levels_found.add(level)
+                
+                # Warn about short/suspicious headings
+                clean_title = self._clean_title(title)
+                if len(clean_title) <= 3 and level <= split_level:
+                    warnings.append(f"Line {i}: Short heading '{clean_title}' at split level - might be unintended")
+        
+        # Check for unclosed code blocks
+        if in_code_block:
+            errors.append(f"Unclosed code block starting at line {code_fence_line}")
+        
+        # Check heading hierarchy
+        if split_level not in heading_levels_found and heading_levels_found:
+            min_level = min(heading_levels_found)
+            if min_level > split_level:
+                warnings.append(f"No H{split_level} headings found. Lowest level is H{min_level}. Consider setting splitByHeading: {min_level}")
+        
+        return errors, warnings
+    
+    def validate(self) -> bool:
+        """Validate all source markdown files before building.
+        
+        Returns True if validation passes, False if there are errors.
+        """
+        print("\n🔍 Validating source files...")
+        print("-" * 40)
+        
+        all_errors = []
+        all_warnings = []
+        
+        for doc_config in self.config['docs']:
+            source_path = self.root_dir / doc_config['source']
+            doc_name = doc_config['navbarLabel']
+            
+            if not source_path.exists():
+                all_errors.append(f"{doc_name}: Source file not found: {source_path}")
+                continue
+            
+            with open(source_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            errors, warnings = self._validate_markdown(content, doc_config)
+            
+            for err in errors:
+                all_errors.append(f"{doc_name}: {err}")
+            for warn in warnings:
+                all_warnings.append(f"{doc_name}: {warn}")
+        
+        # Print results
+        if all_warnings:
+            print("\n⚠️  Warnings:")
+            for w in all_warnings:
+                print(f"  - {w}")
+        
+        if all_errors:
+            print("\n❌ Errors:")
+            for e in all_errors:
+                print(f"  - {e}")
+            print("\n❌ Validation failed! Please fix errors before building.")
+            return False
+        
+        print("✅ Validation passed!")
+        return True
+    
     def clean(self):
         """Clean generated files."""
         print("🧹 Cleaning generated files...")
@@ -553,10 +672,16 @@ export default config;
             shutil.rmtree(sidebars_dir)
             print(f"  Removed {sidebars_dir}")
     
-    def build(self, clean: bool = False):
+    def build(self, clean: bool = False, skip_validation: bool = False):
         """Build all documentation."""
         print("🚀 P2P Foundation Documentation Builder")
         print("=" * 50)
+        
+        # Run validation first unless skipped
+        if not skip_validation:
+            if not self.validate():
+                print("\n💡 Run with --no-validate to skip validation")
+                return False
         
         if clean:
             self.clean()
@@ -621,16 +746,25 @@ export default config;
         print("✅ Documentation generated!")
         print(f"\nTo preview: npm run start")
         print(f"To build:   npm run build")
+        return True
 
 
 def main():
     parser = argparse.ArgumentParser(description='Build P2P Foundation documentation')
     parser.add_argument('--clean', action='store_true', help='Clean and rebuild')
     parser.add_argument('--config', default='docs.config.json', help='Config file path')
+    parser.add_argument('--no-validate', action='store_true', help='Skip markdown validation')
+    parser.add_argument('--validate-only', action='store_true', help='Only run validation, do not build')
     args = parser.parse_args()
     
     builder = DocBuilder(args.config)
-    builder.build(clean=args.clean)
+    
+    if args.validate_only:
+        success = builder.validate()
+        exit(0 if success else 1)
+    
+    success = builder.build(clean=args.clean, skip_validation=args.no_validate)
+    exit(0 if success else 1)
 
 
 if __name__ == '__main__':

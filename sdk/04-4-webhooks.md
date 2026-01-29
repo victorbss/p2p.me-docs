@@ -1,6 +1,6 @@
 ---
 id: 04-4-webhooks
-sidebar_position: 4
+sidebar_position: 3
 title: "4. Webhooks"
 slug: webhooks
 ---
