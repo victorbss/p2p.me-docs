@@ -352,12 +352,13 @@ const config: Config = {{
   onBrokenMarkdownLinks: 'warn',
 
   headTags: [
+    // Favicons - dark icon for light mode, light icon for dark mode
     {{
       tagName: 'link',
       attributes: {{
         rel: 'icon',
         type: 'image/svg+xml',
-        href: '/img/favicon.svg',
+        href: '/img/favicondark.svg',
         media: '(prefers-color-scheme: light)',
       }},
     }},
@@ -366,8 +367,79 @@ const config: Config = {{
       attributes: {{
         rel: 'icon',
         type: 'image/svg+xml',
-        href: '/img/favicondark.svg',
+        href: '/img/favicon.svg',
         media: '(prefers-color-scheme: dark)',
+      }},
+    }},
+    // SEO Meta Tags
+    {{
+      tagName: 'meta',
+      attributes: {{
+        property: 'og:title',
+        content: '{self.config.get("siteTitle", "P2P Foundation Docs")}',
+      }},
+    }},
+    {{
+      tagName: 'meta',
+      attributes: {{
+        property: 'og:description',
+        content: '{self.config.get("siteTagline", "Documentation for P2P Foundation - Building the future of peer-to-peer finance")}',
+      }},
+    }},
+    {{
+      tagName: 'meta',
+      attributes: {{
+        property: 'og:image',
+        content: 'https://firebasestorage.googleapis.com/v0/b/p2px-421205.appspot.com/o/user-app%2Fv2%2Fimages%2Fthumbnails%2FfoundationWebsitePreview.png?alt=media&token=b9776f2a-a5c1-43ef-a8cb-764524e16fe4',
+      }},
+    }},
+    {{
+      tagName: 'meta',
+      attributes: {{
+        property: 'og:type',
+        content: 'website',
+      }},
+    }},
+    {{
+      tagName: 'meta',
+      attributes: {{
+        property: 'og:url',
+        content: 'https://docs.p2p.me',
+      }},
+    }},
+    {{
+      tagName: 'meta',
+      attributes: {{
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      }},
+    }},
+    {{
+      tagName: 'meta',
+      attributes: {{
+        name: 'twitter:title',
+        content: '{self.config.get("siteTitle", "P2P Foundation Docs")}',
+      }},
+    }},
+    {{
+      tagName: 'meta',
+      attributes: {{
+        name: 'twitter:description',
+        content: '{self.config.get("siteTagline", "Documentation for P2P Foundation - Building the future of peer-to-peer finance")}',
+      }},
+    }},
+    {{
+      tagName: 'meta',
+      attributes: {{
+        name: 'twitter:image',
+        content: 'https://firebasestorage.googleapis.com/v0/b/p2px-421205.appspot.com/o/user-app%2Fv2%2Fimages%2Fthumbnails%2FfoundationWebsitePreview.png?alt=media&token=b9776f2a-a5c1-43ef-a8cb-764524e16fe4',
+      }},
+    }},
+    {{
+      tagName: 'meta',
+      attributes: {{
+        name: 'description',
+        content: '{self.config.get("siteTagline", "Documentation for P2P Foundation - Building the future of peer-to-peer finance")}',
       }},
     }},
   ],
@@ -420,7 +492,7 @@ const config: Config = {{
         autoCollapseCategories: true,
       }},
     }},
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'https://firebasestorage.googleapis.com/v0/b/p2px-421205.appspot.com/o/user-app%2Fv2%2Fimages%2Fthumbnails%2FfoundationWebsitePreview.png?alt=media&token=b9776f2a-a5c1-43ef-a8cb-764524e16fe4',
     colorMode: {{
       defaultMode: 'light',
       disableSwitch: false,
