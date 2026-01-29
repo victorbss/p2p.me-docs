@@ -399,12 +399,17 @@ const config: Config = {{
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
-      ({{
+      {{
         hashed: true,
         language: ["en"],
-        highlightSearchTermsOnTargetPage: true,
-        explicitSearchResultPath: true,
-      }}),
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: false,
+        docsRouteBasePath: ["whitepaper", "sdk"],
+        docsDir: ["docs", "sdk"],
+        searchResultLimits: 10,
+        searchResultContextMaxLength: 50,
+      }},
     ],
   ],
 
@@ -417,15 +422,16 @@ const config: Config = {{
     }},
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {{
-      defaultMode: 'dark',
-      disableSwitch: true,
-      respectPrefersColorScheme: false,
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
     }},
     navbar: {{
       title: '',
       logo: {{
         alt: '{navbar_config.get("logo", {}).get("alt", "P2P Foundation")}',
-        src: '{navbar_config.get("logo", {}).get("src", "img/p2p-logo.svg")}',
+        src: '{navbar_config.get("logo", {}).get("src", "img/p2p-foundation-main.svg")}',
+        srcDark: '{navbar_config.get("logo", {}).get("srcDark", "img/p2p-logo.svg")}',
       }},
       items: {json.dumps(navbar_items, indent=8)},
     }},
@@ -540,9 +546,9 @@ export default config;
             f.write(config_content)
         
         print("\n" + "=" * 50)
-        print("✅ Build complete!")
-        print(f"\nTo preview: cd website && npm run start")
-        print(f"To build:   cd website && npm run build")
+        print("✅ Documentation generated!")
+        print(f"\nTo preview: npm run start")
+        print(f"To build:   npm run build")
 
 
 def main():
