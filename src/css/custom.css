@@ -1,3 +1,88 @@
+/* Nohemi Font Family */
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-Thin-BF6438cc57e2011.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-ExtraLight-BF6438cc581502c.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-Light-BF6438cc5702321.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-Regular-BF6438cc579d934.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-Medium-BF6438cc57ddecd.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-SemiBold-BF6438cc57db2ff.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-Bold-BF6438cc577b524.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-ExtraBold-BF6438cc5761ae2.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("../fonts/Nohemi-Black-BF6438cc565e67b.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Sidebar Active Gradient Animation */
+@keyframes sidebarGradientSlide {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* Global Design System */
 :root {
   /* Brand Colors */
@@ -6,8 +91,8 @@
   --p2p-blue-light: #6a62f5;
 
   /* Typography */
-  --ifm-font-family-base: "Inter", sans-serif;
-  --ifm-heading-font-family: "Outfit", sans-serif;
+  --ifm-font-family-base: "Nohemi", sans-serif;
+  --ifm-heading-font-family: "Nohemi", sans-serif;
 
   /* Overriding Docusaurus Variables */
   --ifm-color-primary: var(--p2p-blue);
@@ -172,7 +257,7 @@ h6 {
 }
 
 .navbar__brand {
-  font-family: "Outfit", sans-serif;
+  font-family: "Nohemi", sans-serif;
   font-weight: 700;
   letter-spacing: -0.03em;
   font-size: 1.25rem;
@@ -184,13 +269,101 @@ h6 {
   background-color: var(--site-sidebar-bg) !important;
 }
 
+/* Top-level sidebar category (Documentation Title) */
+.theme-doc-sidebar-menu
+  > .menu__list-item
+  > .menu__list-item-collapsible
+  > .menu__link {
+  font-family: "Nohemi", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--p2p-text-primary);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.theme-doc-sidebar-menu
+  > .menu__list-item
+  > .menu__list-item-collapsible
+  > .menu__link:hover {
+  background: transparent;
+}
+
+/* Collapse toggle for documentation title */
+.theme-doc-sidebar-menu
+  > .menu__list-item
+  > .menu__list-item-collapsible
+  > .menu__caret {
+  padding: 0.75rem;
+}
+
+/* Nested chapter items under documentation title */
+.theme-doc-sidebar-menu > .menu__list-item > .menu__list {
+  border-left: none;
+  padding-left: 0;
+}
+
+.theme-doc-sidebar-menu
+  > .menu__list-item
+  > .menu__list
+  > .menu__list-item
+  > .menu__link {
+  padding-left: 1rem;
+  font-size: 0.9rem;
+  border-left: 2px solid var(--border-color);
+  border-radius: 0 6px 6px 0;
+  margin-left: 0.5rem;
+}
+
+.theme-doc-sidebar-menu
+  > .menu__list-item
+  > .menu__list
+  > .menu__list-item
+  > .menu__link--active {
+  border-left-color: var(--p2p-blue);
+  background: transparent !important;
+}
+
+.theme-doc-sidebar-menu
+  > .menu__list-item
+  > .menu__list
+  > .menu__list-item
+  > .menu__link--active::before {
+  transform: translateX(0);
+  opacity: 1;
+  animation: sidebarGradientSlide 0.4s ease-out forwards;
+  border-radius: 0 6px 6px 0;
+}
+
 /* Base style for all links */
 .menu__link {
   border-radius: 6px;
   color: var(--p2p-text-secondary);
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
-  transition: all 0.15s ease;
+  transition: color 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.menu__link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(73, 63, 238, 0.15) 0%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: -1;
+  border-radius: 6px;
+  pointer-events: none;
 }
 
 .menu__link:hover {
@@ -200,10 +373,16 @@ h6 {
 
 /* Active top-level or child item */
 .menu__link--active {
-  background: var(--glass-bg) !important;
   color: var(--ifm-color-primary) !important;
   font-weight: 500;
   border-left: none;
+  background: transparent !important;
+}
+
+.menu__link--active::before {
+  transform: translateX(0);
+  opacity: 1;
+  animation: sidebarGradientSlide 0.4s ease-out forwards;
 }
 
 /* Nested List */
@@ -220,11 +399,14 @@ h6 {
 
 .menu__list .menu__link--active {
   border-left-color: var(--p2p-blue);
-  background: linear-gradient(
-    90deg,
-    rgba(73, 63, 238, 0.1) 0%,
-    transparent 100%
-  ) !important;
+  background: transparent !important;
+}
+
+.menu__list .menu__link--active::before {
+  transform: translateX(0);
+  opacity: 1;
+  animation: sidebarGradientSlide 0.4s ease-out forwards;
+  border-radius: 0 6px 6px 0;
 }
 
 /* Buttons */
@@ -310,7 +492,7 @@ h6 {
 .theme-doc-toc-desktop::before {
   content: "On this page";
   display: block;
-  font-family: "Outfit", sans-serif;
+  font-family: "Nohemi", sans-serif;
   font-weight: 600;
   font-size: 0.85rem;
   color: var(--p2p-text-primary);
@@ -341,7 +523,7 @@ h6 {
 }
 
 .footer__title {
-  font-family: "Outfit", sans-serif;
+  font-family: "Nohemi", sans-serif;
   color: #fff; /* Keeping Footer Dark-ish styled for now, or adapt? Let's adapt text if bg changes */
 }
 

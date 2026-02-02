@@ -10,10 +10,19 @@
 }
 
 .highlight {
-  color: var(--p2p-blue);
-  background: linear-gradient(120deg, var(--p2p-blue-light), var(--p2p-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: #1a1a1a;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Dark mode - white bg, black text */
+:global([data-theme="dark"]) .highlight {
+  background: #ffffff;
+  color: #1a1a1a;
+  -webkit-text-fill-color: #1a1a1a;
 }
 
 .buttons {

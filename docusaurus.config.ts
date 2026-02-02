@@ -130,17 +130,7 @@ const config: Config = {
     ],
   ],
 
-  plugins: [
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "sdk",
-        path: "sdk",
-        routeBasePath: "sdk",
-        sidebarPath: "./sidebars/sdk.ts",
-      },
-    ],
-  ],
+  plugins: [],
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
@@ -150,8 +140,8 @@ const config: Config = {
         indexDocs: true,
         indexBlog: false,
         indexPages: false,
-        docsRouteBasePath: ["whitepaper", "sdk"],
-        docsDir: ["docs", "sdk"],
+        docsRouteBasePath: ["whitepaper"],
+        docsDir: ["docs"],
         searchResultLimits: 10,
         searchResultContextMaxLength: 50,
       },
@@ -185,13 +175,6 @@ const config: Config = {
           sidebarId: "whitepaperSidebar",
           position: "left",
           label: "Whitepaper",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "sdkSidebar",
-          position: "left",
-          label: "SDK",
-          docsPluginId: "sdk",
         },
       ],
     },

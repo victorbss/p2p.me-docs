@@ -29,7 +29,7 @@ export default function Home(): JSX.Element {
           <div className={styles.buttons}>
             <Link
               className="button button--primary button--lg"
-              to="/whitepaper/the-vision"
+              to="/whitepaper/abstract"
             >
               Read the Whitepaper
             </Link>
