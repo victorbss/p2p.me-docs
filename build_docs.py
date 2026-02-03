@@ -378,6 +378,10 @@ export default sidebars;
     ]""")
             plugins_config = f"\n  plugins: [\n    {','.join(plugins)}\n  ]," if plugins else ""
         
+        # Build search plugin config based on actual docs
+        docs_route_base_paths = [doc['routeBasePath'] for doc in docs]
+        docs_dirs = [doc['outputDir'] for doc in docs]
+        
         # Social links for footer
         social_links = footer_config.get('socialLinks', {})
         
@@ -522,8 +526,8 @@ const config: Config = {{
         indexDocs: true,
         indexBlog: false,
         indexPages: false,
-        docsRouteBasePath: ["whitepaper", "sdk"],
-        docsDir: ["docs", "sdk"],
+        docsRouteBasePath: {json.dumps(docs_route_base_paths)},
+        docsDir: {json.dumps(docs_dirs)},
         searchResultLimits: 10,
         searchResultContextMaxLength: 50,
       }},
