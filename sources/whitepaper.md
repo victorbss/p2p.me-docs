@@ -58,7 +58,7 @@ Over the past decade, crypto solved programmatic finance but left the real world
 - Practical ZK (including TLS-backed proofs) can attest to real-world facts without exposing the data.
 - L2s and stablecoins have made small payments cheap and fast enough to care about.
 
-P2P Protocol sits exactly at that intersection. It turns *trust me* into *prove it*, and it does so without handing anyone your money or your identity.
+P2P Protocol sits exactly at that intersection. It turns _trust me_ into _prove it_, and it does so without handing anyone your money or your identity.
 
 ### 1.6 North-star outcomes (what "good" looks like to us)
 
@@ -130,7 +130,7 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 - No privileged clients (ever). Everyone uses the same pipes.
 - No "trust us" black boxes. If it can't be proven or audited, it doesn't make core.
 
-### 1.15 Milestones that matter 
+### 1.15 Milestones that matter
 
 - **Ubiquity:** a credible merchant presence in every major region/rail pair.
 - **Geographic reach:** expansion to 20+ markets across Asia, Africa, Latin America, and MENA.
@@ -150,7 +150,7 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 
 ---
 
-## How the protocol works today (high level, not vendor-locked)
+### 1.17 How the protocol works today (high level, not vendor-locked)
 
 1. **Placing orders.** A user clicks "Buy USDC" (or "Sell USDC") and enters an amount. Users can import an existing wallet address to start transacting.
 2. **Order matching.** An innovative Proof-of-Credibility algorithm keeps a list of carefully vetted stablecoin merchants queued for order matching. A fiat payment address is shared over the smart contract, encrypted via the user's keys; for off-ramps, a wallet address is presented.
@@ -160,7 +160,7 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 
 ---
 
-## Why credibility matters (and why over-collateralization shouldn't be the only answer)
+### 1.18 Why credibility matters (and why over-collateralization shouldn't be the only answer)
 
 Traditional DeFi often reaches for heavy collateral to feel safe. That works for some instruments, but it makes everyday finance clunky and exclusionary. Credibility-based DeFi says: let peers earn limits, speed, and price by behaving well over time, and let ZK proofs protect privacy while doing so.
 
@@ -460,7 +460,7 @@ Quote commitment, minimum depth, and cancellation penalties are governed to redu
 
 ## 11. Security Model
 
-> *TECH TODO*
+> _TECH TODO_
 
 ### 11.1 Assumptions & Adversaries
 
@@ -476,7 +476,7 @@ Quote commitment, minimum depth, and cancellation penalties are governed to redu
 
 ## 12. Privacy Model
 
-> *DECENTRALIZATION TODO*
+> _DECENTRALIZATION TODO_
 
 - **Data minimization:** contracts store only commitments, verdicts, and reputation deltas.
 - **Selective disclosure:** ZK/TLS proofs reveal only predicates required for settlement or compliance tiers.
@@ -487,7 +487,7 @@ Quote commitment, minimum depth, and cancellation penalties are governed to redu
 
 ## 13. Compliance & Policy Positioning
 
-> *LEGAL TODO*
+> _LEGAL TODO_
 
 Unsurprisingly, while P2P Protocol leads the P2P market with its decentralized model and seamless UI client software, it aims to remain in good standing with legal regulations. The user is responsible for legitimate usage and taxation in their jurisdiction.
 
@@ -578,13 +578,13 @@ While the protocol is designed with safety and resilience in mind, users should 
 
 1. **Reclaim Protocol** — https://www.reclaimprotocol.org/
 
-*(Additional citations to be populated in the production draft.)*
+_(Additional citations to be populated in the production draft.)_
 
 ---
 
 ## Appendices
 
-*(To be expanded later)*
+_(To be expanded later)_
 
 1. **State Machines & Sequence Diagrams** for on-/off-ramp and dispute flows.
 2. **Proof Interface Specs:** inputs/outputs for identity and payment predicates; verifier APIs.

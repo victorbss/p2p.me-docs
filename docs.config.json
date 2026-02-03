@@ -13,7 +13,8 @@
       "extractImages": true,
       "splitByHeading": 2,
       "numberSections": true,
-      "generateTocLinks": true,
+      "generateTocLinks": false,
+      "sidebarStyle": "flat",
       "skipSections": [
         "P2P Protocol Whitepaper Update",
         "P2P Protocol Whitepaper"

@@ -291,7 +291,38 @@ slug: {url_slug}
         config_id = doc_config['id']
         sidebar_id = doc_config.get('sidebarId', f"{config_id}Sidebar")
         route_base = doc_config['routeBasePath']
+        sidebar_style = doc_config.get('sidebarStyle', 'nested')
         
+        # Flat style: single category with all docs as simple string items
+        if sidebar_style == 'flat':
+            doc_ids = [file_info['doc_id'] for file_info in files]
+            first_doc_id = doc_ids[0] if doc_ids else None
+            
+            sidebar_content = {
+                'type': 'category',
+                'label': doc_config['navbarLabel'],
+                'collapsible': True,
+                'collapsed': False,
+                'link': {
+                    'type': 'doc',
+                    'id': first_doc_id,
+                },
+                'items': doc_ids,
+            }
+            
+            sidebar_ts = f"""import type {{ SidebarsConfig }} from "@docusaurus/plugin-content-docs";
+
+const sidebars: SidebarsConfig = {{
+  {sidebar_id}: [
+    {json.dumps(sidebar_content, indent=4).replace(chr(10), chr(10) + '    ')}
+  ],
+}};
+
+export default sidebars;
+"""
+            return sidebar_ts
+        
+        # Nested style: each doc is its own category with subsection links
         items = []
         for file_info in files:
             doc_id = file_info['doc_id']       # Use doc_id for Docusaurus references
@@ -526,8 +557,8 @@ const config: Config = {{
         indexDocs: true,
         indexBlog: false,
         indexPages: false,
-        docsRouteBasePath: {json.dumps(docs_route_base_paths)},
-        docsDir: {json.dumps(docs_dirs)},
+        docsRouteBasePath: {json.dumps([doc['routeBasePath'] for doc in self.config['docs']])},
+        docsDir: {json.dumps([doc['outputDir'] for doc in self.config['docs']])},
         searchResultLimits: 10,
         searchResultContextMaxLength: 50,
       }},
