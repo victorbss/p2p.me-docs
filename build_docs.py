@@ -297,6 +297,9 @@ slug: {url_slug}
         if sidebar_style == 'flat':
             doc_ids = [file_info['doc_id'] for file_info in files]
             first_doc_id = doc_ids[0] if doc_ids else None
+            # Exclude first doc from items since it's used as the category link
+            # This prevents "Next" navigation from looping back to the same page
+            remaining_doc_ids = doc_ids[1:] if len(doc_ids) > 1 else []
             
             sidebar_content = {
                 'type': 'category',
@@ -307,7 +310,7 @@ slug: {url_slug}
                     'type': 'doc',
                     'id': first_doc_id,
                 },
-                'items': doc_ids,
+                'items': remaining_doc_ids,
             }
             
             sidebar_ts = f"""import type {{ SidebarsConfig }} from "@docusaurus/plugin-content-docs";
