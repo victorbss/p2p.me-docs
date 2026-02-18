@@ -396,10 +396,27 @@ export default sidebars;
         first_doc = docs[0]
         additional_docs = docs[1:] if len(docs) > 1 else []
         
-        # Build plugins array for additional docs
-        plugins_config = ""
+        # Build plugins array: Biel.ai widget (from config) + additional docs plugins
+        plugins = []
+        biel_config = self.config.get('biel', {})
+        if biel_config.get('enable', True) and biel_config.get('project'):
+            biel_opts = [
+                f"enable: {str(biel_config.get('enable', True)).lower()}",
+                f"project: \"{biel_config.get('project')}\"",
+                f"headerTitle: \"{biel_config.get('headerTitle', 'Biel.ai chatbot')}\"",
+                f"footerText: \"{biel_config.get('footerText', '')}\"",
+                f"buttonPosition: \"{biel_config.get('buttonPosition', 'bottom-right')}\"",
+                f"modalPosition: \"{biel_config.get('modalPosition', 'sidebar-right')}\"",
+                f"buttonStyle: \"{biel_config.get('buttonStyle', 'dark')}\"",
+                f"version: \"{biel_config.get('version', 'latest')}\"",
+            ]
+            plugins.append(f"""[
+      "docusaurus-biel",
+      {{
+        {', '.join(biel_opts)}
+      }},
+    ]""")
         if additional_docs:
-            plugins = []
             for doc in additional_docs:
                 plugins.append(f"""[
       '@docusaurus/plugin-content-docs',
@@ -410,7 +427,7 @@ export default sidebars;
         sidebarPath: './sidebars/{doc["id"]}.ts',
       }},
     ]""")
-            plugins_config = f"\n  plugins: [\n    {','.join(plugins)}\n  ]," if plugins else ""
+        plugins_config = f"\n  plugins: [\n    {','.join(plugins)}\n  ]," if plugins else ""
         
         # Build search plugin config based on actual docs
         docs_route_base_paths = [doc['routeBasePath'] for doc in docs]
