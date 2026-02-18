@@ -861,3 +861,70 @@ h6 {
     height: 20px !important;
   }
 }
+
+/* ========== p2p.me chat widget (match P2P design system) ========== */
+:root {
+  /* Brand alignment */
+  --biel-primary-color: var(--p2p-blue);
+  --biel-primary-light-color: var(--p2p-blue-light);
+  --biel-primary-hover-color: var(--p2p-blue-dark);
+  --biel-font-family: "Nohemi", "Inter", sans-serif;
+
+  /* Button: rounded, soft shadow, matches site buttons */
+  --biel-button-border-radius: 12px;
+  --biel-button-box-shadow: 0 4px 20px rgba(73, 63, 238, 0.25);
+  --biel-button-dark-bg-color: var(--p2p-blue);
+  --biel-button-dark-bg-color-hover: var(--p2p-blue-dark);
+  --biel-button-text-font-size: 15px;
+  --biel-button-text-font-weight: 600;
+  --biel-button-padding: 10px 18px;
+
+  /* Modal / chat panel */
+  --biel-bot-content-border-radius: 16px;
+  --biel-bot-content-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(73, 63, 238, 0.08);
+  --biel-bot-content-border-color: var(--glass-border);
+  --biel-bot-content-font-family: var(--biel-font-family);
+  --biel-header-font-family: var(--biel-font-family);
+  --biel-header-font-weight: 600;
+
+  /* Messages */
+  --biel-message-border-radius: 12px;
+  --biel-message-biel-bg-color: var(--search-bg);
+  --biel-message-user-bg-color: var(--p2p-blue);
+  --biel-message-link-color: var(--p2p-blue-light);
+
+  /* Input */
+  --biel-input-border-radius: 10px;
+  --biel-input-border-color: var(--search-border);
+  --biel-input-border-focus-color: var(--p2p-blue);
+  --biel-input-font-family: var(--biel-font-family);
+
+  /* Suggested questions */
+  --biel-suggested-questions-border-radius: 10px;
+  --biel-suggested-questions-bg-hover-color: var(--p2p-blue);
+  --biel-suggested-questions-border-color: var(--p2p-blue);
+
+  /* Send button in input */
+  --biel-input-button-bg-color: var(--p2p-blue);
+  --biel-input-button-hover-bg-color: var(--p2p-blue-dark);
+
+  /* Hide "Powered by biel.ai" – show p2p.me branding only */
+  --biel-header-powered-by-text-color: transparent;
+  --biel-header-powered-by-link-color: transparent;
+}
+
+[data-theme="dark"] {
+  --biel-bot-content-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(73, 63, 238, 0.15);
+  --biel-message-biel-bg-color: rgba(255, 255, 255, 0.06);
+  --biel-message-user-bg-color: var(--p2p-blue);
+}
+
+/* Optional: extra polish for the floating button (CSS parts if available) */
+biel-button::part(button) {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+biel-button::part(button):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(73, 63, 238, 0.35);
+}
