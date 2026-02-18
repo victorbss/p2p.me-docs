@@ -3,6 +3,10 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
+// Ask AI widget: use env in dev, fallback for production (set BIEL_PROJECT_ID in deploy platform if needed)
+const BIEL_PROJECT_ID =
+  process.env.BIEL_PROJECT_ID || "rn55vy2lao";
+
 const config: Config = {
   title: "P2P Foundation Docs",
   tagline: "Documentation for P2P Foundation",
@@ -120,8 +124,7 @@ const config: Config = {
       "docusaurus-biel",
       {
         enable: true,
-        // Set BIEL_PROJECT_ID in your deploy platform (Vercel/Netlify/etc.) so the widget works when .env is not present
-        project: process.env.BIEL_PROJECT_ID || "rn55vy2lao",
+        project: BIEL_PROJECT_ID,
         headerTitle: "P2P.ME",
         footerText: "AI assistant · p2p.me",
         buttonPosition: "bottom-right",
