@@ -67,7 +67,7 @@ const config: Config = {
       tagName: "meta",
       attributes: {
         property: "og:url",
-        content: "https://docs.p2p.me",
+        content: "https://docs.p2p.foundation",
       },
     },
     {
