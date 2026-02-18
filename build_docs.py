@@ -428,7 +428,7 @@ const config: Config = {{
   tagline: '{self.config.get("siteTagline", "Documentation")}',
   favicon: 'img/favicon.svg',
 
-  url: 'https://docs.p2p.me',
+  url: 'https://docs.p2p.foundation',
   baseUrl: '/',
 
   onBrokenLinks: 'warn',
@@ -487,7 +487,7 @@ const config: Config = {{
       tagName: 'meta',
       attributes: {{
         property: 'og:url',
-        content: 'https://docs.p2p.me',
+        content: 'https://docs.p2p.foundation',
       }},
     }},
     {{
