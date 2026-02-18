@@ -120,7 +120,8 @@ const config: Config = {
       "docusaurus-biel",
       {
         enable: true,
-        project: process.env.BIEL_PROJECT_ID ?? "rn55vy2lao",
+        // Set BIEL_PROJECT_ID in your deploy platform (Vercel/Netlify/etc.) so the widget works when .env is not present
+        project: process.env.BIEL_PROJECT_ID || "rn55vy2lao",
         headerTitle: "P2P.ME",
         footerText: "AI assistant · p2p.me",
         buttonPosition: "bottom-right",
