@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
@@ -113,6 +114,22 @@ const config: Config = {
   ],
 
   clientModules: ["./src/clientModules/tocAutoScroll.js"],
+
+  plugins: [
+    [
+      "docusaurus-biel",
+      {
+        enable: true,
+        project: process.env.BIEL_PROJECT_ID ?? "rn55vy2lao",
+        headerTitle: "P2P.ME",
+        footerText: "AI assistant · p2p.me",
+        buttonPosition: "bottom-right",
+        modalPosition: "sidebar-right",
+        buttonStyle: "dark",
+        version: "latest",
+      },
+    ],
+  ],
 
   presets: [
     [

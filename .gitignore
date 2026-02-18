@@ -10,7 +10,9 @@
 
 # Misc
 .DS_Store
-.env.local
+
+# Env (do not commit; remove from index if already tracked: git rm --cached .env)
+.env
 .env.development.local
 .env.test.local
 .env.production.local
