@@ -7,7 +7,7 @@ const config: Config = {
   tagline: "Documentation for P2P Foundation",
   favicon: "img/favicon.svg",
 
-  url: "https://docs.p2p.me",
+  url: "https://docs.p2p.foundation",
   baseUrl: "/",
 
   onBrokenLinks: "warn",
