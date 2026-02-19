@@ -51,7 +51,7 @@ P2P Protocol sits exactly at that intersection. It turns *trust me* into *prove 
 
 By 2026+:
 
-- Sub-90-second settlement on fast rails, median cost < $0.20 per $100.
+- Sub-90-second settlement on fast rails, median cost under $0.20 per $100.
 - \>99% disputes resolved by proofs within the window, not by moderators.
 - Portable credibility: your reputation and limits travel with you across clients and countries—without doxxing you.
 - Neutral access: multiple wallets and apps, including Coins.me as a reference, all using the same permissionless SDKs atop the Protocol.
