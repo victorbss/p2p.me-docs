@@ -1,1 +1,167 @@
-{"siteTitle":"P2P Foundation Docs","siteTagline":"Documentation for P2P Foundation","docs":[{"id":"whitepaper","source":"sources/whitepaper.md","outputDir":"docs","routeBasePath":"whitepaper","navbarLabel":"Whitepaper","navbarPosition":"left","sidebarId":"whitepaperSidebar","extractImages":true,"splitByHeading":2,"numberSections":true,"generateTocLinks":false,"sidebarStyle":"flat","skipSections":["P2P Protocol Whitepaper Update","P2P Protocol Whitepaper"]}],"navbar":{"logo":{"alt":"P2P Foundation","src":"img/p2p-foundation-main.svg","srcDark":"img/p2p-foundation-2.svg"}},"footer":{"copyright":"P2P Foundation","socialLinks":{"discord":"https://discord.gg/p2pfoundation","telegram":"https://t.me/P2Pdotme","twitter":"https://x.com/p2pdotfound","youtube":"https://www.youtube.com/@onchainbank"}},"biel":{"enable":true,"project":"rn55vy2lao","headerTitle":"P2P.ME","footerText":"AI assistant · p2p.me","buttonPosition":"bottom-right","modalPosition":"sidebar-right","buttonStyle":"dark","version":"latest"}}
+{
+  "siteTitle": "P2P Foundation Docs",
+  "siteTagline": "Documentation for P2P Foundation",
+  "docs": [
+    {
+      "id": "whitepaper",
+      "source": "sources/whitepaper.md",
+      "outputDir": "docs",
+      "routeBasePath": "whitepaper",
+      "navbarLabel": "Whitepaper",
+      "navbarPosition": "left",
+      "sidebarId": "whitepaperSidebar",
+      "extractImages": true,
+      "splitByHeading": 2,
+      "numberSections": true,
+      "generateTocLinks": false,
+      "sidebarStyle": "flat",
+      "skipSections": ["P2P Protocol Whitepaper Update", "P2P Protocol Whitepaper"]
+    },
+    {
+      "id": "roadmap-features",
+      "source": "sources/roadmap-features.md",
+      "outputDir": "roadmap-features",
+      "routeBasePath": "roadmap-features",
+      "navbarLabel": "Roadmap Features",
+      "navbarPosition": "left",
+      "sidebarId": "roadmapFeaturesSidebar",
+      "extractImages": false,
+      "splitByHeading": 2,
+      "numberSections": false,
+      "generateTocLinks": false,
+      "sidebarStyle": "flat",
+      "skipSections": ["P2P Protocol Roadmap Features"]
+    },
+    {
+      "id": "tokenomics",
+      "source": "sources/tokenomics.md",
+      "outputDir": "tokenomics",
+      "routeBasePath": "tokenomics",
+      "navbarLabel": "Token Economics",
+      "navbarPosition": "left",
+      "sidebarId": "tokenomicsSidebar",
+      "extractImages": false,
+      "splitByHeading": 2,
+      "numberSections": false,
+      "generateTocLinks": false,
+      "sidebarStyle": "flat",
+      "skipSections": ["$P2P Token Economics"]
+    },
+    {
+      "id": "governance",
+      "source": "sources/governance.md",
+      "outputDir": "governance",
+      "routeBasePath": "governance",
+      "navbarLabel": "Governance",
+      "navbarPosition": "left",
+      "sidebarId": "governanceSidebar",
+      "extractImages": false,
+      "splitByHeading": 2,
+      "numberSections": true,
+      "generateTocLinks": false,
+      "sidebarStyle": "flat",
+      "skipSections": ["P2P Protocol Governance"]
+    },
+    {
+      "id": "circles-of-trust",
+      "source": "sources/circles-of-trust.md",
+      "outputDir": "circles-of-trust",
+      "routeBasePath": "circles-of-trust",
+      "navbarLabel": "Circles of Trust",
+      "navbarPosition": "left",
+      "sidebarId": "cotSidebar",
+      "extractImages": false,
+      "splitByHeading": 2,
+      "numberSections": false,
+      "generateTocLinks": false,
+      "sidebarStyle": "flat",
+      "skipSections": ["Circles of Trust"]
+    },
+    {
+      "id": "ambassador",
+      "source": "sources/ambassador-program.md",
+      "outputDir": "ambassador",
+      "routeBasePath": "ambassador",
+      "navbarLabel": "Ambassador Program",
+      "navbarPosition": "left",
+      "sidebarId": "ambassadorSidebar",
+      "extractImages": false,
+      "splitByHeading": 2,
+      "numberSections": false,
+      "generateTocLinks": false,
+      "sidebarStyle": "flat",
+      "skipSections": ["P2P Foundation Ambassador Program \"The Liberation Network\""]
+    },
+    {
+      "id": "user-guide",
+      "source": "sources/user-guide.md",
+      "outputDir": "user-guide",
+      "routeBasePath": "user-guide",
+      "navbarLabel": "User Guide",
+      "navbarPosition": "left",
+      "sidebarId": "userGuideSidebar",
+      "extractImages": false,
+      "splitByHeading": 2,
+      "numberSections": false,
+      "generateTocLinks": false,
+      "sidebarStyle": "flat",
+      "skipSections": ["P2P Protocol User Guide"]
+    },
+    {
+      "id": "merchant-guide",
+      "source": "sources/merchant-guide.md",
+      "outputDir": "merchant-guide",
+      "routeBasePath": "merchant-guide",
+      "navbarLabel": "Merchant Guide",
+      "navbarPosition": "left",
+      "sidebarId": "merchantGuideSidebar",
+      "extractImages": false,
+      "splitByHeading": 2,
+      "numberSections": false,
+      "generateTocLinks": false,
+      "sidebarStyle": "flat",
+      "skipSections": ["P2P Protocol Merchant Guide"]
+    },
+    {
+      "id": "investor-guide",
+      "source": "sources/investor-guide.md",
+      "outputDir": "investor-guide",
+      "routeBasePath": "investor-guide",
+      "navbarLabel": "Investor Guide",
+      "navbarPosition": "left",
+      "sidebarId": "investorGuideSidebar",
+      "extractImages": false,
+      "splitByHeading": 2,
+      "numberSections": false,
+      "generateTocLinks": false,
+      "sidebarStyle": "flat",
+      "skipSections": ["P2P Protocol Investor Token Guide"]
+    }
+  ],
+  "navbar": {
+    "logo": {
+      "alt": "P2P Foundation",
+      "src": "img/p2p-foundation-main.svg",
+      "srcDark": "img/p2p-foundation-2.svg"
+    }
+  },
+  "footer": {
+    "copyright": "P2P Foundation",
+    "socialLinks": {
+      "discord": "https://discord.gg/p2pfoundation",
+      "telegram": "https://t.me/P2Pdotme",
+      "twitter": "https://x.com/p2pdotfound",
+      "youtube": "https://www.youtube.com/@onchainbank"
+    }
+  },
+  "biel": {
+    "enable": true,
+    "project": "rn55vy2lao",
+    "headerTitle": "P2P.ME",
+    "footerText": "AI assistant · p2p.me",
+    "buttonPosition": "bottom-right",
+    "modalPosition": "sidebar-right",
+    "buttonStyle": "dark",
+    "version": "latest"
+  }
+}

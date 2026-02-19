@@ -1,6 +1,6 @@
 ---
 id: 14-14-accessing-p2p-protocol-clients-sdks
-sidebar_position: 14
+sidebar_position: 16
 title: "14. Accessing P2P Protocol: Clients & SDKs"
 slug: accessing-p2p-protocol-clients-sdks
 ---
@@ -20,9 +20,5 @@ The P2P Protocol SDK lets developers integrate the protocol to on/off-ramp users
 ## 14.3 Coins.me (Consumer App)
 
 Coins.me is one of the two primary PWAs for accessing P2P Protocol, alongside p2p.me. As a consumer-focused application, it provides a streamlined interface for everyday users. Fees, routing, and features remain protocol-governed to encourage a healthy multi-client ecosystem.
-
----
-
-> **ALL THINGS BELOW TODO FOR GOVERNANCE/DECENTRALIZATION TEAM**
 
 ---

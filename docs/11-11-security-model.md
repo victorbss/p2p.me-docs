@@ -1,11 +1,9 @@
 ---
 id: 11-11-security-model
-sidebar_position: 11
+sidebar_position: 13
 title: "11. Security Model"
 slug: security-model
 ---
-
-> _TECH TODO_
 
 ## 11.1 Assumptions & Adversaries
 

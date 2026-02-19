@@ -1,6 +1,6 @@
 ---
 id: 17-17-disclosures-risks
-sidebar_position: 17
+sidebar_position: 19
 title: "17. Disclosures & Risks"
 slug: disclosures-risks
 ---

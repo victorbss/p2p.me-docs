@@ -58,7 +58,7 @@ Over the past decade, crypto solved programmatic finance but left the real world
 - Practical ZK (including TLS-backed proofs) can attest to real-world facts without exposing the data.
 - L2s and stablecoins have made small payments cheap and fast enough to care about.
 
-P2P Protocol sits exactly at that intersection. It turns _trust me_ into _prove it_, and it does so without handing anyone your money or your identity.
+P2P Protocol sits exactly at that intersection. It turns *trust me* into *prove it*, and it does so without handing anyone your money or your identity.
 
 ### 1.6 North-star outcomes (what "good" looks like to us)
 
@@ -130,13 +130,14 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 - No privileged clients (ever). Everyone uses the same pipes.
 - No "trust us" black boxes. If it can't be proven or audited, it doesn't make core.
 
-### 1.15 Milestones that matter
+### 1.15 Milestones that matter 
 
 - **Ubiquity:** a credible merchant presence in every major region/rail pair.
 - **Geographic reach:** expansion to 20+ markets across Asia, Africa, Latin America, and MENA.
 - **Multi-chain presence:** support for additional networks including Solana and emerging high-performance chains.
 - **Composability:** third-party apps shipping useful features on the SDK without asking permission.
 - **Self-serve legitimacy:** regulators and risk teams can read the spec, verify parameters on-chain, and understand how safety is achieved—without backdoors.
+- **Roadmap features:** for current feature-track proposals (including remittance and currency expansion), see [`/roadmap-features`](/roadmap-features).
 
 ### 1.16 A short manifesto
 
@@ -150,17 +151,17 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 
 ---
 
-### 1.17 How the protocol works today (high level, not vendor-locked)
+## How the protocol works today (high level, implementation-aware)
 
 1. **Placing orders.** A user clicks "Buy USDC" (or "Sell USDC") and enters an amount. Users can import an existing wallet address to start transacting.
 2. **Order matching.** An innovative Proof-of-Credibility algorithm keeps a list of carefully vetted stablecoin merchants queued for order matching. A fiat payment address is shared over the smart contract, encrypted via the user's keys; for off-ramps, a wallet address is presented.
 3. **Transfers and confirmation.** The payer completes the fiat or crypto transfer; the counterparty acknowledges or either party submits a zero-knowledge proof that the payment event occurred. Settlement completes within minutes in the common case.
-4. **Disputes.** If a party files a dispute, the other party can issue and share a proof of payment (or non-payment) without disclosing extra identity or bank data. Designated verifiers evaluate the submitted proofs, and smart contracts finalize the outcome based on their attestations.
-5. **On-chain operations.** The complete communication flow between merchant and buyer/seller takes place on-chain; proofs are verified by open verifiers with on-chain attestations, keeping the process secure and fully decentralized.
+4. **Disputes.** If a party files a dispute, either side can submit evidence (including ZK/TLS-backed proofs where available) without disclosing unnecessary personal data. Under current contracts, disputes are raised by users within defined windows and settled by authorized admins on-chain.
+5. **On-chain operations.** Order state, matching, settlement accounting, and dispute state transitions are on-chain. Proof systems and verifier attestations are integrated as evidence paths, with expanded automated verifier routing planned as the protocol evolves.
 
 ---
 
-### 1.18 Why credibility matters (and why over-collateralization shouldn't be the only answer)
+## Why credibility matters (and why over-collateralization shouldn't be the only answer)
 
 Traditional DeFi often reaches for heavy collateral to feel safe. That works for some instruments, but it makes everyday finance clunky and exclusionary. Credibility-based DeFi says: let peers earn limits, speed, and price by behaving well over time, and let ZK proofs protect privacy while doing so.
 
@@ -200,7 +201,7 @@ The protocol involves several key participants working together to enable trustl
 
 **Proof Verifiers** are responsible for validating ZK and TLS-backed proofs submitted during transactions or disputes. Verification can occur on-chain for compact claims, or through designated off-chain attesters for more complex rail-specific statements, with results posted back on-chain.
 
-**Governance** encompasses the mechanisms through which protocol parameters, upgrades, and treasury decisions are made. Initially managed through a multisig council, governance transitions to token-holder control following the protocol's maturation.
+**Governance** encompasses the mechanisms through which protocol parameters, upgrades, and treasury decisions are made. The current implementation is admin/multisig operated, with a planned transition to broader token-holder governance as the protocol matures.
 
 ### 3.2 Components
 
@@ -215,7 +216,18 @@ The protocol involves several key participants working together to enable trustl
 2. **Order Matching:** A list of carefully vetted merchants is queued via Proof-of-Credibility. A fiat payment address is shared over the smart contract, encrypted with the user's keys; for off-ramps, a Base USDC address is presented.
 3. **Fiat/Stablecoin Transfer:** The payer performs the transfer on the designated rail.
 4. **Confirmation/Settlement:** Within minutes, settlement succeeds once the counter-proof condition is met (e.g., merchant confirms receipt or buyer submits transfer proof). Wallet balances update accordingly.
-5. **Dispute Window:** If a party contests, they submit a ZK/TLS-backed proof that a payment or action occurred (or did not). Smart contracts (and/or designated verifiers) resolve deterministically.
+5. **Dispute Window:** If a party contests, they submit evidence (including ZK/TLS-backed proofs where available) that a payment or action occurred (or did not). In the live implementation, authorized admins settle disputed orders on-chain according to protocol fault rules and dispute windows.
+
+```mermaid
+flowchart LR
+    place[PlaceOrder] --> match[MerchantMatch]
+    match --> transfer[FiatOrStablecoinTransfer]
+    transfer --> confirm[ConfirmAndSettle]
+    confirm --> done[Completed]
+    confirm --> dispute[DisputeRaised]
+    dispute --> adminSettle[AdminSettlementOnChain]
+    adminSettle --> resolved[ResolvedState]
+```
 
 ### 3.4 On-Ramp Flow
 
@@ -311,7 +323,7 @@ The protocol involves several key participants working together to enable trustl
 - The **merchant** serves the function of mediating liquidity for the transactions.
 - The **onus of sharing ZK proof** always rests on the merchant (for off-ramps) or can be provided by either party.
 - **ZK-proof performs trustless KYC** for the user without exposing personal data.
-- **ZK-proofs serve as verifiable evidence** in disputes, with designated verifiers and governance mechanisms determining outcomes.
+- **ZK-proofs serve as verifiable evidence** in disputes. In the current system, outcomes are executed via on-chain admin settlement; broader verifier and governance-driven resolution remains roadmap.
 - **Reclaim Protocol** securely encrypts all in-transit data carried by the ZK proof.
 - All proof creation, storage, and transmission is handled via the **TLS 1.2/1.3 specification**.
 
@@ -428,7 +440,7 @@ The virtually handpicked nature of the peers fulfilling individual orders—via 
 
 ## 8. Dispute Resolution
 
-Every instance of data sharing within the Protocol takes place via ZK principled evidence. If a user files a dispute within the DApp over the Protocol, the other party can issue and share a proof of their transaction without submitting additional personal data. A smart contract settles the dispute automatically when verifiers attest that the required statement has been proven; otherwise bonds and fees route per policy.
+The Protocol is designed to minimize unnecessary data disclosure using ZK-principled evidence where available. If a user files a dispute, the counterparty can submit proof of transaction without exposing additional personal data. In the current contract implementation, disputes are resolved on-chain by authorized admins based on submitted evidence and protocol fault rules; deeper automated verifier-driven settlement is part of the roadmap.
 
 **Windows & Burdens:** Default onus: the party claiming completion provides the completion proof. The challenger can present a counter-proof (e.g., bank statement show-non-receipt). Fail-to-prove paths trigger slashing or refunds according to the Protocol rules.
 
@@ -460,8 +472,6 @@ Quote commitment, minimum depth, and cancellation penalties are governed to redu
 
 ## 11. Security Model
 
-> _TECH TODO_
-
 ### 11.1 Assumptions & Adversaries
 
 - Network liveness on Base; oracle availability; honest-majority assumptions not required for fiat rails.
@@ -476,8 +486,6 @@ Quote commitment, minimum depth, and cancellation penalties are governed to redu
 
 ## 12. Privacy Model
 
-> _DECENTRALIZATION TODO_
-
 - **Data minimization:** contracts store only commitments, verdicts, and reputation deltas.
 - **Selective disclosure:** ZK/TLS proofs reveal only predicates required for settlement or compliance tiers.
 - **Retention & Access:** governance-set retention of attestations; no raw PII on-chain.
@@ -486,8 +494,6 @@ Quote commitment, minimum depth, and cancellation penalties are governed to redu
 ---
 
 ## 13. Compliance & Policy Positioning
-
-> _LEGAL TODO_
 
 Unsurprisingly, while P2P Protocol leads the P2P market with its decentralized model and seamless UI client software, it aims to remain in good standing with legal regulations. The user is responsible for legitimate usage and taxation in their jurisdiction.
 
@@ -533,10 +539,6 @@ Coins.me is one of the two primary PWAs for accessing P2P Protocol, alongside p2
 
 ---
 
-> **ALL THINGS BELOW TODO FOR GOVERNANCE/DECENTRALIZATION TEAM**
-
----
-
 ## 15. Governance & Upgradability
 
 - **Parameters:** fees, limits, rail risk weights, oracle sets, proof policies, bond schedules.
@@ -548,13 +550,13 @@ Coins.me is one of the two primary PWAs for accessing P2P Protocol, alongside p2
 
 ## 16. Token Economics
 
-The protocol token serves two primary purposes: governance and economic utility.
+The protocol token is an ownership token. Holders control protocol financials, make governance decisions, and hold enforceable claim over protocol intellectual property.
 
-As a governance token, holders participate in decisions that shape the protocol's evolution. This includes voting on parameter adjustments such as fee structures, transaction limits, and risk weights. Token holders also vote on protocol upgrades, oracle set configurations, and treasury allocations. The goal is to decentralize decision-making while maintaining the protocol's integrity and safety.
+On the governance side, holders vote on fee structures, transaction limits, risk weights, oracle configurations, treasury allocation, and protocol upgrades. Revenue direction, parameter changes, and IP stewardship belong to the token holder base rather than a centralized team.
 
-The token also provides economic utility within the ecosystem. Merchants and verifiers may stake tokens as bonds, aligning their incentives with honest behavior. Fee routing mechanisms can offer rebates or discounts to active participants. The token enables participation in dispute insurance pools that protect users from edge-case losses. Growth incentives distributed in tokens encourage ecosystem expansion and liquidity provision.
+On the economic side, merchants and verifiers stake tokens as bonds, aligning their incentives with honest behavior. Fee routing provides rebates and discounts to active participants. The token enables participation in dispute insurance pools and community delegation for revenue sharing.
 
-A portion of protocol fees flows into a treasury governed on-chain. These funds support ongoing security audits, bug bounty programs, ecosystem grants, and liquidity initiatives. This self-sustaining model ensures the protocol can maintain and improve its infrastructure without relying on external funding.
+A portion of protocol fees flows into a treasury governed on-chain. These funds support security audits, bug bounties, ecosystem grants, and liquidity. If protocol resources were ever misappropriated, token governance provides the mechanism for holders to redirect control.
 
 ---
 
@@ -578,13 +580,13 @@ While the protocol is designed with safety and resilience in mind, users should 
 
 1. **Reclaim Protocol** — https://www.reclaimprotocol.org/
 
-_(Additional citations to be populated in the production draft.)_
+*(Additional citations to be populated in the production draft.)*
 
 ---
 
 ## Appendices
 
-_(To be expanded later)_
+*(To be expanded later)*
 
 1. **State Machines & Sequence Diagrams** for on-/off-ramp and dispute flows.
 2. **Proof Interface Specs:** inputs/outputs for identity and payment predicates; verifier APIs.

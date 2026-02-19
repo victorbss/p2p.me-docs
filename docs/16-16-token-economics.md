@@ -1,6 +1,6 @@
 ---
 id: 16-16-token-economics
-sidebar_position: 16
+sidebar_position: 18
 title: "16. Token Economics"
 slug: token-economics
 ---

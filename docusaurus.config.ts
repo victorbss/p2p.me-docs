@@ -136,6 +136,38 @@ const config: Config = {
       {
         enable: true, project: "rn55vy2lao", headerTitle: "P2P.ME", footerText: "AI assistant · p2p.me", buttonPosition: "bottom-right", modalPosition: "sidebar-right", buttonStyle: "dark", version: "latest"
       },
+    ],[
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'tokenomics',
+        path: 'tokenomics',
+        routeBasePath: 'tokenomics',
+        sidebarPath: './sidebars/tokenomics.ts',
+      },
+    ],[
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'governance',
+        path: 'governance',
+        routeBasePath: 'governance',
+        sidebarPath: './sidebars/governance.ts',
+      },
+    ],[
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'circles-of-trust',
+        path: 'circles-of-trust',
+        routeBasePath: 'circles-of-trust',
+        sidebarPath: './sidebars/circles-of-trust.ts',
+      },
+    ],[
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'ambassador',
+        path: 'ambassador',
+        routeBasePath: 'ambassador',
+        sidebarPath: './sidebars/ambassador.ts',
+      },
     ]
   ],
   themes: [
@@ -147,8 +179,8 @@ const config: Config = {
         indexDocs: true,
         indexBlog: false,
         indexPages: false,
-        docsRouteBasePath: ["whitepaper"],
-        docsDir: ["docs"],
+        docsRouteBasePath: ["whitepaper", "tokenomics", "governance", "circles-of-trust", "ambassador"],
+        docsDir: ["docs", "tokenomics", "governance", "circles-of-trust", "ambassador"],
         searchResultLimits: 10,
         searchResultContextMaxLength: 50,
       },
@@ -181,6 +213,34 @@ const config: Config = {
                 "sidebarId": "whitepaperSidebar",
                 "position": "left",
                 "label": "Whitepaper"
+        },
+        {
+                "type": "docSidebar",
+                "sidebarId": "tokenomicsSidebar",
+                "position": "left",
+                "label": "Token Economics",
+                "docsPluginId": "tokenomics"
+        },
+        {
+                "type": "docSidebar",
+                "sidebarId": "governanceSidebar",
+                "position": "left",
+                "label": "Governance",
+                "docsPluginId": "governance"
+        },
+        {
+                "type": "docSidebar",
+                "sidebarId": "cotSidebar",
+                "position": "left",
+                "label": "Circles of Trust",
+                "docsPluginId": "circles-of-trust"
+        },
+        {
+                "type": "docSidebar",
+                "sidebarId": "ambassadorSidebar",
+                "position": "left",
+                "label": "Ambassador Program",
+                "docsPluginId": "ambassador"
         }
 ],
     },
