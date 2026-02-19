@@ -9,8 +9,6 @@
 
 ---
 
----
-
 ## 1. Merchant Readiness
 
 Before operating, ensure you have the following.

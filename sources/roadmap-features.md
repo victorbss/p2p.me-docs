@@ -104,3 +104,11 @@ The bottleneck for geographic expansion is local knowledge. Open-source configs 
 
 - Expand corridors and currencies using measured SLA gates
 - Improve receiver claim UX and automation layers
+
+---
+
+## Related Docs
+
+- Current protocol operations and merchant model are in [`/circles-of-trust`](/circles-of-trust)
+- Live governance behavior is in [`/governance`](/governance)
+- User and merchant operational guides are in [`/user-guide`](/user-guide) and [`/merchant-guide`](/merchant-guide)

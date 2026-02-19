@@ -43,7 +43,7 @@ P2P on/off ramping is essential financial infrastructure in emerging markets. Wi
 
 ### Is this an ownership token?
 
-Yes. Holders govern protocol financials, vote on parameter and treasury decisions, and hold enforceable claim over protocol IP. If protocol resources were ever misappropriated, token governance gives holders the mechanism to redirect control. This is protocol ownership, distinct from equity in a traditional company.
+Yes. This is protocol ownership, distinct from equity in a traditional company. The "Why the Token Exists" section above covers the full ownership thesis.
 
 ### How does the MetaDAO-style sale work?
 
