@@ -22,11 +22,11 @@ For an investor-oriented overview with FAQs and reading order, see the [`Investo
 
 ### Governance
 
-Token holders vote on protocol parameters such as fees, limits, merchant rules, oracle configs, and treasury allocation. One staked $P2P = one vote, with delegation. The target model uses OpenZeppelin Governor-style mechanics with phased decentralization. For what is live today vs planned, see [`/governance`](/governance).
+Token holders vote on protocol parameters such as fees, limits, merchant rules, oracle configs, and treasury allocation. One staked $P2P = one vote, with delegation. The governance model uses OpenZeppelin Governor-style mechanics with phased decentralization. See [`/governance`](/governance) for details.
 
 ### Staking
 
-Circle Admins stake $P2P to operate merchant networks. Community members delegate $P2P to Circles to participate in revenue sharing. Merchants stake USDC as working capital. The staking design creates skin-in-the-game at every layer. Admins risk their stake on operational quality, merchants risk theirs on order fulfillment, and delegators share in both risk and reward. For current implementation state, see [`/circles-of-trust`](/circles-of-trust).
+Circle Admins stake $P2P to operate merchant networks. Community members delegate $P2P to Circles to participate in revenue sharing. Merchants stake USDC as working capital. The staking design creates skin-in-the-game at every layer. Admins risk their stake on operational quality, merchants risk theirs on order fulfillment, and delegators share in both risk and reward. See [`/circles-of-trust`](/circles-of-trust) for details.
 
 ### Fee Distribution
 
@@ -122,7 +122,7 @@ The mechanism is deliberately simple. Revenue comes in, and tokens are burned. T
 
 ## Staking Mechanics
 
-Staking serves different purposes at each layer. For implementation status, see [`/circles-of-trust`](/circles-of-trust).
+Staking serves different purposes at each layer.
 
 - **Circle Admins** stake $P2P to operate merchant networks. Their stake is slashable, and a portion of their rewards is locked as an insurance buffer. Running a Circle requires active commitment.
 - **Merchants** stake USDC as working capital for order fulfillment. Their capacity is bounded by their stake. The protocol cannot commit more to orders than a merchant has at risk.
@@ -150,7 +150,7 @@ Full DAO control. Foundation veto authority sunsets permanently. All protocol pa
 
 ## Governance Mechanics
 
-Target parameterization. For what is live today, see [`/governance`](/governance).
+See [`/governance`](/governance) for the full governance model.
 
 | Parameter | Value |
 |-----------|-------|

@@ -2,11 +2,11 @@
 
 ## Start Here
 
-1. **This page** covers thesis, token logic, and FAQs.
-2. [`/tokenomics`](/tokenomics) covers allocation, vesting, and mechanics.
-3. [`/governance`](/governance) covers what governance is live vs roadmap.
-4. [`/whitepaper`](/whitepaper) covers protocol context and vision.
-5. [`/roadmap-features`](/roadmap-features) covers expansion tracks.
+1. **This page** for thesis, token logic, and FAQs.
+2. [`/tokenomics`](/tokenomics) for allocation, vesting, and mechanics.
+3. [`/governance`](/governance) for the governance model.
+4. [`/whitepaper`](/whitepaper) for protocol context and vision.
+5. [`/roadmap-features`](/roadmap-features) for expansion tracks.
 
 ---
 

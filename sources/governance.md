@@ -1,36 +1,14 @@
 # P2P Protocol Governance
 
-## Implementation Status
-
-### Implemented On-Chain Now
-
-- Diamond-based protocol contracts with facet-level admin controls.
-- Currency-level launch and parameterization (`launchCurrency`) for limits, fees, matching count, and small-order fee/threshold.
-- User-initiated disputes with explicit dispute windows.
-- Admin-settled dispute outcomes via fault typing, with RP and order-state hooks.
-- Reputation system (RP) integrated with order flow and gated reward claims.
-
-### Roadmap / Proposed Architecture
-
-- Tiered dispute governance with juries and token-voting finality.
-- Unified governor proposal system for disputes, insurance, audits, and parameter changes.
-- Full insurance-pool stack (CAIP/CALR/PIP) as a complete on-chain governance primitive.
-
----
-
-## What Is Live Today
-
-### 1) Governance Surface in Contracts
-
-Governance and control are currently executed through role-gated admin functions in the diamond facets, rather than through an on-chain OpenZeppelin Governor module in this repository.
+## Roles and Permissions
 
 The protocol defines three governance scopes.
 
-- **Super admin scope** launches currencies, sets core risk/limit parameters, and manages critical protocol configuration.
-- **Admin scope** manages operational parameters (for example spread, merchant fee percentages, disputes, and merchant/payment-channel actions).
-- **Merchant/user scope** interacts with order lifecycle, staking/registration flows, and dispute initiation according to contract rules.
+**Super admin** launches currencies, sets core risk/limit parameters, and manages critical protocol configuration.
 
-This reflects an operator-managed governance phase with explicit on-chain permissions and events.
+**Admin** manages operational parameters including spread, merchant fee percentages, disputes, and merchant/payment-channel actions.
+
+**Merchant and user** scope covers order lifecycle, staking/registration flows, and dispute initiation according to contract rules.
 
 ```mermaid
 flowchart TD
@@ -46,21 +24,33 @@ flowchart TD
     facets --> state
 ```
 
-### 2) Dispute Mechanics (Current)
+---
 
-The current dispute flow is contract-native and admin-resolved.
+## Protocol Parameters
 
-1. A user raises a dispute for an order if timing and state conditions are met.
-2. The order is marked disputed, and merchant dispute state is updated.
-3. An admin settles with a fault type (`USER`, `MERCHANT`, or `BANK`).
-4. Settlement triggers order/accounting paths and RP updates via hooks.
+Protocol behavior is heavily parameterized rather than hardcoded because markets differ. A spread that works for INR/USDC on UPI rails would be wrong for BRL/USDC on PIX. Parameterization lets the protocol adapt per-currency without redeploying contracts.
 
-Important constraints exist in the current logic.
+**Pricing and spread.** Base spread and price bump by currency, adjusted for local liquidity conditions.
+
+**Risk limits.** Min stake, volume caps, RP-per-USDT limits, and max tx limits. These gate how much risk the protocol takes per merchant and per user.
+
+**Fee controls.** Merchant fee percentage and small-order fixed fees, tuned to make micro-transactions viable without subsidizing them.
+
+**Operational controls.** Currency and payment-channel activation lifecycles.
+
+These parameters are actively governed today by admin roles. Token holders will assume this function through the governance transition described below.
+
+---
+
+## Disputes
+
+A user raises a dispute for an order if timing and state conditions are met. The order is marked disputed, merchant dispute state is updated, and an admin settles with a fault type (`USER`, `MERCHANT`, or `BANK`). Settlement triggers order/accounting paths and RP updates via hooks.
+
+Constraints in the current logic.
 
 - Dispute windows differ by order type.
 - A dispute cannot be raised twice.
 - Settlement requires admin authorization.
-- The current design is deterministic and on-chain. Jury tiers and token-vote escalation are planned for future implementation.
 
 ```mermaid
 flowchart LR
@@ -72,22 +62,13 @@ flowchart LR
     rp --> final
 ```
 
-### 3) Parameter Governance (Current)
+*Jury-based escalation tiers (T1 resolver, T2 jury, T3 token-governance) and SLA-based auto-escalation are planned for a future release.*
 
-Protocol behavior is heavily parameterized rather than hardcoded because markets differ. A spread that works for INR/USDC on UPI rails would be wrong for BRL/USDC on PIX. Parameterization lets the protocol adapt per-currency without redeploying contracts.
+---
 
-The key parameter categories are listed below.
+## Reputation
 
-- **Pricing and spread** covers base spread and price bump by currency, adjusted for local liquidity conditions.
-- **Risk limits** include min stake, volume caps, RP-per-USDT limits, and max tx limits. These gate how much risk the protocol takes per merchant and per user.
-- **Fee controls** cover merchant fee percentage and small-order fixed fees, tuned to make micro-transactions viable without subsidizing them.
-- **Operational controls** manage currency and payment-channel activation lifecycles.
-
-These parameters are live and actively governed today by admin roles. Token holders will assume this function in a future phase. The mechanics of on-chain governance already exist. What changes over time is who holds the keys.
-
-### 4) Reputation as a Live Control Plane
-
-Before token governance is fully active, RP already governs who can do what on the protocol. Reputation directly controls transaction limits, dispute outcomes, and reward eligibility.
+Reputation Points (RP) control who can do what on the protocol. RP directly governs transaction limits, dispute outcomes, and reward eligibility.
 
 RP integrates with order processing through whitelisted hooks.
 
@@ -95,54 +76,51 @@ RP integrates with order processing through whitelisted hooks.
 - Dispute losses impose RP penalties that reduce future capacity.
 - Verification signals (Aadhaar, social, passport) gate reward claims without requiring raw PII on-chain.
 
-This means the protocol has a working quality-control layer today, independent of token governance. When token governance activates, RP and token voting become complementary. Tokens govern rules and reputation governs access.
+When token governance activates, RP and token voting become complementary. Tokens govern rules and reputation governs access.
 
 ---
 
-## Current Contract References
+## Token-Holder Governance
 
-The following contract surfaces represent the live governance model.
+The target model gives token holders direct control over protocol parameters, treasury, and upgrades.
 
-- `facets/CountryFacet.sol` (`launchCurrency`, currency and payment-channel config governance)
-- `facets/P2pConfigFacet.sol` (pricing/spread/admin configuration)
-- `facets/OrderProcessorFacet.sol` (`raiseDispute`, `adminSettleDispute`, limits, thresholds)
-- `facets/MerchantRegistryFacet.sol` and `facets/MerchantOnboardFacet.sol` (merchant controls, fees, stake/unstake and status actions)
+| Parameter | Value |
+|-----------|-------|
+| Voting Power | 1 staked $P2P = 1 vote (delegatable) |
+| Voting Delay | 1 day |
+| Voting Period | 7 days |
+| Standard Quorum | 4% |
+| Critical Quorum | 20% |
+| Standard Majority | 50% + 1 |
+| Critical Majority | 66% supermajority |
+| Timelock | 7 days before execution |
+
+Proposals that pass quorum and threshold are queued and executed after timelock. The dual quorum model (4% standard, 20% critical) exists so routine parameter tuning doesn't require mobilizing the entire token base, while high-impact changes demand broad consensus.
+
+Governable parameters include fee percentages, spread configuration, staking and slashing rules, transaction volume limits, treasury allocation, smart contract upgrades, and token whitelisting.
+
+*Token-holder governance activates in phases. Phase 1 (months 0-6) uses foundation multisig. Phase 2 (months 6-18) enables token-holder voting on non-critical parameters. Phase 3 (month 18+) transfers full control to token holders and sunsets foundation veto authority. A unified proposal system covering disputes, claims, audits, and parameter changes is planned for a future release.*
+
+---
+
+## Insurance
+
+The protocol design includes a three-tier insurance stack.
+
+**CAIP (Circle Admin Insurance Pool).** First-line coverage funded by a percentage of Circle volume plus slashed stakes.
+
+**CALR (Circle Admin Locked Rewards).** A portion of admin earnings locked in a rolling buffer. If collusion or negligence is detected, CALR is slashed before the admin can withdraw.
+
+**PIP (Protocol Insurance Pool).** Backstop for systemic failures or when lower-tier pools are depleted. Large PIP claims require governance approval.
+
+*The full insurance-pool stack with programmable slash/reward logic and dispute-linked payouts is planned for a future release.*
+
+---
+
+## Contract References
+
+- `facets/CountryFacet.sol` (currency and payment-channel config governance)
+- `facets/P2pConfigFacet.sol` (pricing, spread, admin configuration)
+- `facets/OrderProcessorFacet.sol` (disputes, limits, thresholds)
+- `facets/MerchantRegistryFacet.sol` and `facets/MerchantOnboardFacet.sol` (merchant controls, fees, stake/unstake)
 - `ReputationManager.sol` (RP hooks, reward/verification gating)
-
----
-
-## Roadmap (Not Yet Implemented On-Chain In This Repo)
-
-The following items remain part of the intended governance direction. They should be treated as roadmap design rather than current behavior.
-
-### A) Multi-Tier Dispute Governance
-
-- T1 resolver stage, T2 jury stage, and T3 token-governance stage.
-- SLA-based auto-escalation and explicit appeal windows across tiers.
-
-### B) Unified Proposal System
-
-- A single proposal primitive covering disputes, claims, audits, and parameter changes.
-- Standardized proposal states and execution windows.
-
-### C) Insurance Governance Stack
-
-- CAIP/CALR/PIP pool hierarchy with programmable slash/reward logic and dispute-linked payouts.
-
-### D) Token-Holder Native Governor
-
-- Full protocol decision-making by `$P2P` token governance with differentiated quorum/rules by proposal class.
-
-```mermaid
-flowchart LR
-    now[CurrentAdminGovernance] --> next[TieredDisputeModel]
-    next --> unified[UnifiedProposalSystem]
-    unified --> tokenGov[TokenHolderGovernor]
-    tokenGov --> insurance[InsuranceGovernanceStack]
-```
-
----
-
-## Reading Guide
-
-Sections labeled "Implemented" reflect deployed contract behavior. Sections labeled "Roadmap" are design intent. For integration work, validate against deployed ABIs and the contracts listed above.

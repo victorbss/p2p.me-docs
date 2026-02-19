@@ -7,6 +7,10 @@ const config: Config = {
   tagline: 'Documentation for P2P Foundation',
   favicon: 'img/favicon.svg',
 
+  markdown: {
+    mermaid: true,
+  },
+
   url: 'https://docs.p2p.foundation',
   baseUrl: '/',
 
@@ -171,6 +175,7 @@ const config: Config = {
     ]
   ],
   themes: [
+    '@docusaurus/theme-mermaid',
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
