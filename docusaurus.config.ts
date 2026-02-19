@@ -143,34 +143,42 @@ const config: Config = {
     ],[
       '@docusaurus/plugin-content-docs',
       {
-        id: 'tokenomics',
-        path: 'tokenomics',
-        routeBasePath: 'tokenomics',
-        sidebarPath: './sidebars/tokenomics.ts',
+        id: 'for-investors',
+        path: 'for-investors',
+        routeBasePath: 'for-investors',
+        sidebarPath: './sidebars/for-investors.ts',
       },
     ],[
       '@docusaurus/plugin-content-docs',
       {
-        id: 'governance',
-        path: 'governance',
-        routeBasePath: 'governance',
-        sidebarPath: './sidebars/governance.ts',
+        id: 'for-builders',
+        path: 'for-builders',
+        routeBasePath: 'for-builders',
+        sidebarPath: './sidebars/for-builders.ts',
       },
     ],[
       '@docusaurus/plugin-content-docs',
       {
-        id: 'circles-of-trust',
-        path: 'circles-of-trust',
-        routeBasePath: 'circles-of-trust',
-        sidebarPath: './sidebars/circles-of-trust.ts',
+        id: 'for-merchants',
+        path: 'for-merchants',
+        routeBasePath: 'for-merchants',
+        sidebarPath: './sidebars/for-merchants.ts',
       },
     ],[
       '@docusaurus/plugin-content-docs',
       {
-        id: 'ambassador',
-        path: 'ambassador',
-        routeBasePath: 'ambassador',
-        sidebarPath: './sidebars/ambassador.ts',
+        id: 'for-users',
+        path: 'for-users',
+        routeBasePath: 'for-users',
+        sidebarPath: './sidebars/for-users.ts',
+      },
+    ],[
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'for-community',
+        path: 'for-community',
+        routeBasePath: 'for-community',
+        sidebarPath: './sidebars/for-community.ts',
       },
     ]
   ],
@@ -184,8 +192,8 @@ const config: Config = {
         indexDocs: true,
         indexBlog: false,
         indexPages: false,
-        docsRouteBasePath: ["whitepaper", "tokenomics", "governance", "circles-of-trust", "ambassador"],
-        docsDir: ["docs", "tokenomics", "governance", "circles-of-trust", "ambassador"],
+        docsRouteBasePath: ["whitepaper", "for-investors", "for-builders", "for-merchants", "for-users", "for-community"],
+        docsDir: ["docs", "for-investors", "for-builders", "for-merchants", "for-users", "for-community"],
         searchResultLimits: 10,
         searchResultContextMaxLength: 50,
       },
@@ -217,35 +225,48 @@ const config: Config = {
                 "type": "docSidebar",
                 "sidebarId": "whitepaperSidebar",
                 "position": "left",
-                "label": "Whitepaper"
+                "label": "Whitepaper",
+                "className": "navbar__item--whitepaper navbar-icon-whitepaper"
         },
         {
                 "type": "docSidebar",
-                "sidebarId": "tokenomicsSidebar",
+                "sidebarId": "forInvestorsSidebar",
                 "position": "left",
-                "label": "Token Economics",
-                "docsPluginId": "tokenomics"
+                "label": "For Investors",
+                "docsPluginId": "for-investors",
+                "className": "navbar-icon-investors"
         },
         {
                 "type": "docSidebar",
-                "sidebarId": "governanceSidebar",
+                "sidebarId": "forBuildersSidebar",
                 "position": "left",
-                "label": "Governance",
-                "docsPluginId": "governance"
+                "label": "For Builders",
+                "docsPluginId": "for-builders",
+                "className": "navbar-icon-builders"
         },
         {
                 "type": "docSidebar",
-                "sidebarId": "cotSidebar",
+                "sidebarId": "forMerchantsSidebar",
                 "position": "left",
-                "label": "Circles of Trust",
-                "docsPluginId": "circles-of-trust"
+                "label": "For Merchants",
+                "docsPluginId": "for-merchants",
+                "className": "navbar-icon-merchants"
         },
         {
                 "type": "docSidebar",
-                "sidebarId": "ambassadorSidebar",
+                "sidebarId": "forUsersSidebar",
                 "position": "left",
-                "label": "Ambassador Program",
-                "docsPluginId": "ambassador"
+                "label": "For Users",
+                "docsPluginId": "for-users",
+                "className": "navbar-icon-users"
+        },
+        {
+                "type": "docSidebar",
+                "sidebarId": "forCommunitySidebar",
+                "position": "left",
+                "label": "For Community",
+                "docsPluginId": "for-community",
+                "className": "navbar-icon-community"
         }
 ],
     },

@@ -1,0 +1,34 @@
+import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
+
+const sidebars: SidebarsConfig = {
+  forInvestorsSidebar: [
+    {
+        "type": "category",
+        "label": "For Investors",
+        "collapsible": true,
+        "collapsed": false,
+        "link": {
+            "type": "doc",
+            "id": "start-here"
+        },
+        "items": [
+            "investor-thesis",
+            "why-the-token-exists",
+            "token-details",
+            "token-utility",
+            "token-allocation",
+            "metadao-sale",
+            "vesting-schedules",
+            "buy-and-burn",
+            "staking-mechanics",
+            "token-holder-governance",
+            "progressive-decentralization",
+            "insurance",
+            "faq",
+            "disclosures"
+        ]
+    }
+  ],
+};
+
+export default sidebars;

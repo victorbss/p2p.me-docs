@@ -370,26 +370,31 @@ export default sidebars;
         navbar_config = self.config.get('navbar', {})
         footer_config = self.config.get('footer', {})
         
+        # Navbar CSS class map for icons
+        navbar_classes = {
+            'Whitepaper': 'navbar__item--whitepaper navbar-icon-whitepaper',
+            'For Investors': 'navbar-icon-investors',
+            'For Builders': 'navbar-icon-builders',
+            'For Merchants': 'navbar-icon-merchants',
+            'For Users': 'navbar-icon-users',
+            'For Community': 'navbar-icon-community',
+        }
+
         # Build navbar items
         navbar_items = []
         for i, doc in enumerate(docs):
-            if i == 0:
-                # First doc uses the preset - standard docSidebar
-                navbar_items.append({
-                    'type': 'docSidebar',
-                    'sidebarId': doc.get('sidebarId', f"{doc['id']}Sidebar"),
-                    'position': doc.get('navbarPosition', 'left'),
-                    'label': doc['navbarLabel'],
-                })
-            else:
-                # Additional docs use plugins - need docsPluginId
-                navbar_items.append({
-                    'type': 'docSidebar',
-                    'sidebarId': doc.get('sidebarId', f"{doc['id']}Sidebar"),
-                    'position': doc.get('navbarPosition', 'left'),
-                    'label': doc['navbarLabel'],
-                    'docsPluginId': doc['id'],
-                })
+            item = {
+                'type': 'docSidebar',
+                'sidebarId': doc.get('sidebarId', f"{doc['id']}Sidebar"),
+                'position': doc.get('navbarPosition', 'left'),
+                'label': doc['navbarLabel'],
+            }
+            if i > 0:
+                item['docsPluginId'] = doc['id']
+            css_class = navbar_classes.get(doc['navbarLabel'])
+            if css_class:
+                item['className'] = css_class
+            navbar_items.append(item)
         
         # Build docs plugins config
         # First doc uses the preset, additional docs use plugins
@@ -444,6 +449,10 @@ const config: Config = {{
   title: '{self.config.get("siteTitle", "P2P Foundation Docs")}',
   tagline: '{self.config.get("siteTagline", "Documentation")}',
   favicon: 'img/favicon.svg',
+
+  markdown: {{
+    mermaid: true,
+  }},
 
   url: 'https://docs.p2p.foundation',
   baseUrl: '/',
@@ -569,6 +578,7 @@ const config: Config = {{
   ],
 {plugins_config}
   themes: [
+    '@docusaurus/theme-mermaid',
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {{
