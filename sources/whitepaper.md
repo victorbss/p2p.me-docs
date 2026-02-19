@@ -153,7 +153,7 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 
 ## How the protocol works today (high level, implementation-aware)
 
-1. **Placing orders.** A user clicks "Buy USDC" (or "Sell USDC") and enters an amount. Users can import an existing wallet address to start transacting.
+1. **Placing orders.** A user clicks "Buy USDC" (or "Sell USDC") and enters an amount. Users sign in through the app's integrated wallet to start transacting.
 2. **Order matching.** An innovative Proof-of-Credibility algorithm keeps a list of carefully vetted stablecoin merchants queued for order matching. A fiat payment address is shared over the smart contract, encrypted via the user's keys; for off-ramps, a wallet address is presented.
 3. **Transfers and confirmation.** The payer completes the fiat or crypto transfer; the counterparty acknowledges or either party submits a zero-knowledge proof that the payment event occurred. Settlement completes within minutes in the common case.
 4. **Disputes.** If a party files a dispute, either side can submit evidence (including ZK/TLS-backed proofs where available) without disclosing unnecessary personal data. Under current contracts, disputes are raised by users within defined windows and settled by authorized admins on-chain.
@@ -193,7 +193,7 @@ This strikes a better balance: useful for real people, privacy-preserving for th
 
 The protocol involves several key participants working together to enable trustless peer-to-peer transactions.
 
-**Buyers and Sellers** are everyday users who initiate on-ramp or off-ramp orders. They interact with the protocol through client applications, importing their own wallets and transacting without surrendering custody of their funds.
+**Buyers and Sellers** are everyday users who initiate on-ramp or off-ramp orders. They interact with the protocol through client applications using integrated wallets and transacting without surrendering custody of their funds.
 
 **Merchants**, also known as liquidity peers, serve as the counterparties who mediate liquidity between stablecoins and fiat currencies. These are carefully vetted participants who maintain sufficient liquidity and have established strong reputations through the Proof-of-Credibility system.
 
@@ -212,7 +212,7 @@ The protocol involves several key participants working together to enable trustl
 
 ### 3.3 High-Level Flow
 
-1. **Placing Orders:** A user clicks "Buy USDC" (or "Sell USDC") and enters amount; the user may import an existing Base USDC wallet.
+1. **Placing Orders:** A user clicks "Buy USDC" (or "Sell USDC") and enters amount. The app provides an integrated wallet for the transaction.
 2. **Order Matching:** A list of carefully vetted merchants is queued via Proof-of-Credibility. A fiat payment address is shared over the smart contract, encrypted with the user's keys; for off-ramps, a Base USDC address is presented.
 3. **Fiat/Stablecoin Transfer:** The payer performs the transfer on the designated rail.
 4. **Confirmation/Settlement:** Within minutes, settlement succeeds once the counter-proof condition is met (e.g., merchant confirms receipt or buyer submits transfer proof). Wallet balances update accordingly.
@@ -523,9 +523,9 @@ Indeed, the adoption of crypto for consumer payments has implications for both t
 
 ### 14.1 Clients and Ease of Use
 
-The primary clients for accessing P2P Protocol are the p2p.me and coins.me Progressive Web Apps (PWAs). These browser-based applications provide seamless access across devices, letting users import or export their wallet address for Base USDC (and any other chains supported in the future).
+The primary clients for accessing P2P Protocol are the p2p.me and coins.me Progressive Web Apps (PWAs). These browser-based applications provide seamless access across devices with integrated wallet functionality powered by thirdweb.
 
-Getting started with on-ramps is as simple as buying stablecoins via a fiat transfer; off-ramps are just as reliable through a stablecoin deposit to a trusted in-app wallet.
+Getting started with on-ramps is as simple as buying stablecoins via a fiat transfer. Off-ramps are just as reliable through a stablecoin deposit to the in-app wallet.
 
 Of course, these PWAs are not the only way to access P2P Protocol. Any entity can create and distribute a functional UI client for the Protocol to conduct fully decentralized on/off-ramp transactions.
 
