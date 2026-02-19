@@ -7,7 +7,7 @@ slug: merchant-readiness
 
 Before operating, ensure you have the following.
 
-- A wallet connected through a supported client/admin interface.
+- An account on a supported client/admin interface (wallet is provided in-app via thirdweb integration).
 - Required settlement liquidity for supported currency operations.
 - Active payment rails/accounts you can operationally maintain.
 

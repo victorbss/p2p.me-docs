@@ -7,14 +7,14 @@ slug: before-you-start
 
 **What you need.**
 
-- A supported wallet connected through a P2P Protocol client app.
+- An account on a P2P Protocol client app (wallet is provided in-app via thirdweb integration).
 - Access to supported payment rails in your region.
 - Stablecoin balance for SELL/PAY flows.
 
 **Basic safety checks.**
 
-- Confirm the app domain and wallet network before signing.
+- Confirm you are on the official app domain before signing in.
 - Verify order details (amount, currency, recipient) before submission.
-- Do not share private keys, seed phrases, or wallet recovery data.
+- Do not share your login credentials or account recovery information.
 
 ---

@@ -380,18 +380,20 @@ export default sidebars;
             'For Community': 'navbar-icon-community',
         }
 
-        # Build navbar items
+        # Build navbar items with bracket-style labels matching p2p.foundation
         navbar_items = []
         for i, doc in enumerate(docs):
+            label = doc['navbarLabel']
+            bracket_label = f"[ {label.upper()} ]"
             item = {
                 'type': 'docSidebar',
                 'sidebarId': doc.get('sidebarId', f"{doc['id']}Sidebar"),
                 'position': doc.get('navbarPosition', 'left'),
-                'label': doc['navbarLabel'],
+                'label': bracket_label,
             }
             if i > 0:
                 item['docsPluginId'] = doc['id']
-            css_class = navbar_classes.get(doc['navbarLabel'])
+            css_class = navbar_classes.get(label)
             if css_class:
                 item['className'] = css_class
             navbar_items.append(item)
@@ -604,7 +606,7 @@ const config: Config = {{
     }},
     image: 'https://firebasestorage.googleapis.com/v0/b/p2px-421205.appspot.com/o/user-app%2Fv2%2Fimages%2Fthumbnails%2FfoundationWebsitePreview.png?alt=media&token=b9776f2a-a5c1-43ef-a8cb-764524e16fe4',
     colorMode: {{
-      defaultMode: 'light',
+      defaultMode: 'dark',
       disableSwitch: false,
       respectPrefersColorScheme: true,
     }},

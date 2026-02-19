@@ -263,33 +263,40 @@ h6 {
 }
 
 .navbar__link {
-  font-size: 0.85rem;
-  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.6rem;
 }
 
 /* Whitepaper nav button highlight */
 .navbar__item--whitepaper {
-  background: var(--p2p-blue) !important;
-  color: #fff !important;
-  border-radius: 8px !important;
-  padding: 0.4rem 1rem !important;
-  font-weight: 600 !important;
-  transition: background 0.2s ease, transform 0.2s ease !important;
+  background: #fff !important;
+  color: #000 !important;
+  border-radius: 4px !important;
+  padding: 0.3rem 0.8rem !important;
+  font-weight: 700 !important;
+  border: 2px solid #fff !important;
+  transition: all 0.15s ease !important;
 }
 
 .navbar__item--whitepaper:hover {
-  background: var(--p2p-blue-dark) !important;
-  color: #fff !important;
-  transform: translateY(-1px);
-}
-
-[data-theme="dark"] .navbar__item--whitepaper {
   background: var(--p2p-blue) !important;
   color: #fff !important;
+  border-color: var(--p2p-blue) !important;
 }
 
-[data-theme="dark"] .navbar__item--whitepaper:hover {
-  background: var(--p2p-blue-light) !important;
+[data-theme="light"] .navbar__item--whitepaper {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #000 !important;
+}
+
+[data-theme="light"] .navbar__item--whitepaper:hover {
+  background: var(--p2p-blue) !important;
+  color: #fff !important;
+  border-color: var(--p2p-blue) !important;
 }
 
 /* Navbar item icons (SVG via ::before) */
@@ -465,7 +472,7 @@ h6 {
 
 /* Base style for all links */
 .menu__link {
-  border-radius: 6px;
+  border-radius: 2px;
   color: var(--p2p-text-secondary);
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
@@ -490,7 +497,7 @@ h6 {
   transform: translateX(-100%);
   opacity: 0;
   z-index: -1;
-  border-radius: 6px;
+  border-radius: 2px;
   pointer-events: none;
 }
 
@@ -540,34 +547,38 @@ h6 {
 /* Buttons */
 .button.button--primary {
   background: var(--p2p-blue);
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  border: 2px solid var(--p2p-blue);
+  border-radius: 4px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
 }
 
 .button.button--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(73, 63, 238, 0.4);
-  background: var(--p2p-blue-light);
+  background: transparent;
+  color: var(--p2p-blue);
+  border-color: var(--p2p-blue);
 }
 
 .button.button--secondary {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  background: transparent;
+  border: 2px solid var(--p2p-text-primary);
   color: var(--p2p-text-primary);
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  border-radius: 4px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
 }
 
 .button.button--secondary:hover {
-  background: var(--glass-border);
-  border-color: var(--glass-border);
+  background: var(--p2p-text-primary);
+  color: var(--ifm-background-color);
 }
 
 /* Cards & Glass Containers */
@@ -576,7 +587,7 @@ h6 {
   backdrop-filter: var(--glass-backdrop);
   -webkit-backdrop-filter: var(--glass-backdrop);
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
+  border-radius: 4px;
   box-shadow: var(--glass-shadow);
 }
 
@@ -843,7 +854,7 @@ h6 {
 .navbar__search-input {
   background: var(--search-bg);
   border: 1px solid var(--search-border);
-  border-radius: 8px;
+  border-radius: 4px;
   color: var(--search-text);
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
@@ -864,7 +875,7 @@ h6 {
 .DocSearch-Button {
   background: var(--search-bg) !important;
   border: 1px solid var(--search-border) !important;
-  border-radius: 8px !important;
+  border-radius: 4px !important;
   color: var(--p2p-text-secondary) !important;
   padding: 0 1rem !important;
   height: 36px !important;

@@ -209,7 +209,7 @@ const config: Config = {
     },
     image: 'https://firebasestorage.googleapis.com/v0/b/p2px-421205.appspot.com/o/user-app%2Fv2%2Fimages%2Fthumbnails%2FfoundationWebsitePreview.png?alt=media&token=b9776f2a-a5c1-43ef-a8cb-764524e16fe4',
     colorMode: {
-      defaultMode: 'light',
+      defaultMode: 'dark',
       disableSwitch: false,
       respectPrefersColorScheme: true,
     },
@@ -225,14 +225,14 @@ const config: Config = {
                 "type": "docSidebar",
                 "sidebarId": "whitepaperSidebar",
                 "position": "left",
-                "label": "Whitepaper",
+                "label": "[ WHITEPAPER ]",
                 "className": "navbar__item--whitepaper navbar-icon-whitepaper"
         },
         {
                 "type": "docSidebar",
                 "sidebarId": "forInvestorsSidebar",
                 "position": "left",
-                "label": "For Investors",
+                "label": "[ FOR INVESTORS ]",
                 "docsPluginId": "for-investors",
                 "className": "navbar-icon-investors"
         },
@@ -240,7 +240,7 @@ const config: Config = {
                 "type": "docSidebar",
                 "sidebarId": "forBuildersSidebar",
                 "position": "left",
-                "label": "For Builders",
+                "label": "[ FOR BUILDERS ]",
                 "docsPluginId": "for-builders",
                 "className": "navbar-icon-builders"
         },
@@ -248,7 +248,7 @@ const config: Config = {
                 "type": "docSidebar",
                 "sidebarId": "forMerchantsSidebar",
                 "position": "left",
-                "label": "For Merchants",
+                "label": "[ FOR MERCHANTS ]",
                 "docsPluginId": "for-merchants",
                 "className": "navbar-icon-merchants"
         },
@@ -256,7 +256,7 @@ const config: Config = {
                 "type": "docSidebar",
                 "sidebarId": "forUsersSidebar",
                 "position": "left",
-                "label": "For Users",
+                "label": "[ FOR USERS ]",
                 "docsPluginId": "for-users",
                 "className": "navbar-icon-users"
         },
@@ -264,7 +264,7 @@ const config: Config = {
                 "type": "docSidebar",
                 "sidebarId": "forCommunitySidebar",
                 "position": "left",
-                "label": "For Community",
+                "label": "[ FOR COMMUNITY ]",
                 "docsPluginId": "for-community",
                 "className": "navbar-icon-community"
         }
