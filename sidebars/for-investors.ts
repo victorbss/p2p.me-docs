@@ -19,11 +19,12 @@ const sidebars: SidebarsConfig = {
             "token-allocation",
             "metadao-sale",
             "vesting-schedules",
-            "buy-and-burn",
+            "treasury-and-token-value",
             "staking-mechanics",
             "token-holder-governance",
             "progressive-decentralization",
             "insurance",
+            "financials-and-estimates",
             "faq",
             "disclosures"
         ]

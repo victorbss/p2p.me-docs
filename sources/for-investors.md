@@ -16,6 +16,7 @@ This page covers the token thesis, economics, governance model, and investor FAQ
 - [Token-holder governance](#token-holder-governance)
 - [Progressive decentralization](#progressive-decentralization)
 - [Insurance](#insurance)
+- [Financials and estimates](#financials-and-estimates)
 - [FAQ](#faq)
 
 Also see [`/whitepaper`](/whitepaper) for protocol context and [`/for-builders`](/for-builders) for contract-level governance detail.
@@ -36,13 +37,13 @@ Also see [`/whitepaper`](/whitepaper) for protocol context and [`/for-builders`]
 
 P2P on/off ramping is critical infrastructure for emerging markets. Millions of people depend on it to move between fiat and stablecoins every day. Infrastructure this important cannot remain under the control of a single operator. The token exists to decentralize ownership of this utility so that no single team, company, or jurisdiction can shut it down, censor it, or extract from it unfairly.
 
-`$P2P` is an ownership token. Holders control protocol financials, govern operational parameters, direct treasury spending, and hold enforceable claim over protocol IP. If protocol resources or IP were ever misappropriated, token governance gives holders the mechanism to redirect control. This follows the same ownership-token model used by projects with futarchy and market-governed treasuries, applied to real, revenue-generating infrastructure.
+`$P2P` is an **ownership token**. The most important parts of the protocol—intellectual property, treasury funds, and the ability to mint new tokens—are controlled by market-driven governance (futarchy), not by any single team or entity. Holders control protocol financials, govern operational parameters, direct treasury spending, and hold enforceable claim over protocol IP. If protocol resources or IP were ever misappropriated, token governance gives holders the mechanism to redirect control. This is real, unruggable ownership applied to revenue-generating infrastructure.
 
 The token enables four things.
 
 - **Decentralized governance.** Holders vote on fees, limits, merchant rules, and treasury allocation. No single operator controls these decisions.
 - **Trust staking ("Circles of Trust").** Token holders stake $P2P on merchant liquidity pools to attest to their trustworthiness, earning stablecoin yield from the Circle's transaction revenue.
-- **Revenue-linked ownership.** 20% of protocol revenue flows to the treasury. Via MetaDAO futarchy governance, the treasury can fund buy-and-burn or other value-accruing actions—directly connecting token value to network usage and growth.
+- **Revenue-linked ownership.** 20% of protocol revenue flows to the treasury, planned to increase to 35% as the protocol matures—subject to MetaDAO futarchy governance. The treasury can fund buy-and-burn or other value-accruing actions, directly connecting token value to network usage and growth.
 - **Censorship resistance.** Decentralized ownership means no single point of failure. The protocol can survive regulatory pressure in any one jurisdiction because control is distributed globally among token holders.
 
 ---
@@ -61,6 +62,8 @@ The token enables four things.
 
 ## Token Utility
 
+**Ownership.** $P2P is an ownership token. Protocol IP, treasury funds, and mint authority are all controlled by token holders through futarchy-based governance—not by any single team, foundation, or entity. This means the token carries real, enforceable ownership: if resources were ever misappropriated, governance provides the mechanism to redirect control. Decisions that affect token supply (minting) must pass through a prediction-market governance mechanism, where participants stake real capital on whether a proposal increases or decreases token value. Proposals that the market predicts will harm value are automatically rejected.
+
 **Governance.** Token holders vote on protocol parameters such as fees, limits, merchant rules, oracle configs, and treasury allocation. One staked $P2P = one vote, with delegation.
 
 **Staking.** Circle Admins stake $P2P to operate merchant networks. Community members delegate $P2P to Circles to participate in revenue sharing. Merchants stake USDC as working capital. The staking design creates skin-in-the-game at every layer.
@@ -70,11 +73,11 @@ The token enables four things.
 | Recipient | Share of Revenue |
 |-----------|-----------------|
 | Merchants + Delegators | 53.33% |
-| Buy-and-Burn | 20% (increasing to 33% via governance) |
+| Treasury | 20%, planned increase to 35% (governed via MetaDAO futarchy) |
 | Insurance Pools | 17.78% |
 | Circle Admins | 8.89% |
 
-No single party captures a majority of protocol revenue. Merchants earn the most because they provide working capital and operational labor. Buy-and-burn connects token value to protocol usage. Insurance pools exist so disputes don't become externalised costs.
+No single party captures a majority of protocol revenue. Merchants earn the most because they provide working capital and operational labor. Treasury contributions connect token value to protocol usage—governance can direct these funds toward buy-and-burn or other value-accruing measures via MetaDAO futarchy. Insurance pools exist so disputes don't become externalised costs.
 
 ---
 
@@ -131,15 +134,16 @@ Vesting is enforced via on-chain vesting contracts. Locked tokens cannot be stak
 
 ---
 
-## Buy-and-Burn
+## Treasury and Token Value
 
-Buy-and-burn ties token supply reduction directly to protocol usage.
+20% of protocol revenue is contributed back to the treasury, planned to increase to 35% as the protocol matures—subject to MetaDAO futarchy governance. This creates a direct link between protocol usage and token economics.
 
-- 20% of protocol revenue allocated to buy-and-burn (increasing to 33% via governance by 2027)
-- Tokens purchased on open market via DEX and sent to zero address
-- First burn expected Q2 2026 (~3 months post-TGE)
+- 20% of protocol revenue flows to the on-chain treasury (planned increase to 35% via MetaDAO futarchy governance)
+- Via MetaDAO futarchy governance, token holders decide how treasury funds are deployed—including buy-and-burn, ecosystem grants, liquidity incentives, or other value-accruing actions
+- Buy-and-burn is one governance-approved mechanism: tokens purchased on the open market via DEX and sent to the zero address
+- First treasury allocation expected Q2 2026 (~3 months post-TGE)
 
-The mechanism is deliberately simple. Revenue comes in, and tokens are burned. The burn rate scales with volume, creating a direct link between product traction and supply pressure.
+The mechanism gives token holders direct control over value accrual. Revenue comes in, governance decides deployment, and the treasury scales with volume—ensuring protocol traction translates to token holder outcomes.
 
 ---
 
@@ -198,6 +202,50 @@ The protocol design includes a three-tier insurance stack.
 
 ---
 
+## Financials and Estimates
+
+### Monthly Operational Expenses
+
+| Expense | Cost |
+|---------|------|
+| Core team salaries (4 members) | $30,000 |
+| Engineering & product team salaries (7 members) | $20,000 |
+| Global operations team (10 members) | $15,000 |
+| Global marketing & growth team (5 members) | $10,000 |
+| Monthly average legal and miscellaneous corporate expenses | $10,000 |
+| Growth marketing campaigns, rewards & cashback programme spends | $50,000 |
+| Gas sponsorships to users & technical infra costs | $15,000 |
+| Travel, emergency buffers, team incentives, SaaS & AI subscriptions | $25,000 |
+| **Total Monthly Expenses** | **$175,000** |
+
+### Key Assumptions
+
+| Assumption | Value |
+|------------|-------|
+| Monthly volume growth rate | 30% |
+| Transaction fees | 1.25% |
+| Merchant commission | 0.75% |
+| March 2026 volume | $5,000,000 |
+| Variable gas/cloud costs | 5% |
+| Monthly operational expense growth rate | 12% |
+
+### P&L Forecast ($'000s)
+
+| | Apr 2026 | Jul 2026 | Oct 2026 | Jan 2027 | Apr 2027 | Jul 2027 |
+|---|---|---|---|---|---|---|
+| **Volume** | $6,500 | $14,281 | $31,374 | $68,929 | $151,438 | $332,708 |
+| Transaction fees | $81 | $179 | $392 | $862 | $1,893 | $4,159 |
+| Transaction cost | $49 | $107 | $235 | $517 | $1,136 | $2,495 |
+| Variable cost | $4 | $9 | $20 | $43 | $95 | $208 |
+| **Total COGS** | $53 | $116 | $255 | $560 | $1,230 | $2,703 |
+| **Gross profit** | $28 | $63 | $137 | $302 | $663 | $1,456 |
+| Operational expenses | $196 | $275 | $387 | $544 | $764 | $1,073 |
+| **Operating profit/(loss)** | **($168)** | **($213)** | **($250)** | **($242)** | **($101)** | **$383** |
+
+The protocol is forecast to reach operating profitability by mid-2027 as volume compounds at 30% monthly growth. Revenue is driven entirely by transaction fees on a working product, with no reliance on token emissions or inflationary incentives.
+
+---
+
 ## FAQ
 
 ### Why does P2P need a token?
@@ -216,9 +264,9 @@ Users commit USDC during a 4-day window. If oversubscribed, allocations are pro-
 
 10M sale tokens + 2.9M liquidity tokens (12.9M total, 50% of supply). Zero investor or team tokens unlock at launch.
 
-### How does buy-and-burn work?
+### How does treasury-funded value accrual work?
 
-20% of protocol revenue buys tokens on the open market and sends them to the zero address. The mechanism is funded entirely by real transaction revenue from a working product. More protocol usage means more burn pressure.
+20% of protocol revenue flows to the on-chain treasury, planned to increase to 35% as the protocol matures—subject to MetaDAO futarchy governance. Token holders decide how to deploy these funds. Buy-and-burn is one approved mechanism—tokens purchased on the open market and sent to the zero address. The treasury is funded entirely by real transaction revenue from a working product. More protocol usage means a larger treasury and stronger governance-directed value accrual.
 
 ### Is supply fixed?
 

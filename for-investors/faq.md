@@ -1,6 +1,6 @@
 ---
 id: faq
-sidebar_position: 13
+sidebar_position: 14
 title: "FAQ"
 slug: faq
 ---
@@ -21,9 +21,9 @@ Users commit USDC during a 4-day window. If oversubscribed, allocations are pro-
 
 10M sale tokens + 2.9M liquidity tokens (12.9M total, 50% of supply). Zero investor or team tokens unlock at launch.
 
-## How does buy-and-burn work?
+## How does treasury-funded value accrual work?
 
-20% of protocol revenue buys tokens on the open market and sends them to the zero address. The mechanism is funded entirely by real transaction revenue from a working product. More protocol usage means more burn pressure.
+20% of protocol revenue flows to the on-chain treasury, planned to increase to 35% as the protocol matures—subject to MetaDAO futarchy governance. Token holders decide how to deploy these funds. Buy-and-burn is one approved mechanism—tokens purchased on the open market and sent to the zero address. The treasury is funded entirely by real transaction revenue from a working product. More protocol usage means a larger treasury and stronger governance-directed value accrual.
 
 ## Is supply fixed?
 

@@ -391,8 +391,8 @@ const config: Config = {
                         },
                         {
                                 "type": "doc",
-                                "docId": "buy-and-burn",
-                                "label": "Buy-and-Burn",
+                                "docId": "treasury-and-token-value",
+                                "label": "Treasury and Token Value",
                                 "docsPluginId": "for-investors"
                         },
                         {
@@ -417,6 +417,12 @@ const config: Config = {
                                 "type": "doc",
                                 "docId": "insurance",
                                 "label": "Insurance",
+                                "docsPluginId": "for-investors"
+                        },
+                        {
+                                "type": "doc",
+                                "docId": "financials-and-estimates",
+                                "label": "Financials and Estimates",
                                 "docsPluginId": "for-investors"
                         },
                         {

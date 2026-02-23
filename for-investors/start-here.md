@@ -14,11 +14,12 @@ This page covers the token thesis, economics, governance model, and investor FAQ
 - [Token details and allocation](#token-details)
 - [MetaDAO sale](#metadao-sale)
 - [Vesting schedules](#vesting-schedules)
-- [Buy-and-burn](#buy-and-burn)
+- [Treasury and token value](#treasury-and-token-value)
 - [Staking mechanics](#staking-mechanics)
 - [Token-holder governance](#token-holder-governance)
 - [Progressive decentralization](#progressive-decentralization)
 - [Insurance](#insurance)
+- [Financials and estimates](#financials-and-estimates)
 - [FAQ](#faq)
 
 Also see [`/whitepaper`](/whitepaper) for protocol context and [`/for-builders`](/for-builders) for contract-level governance detail.
