@@ -27,6 +27,7 @@ class DocBuilder:
         self.config_path = self.root_dir / config_path
         self.config = self._load_config()
         self.website_dir = self.root_dir  # Script is now inside website folder
+        self._all_generated_files = {}  # doc_id -> list of generated file info
         
     def _load_config(self) -> Dict[str, Any]:
         """Load the docs configuration file."""
@@ -380,22 +381,40 @@ export default sidebars;
             'For Community': 'navbar-icon-community',
         }
 
-        # Build navbar items with bracket-style labels matching p2p.foundation
+        # Build navbar items as dropdowns expanding into section index
         navbar_items = []
         for i, doc in enumerate(docs):
             label = doc['navbarLabel']
-            bracket_label = f"[ {label.upper()} ]"
-            item = {
-                'type': 'docSidebar',
-                'sidebarId': doc.get('sidebarId', f"{doc['id']}Sidebar"),
-                'position': doc.get('navbarPosition', 'left'),
-                'label': bracket_label,
-            }
-            if i > 0:
-                item['docsPluginId'] = doc['id']
-            css_class = navbar_classes.get(label)
-            if css_class:
-                item['className'] = css_class
+            generated_files = self._all_generated_files.get(doc['id'], [])
+            
+            if generated_files:
+                dropdown_items = []
+                for file_info in generated_files:
+                    doc_item = {
+                        'type': 'doc',
+                        'docId': file_info['doc_id'],
+                        'label': file_info['title'],
+                    }
+                    if i > 0:
+                        doc_item['docsPluginId'] = doc['id']
+                    dropdown_items.append(doc_item)
+                
+                item = {
+                    'type': 'dropdown',
+                    'label': label,
+                    'position': doc.get('navbarPosition', 'left'),
+                    'items': dropdown_items,
+                }
+            else:
+                item = {
+                    'type': 'docSidebar',
+                    'sidebarId': doc.get('sidebarId', f"{doc['id']}Sidebar"),
+                    'position': doc.get('navbarPosition', 'left'),
+                    'label': label,
+                }
+                if i > 0:
+                    item['docsPluginId'] = doc['id']
+            
             navbar_items.append(item)
         
         # Build docs plugins config
@@ -555,9 +574,7 @@ const config: Config = {{
     }},
   ],
 
-  stylesheets: [
-    'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700&display=swap',
-  ],
+  stylesheets: [],
 
   clientModules: [
     './src/clientModules/tocAutoScroll.js',
@@ -606,7 +623,7 @@ const config: Config = {{
     }},
     image: 'https://firebasestorage.googleapis.com/v0/b/p2px-421205.appspot.com/o/user-app%2Fv2%2Fimages%2Fthumbnails%2FfoundationWebsitePreview.png?alt=media&token=b9776f2a-a5c1-43ef-a8cb-764524e16fe4',
     colorMode: {{
-      defaultMode: 'dark',
+      defaultMode: 'light',
       disableSwitch: false,
       respectPrefersColorScheme: true,
     }},
@@ -820,6 +837,7 @@ export default config;
             
             # Generate doc files
             files = self._generate_doc_files(sections, doc_config)
+            self._all_generated_files[doc_config['id']] = files
             
             # Generate sidebar
             sidebar_content = self._generate_sidebar(doc_config, files)

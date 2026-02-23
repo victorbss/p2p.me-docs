@@ -90,9 +90,9 @@
   --p2p-blue-dark: #3b32d9;
   --p2p-blue-light: #6a62f5;
 
-  /* Typography */
-  --ifm-font-family-base: "Nohemi", sans-serif;
-  --ifm-heading-font-family: "Nohemi", sans-serif;
+  /* Typography — system font stack for readability */
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --ifm-heading-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
   /* Overriding Docusaurus Variables */
   --ifm-color-primary: var(--p2p-blue);
@@ -212,9 +212,9 @@ h6 {
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Highlight Subheadings (H2) */
+/* Subheadings (H2) */
 .markdown h2 {
-  color: var(--ifm-color-primary);
+  color: var(--p2p-text-primary);
   font-size: 1.75rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
@@ -229,21 +229,21 @@ h6 {
   left: 0;
   width: 40px;
   height: 3px;
-  background: var(--p2p-blue);
+  background: var(--border-color);
   border-radius: 2px;
 }
 
-/* Highlight Subheadings (H3) */
+/* Subheadings (H3) */
 .markdown h3 {
-  color: var(--p2p-blue-light);
+  color: var(--p2p-text-primary);
   font-size: 1.35rem;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
 }
 
-/* Highlight Subheadings (H4) */
+/* Subheadings (H4) */
 .markdown h4 {
-  color: var(--ifm-color-primary);
+  color: var(--p2p-text-primary);
   font-size: 1.15rem;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
@@ -388,7 +388,6 @@ h6 {
 }
 
 .navbar__brand {
-  font-family: "Nohemi", sans-serif;
   font-weight: 700;
   letter-spacing: -0.03em;
   font-size: 1.1rem;
@@ -409,7 +408,6 @@ h6 {
   > .menu__list-item
   > .menu__list-item-collapsible
   > .menu__link {
-  font-family: "Nohemi", sans-serif;
   font-weight: 600;
   font-size: 1.1rem;
   color: var(--p2p-text-primary);
@@ -631,7 +629,6 @@ h6 {
 .theme-doc-toc-desktop::before {
   content: "On this page";
   display: block;
-  font-family: "Nohemi", sans-serif;
   font-weight: 600;
   font-size: 0.85rem;
   color: var(--p2p-text-primary);
@@ -662,8 +659,7 @@ h6 {
 }
 
 .footer__title {
-  font-family: "Nohemi", sans-serif;
-  color: #fff; /* Keeping Footer Dark-ish styled for now, or adapt? Let's adapt text if bg changes */
+  color: #fff;
 }
 
 /* If footer is always dark, force white text. 
@@ -1007,7 +1003,7 @@ h6 {
   --biel-primary-color: var(--p2p-blue);
   --biel-primary-light-color: var(--p2p-blue-light);
   --biel-primary-hover-color: var(--p2p-blue-dark);
-  --biel-font-family: "Nohemi", "Inter", sans-serif;
+  --biel-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Button: rounded, soft shadow, matches site buttons */
   --biel-button-border-radius: 12px;
