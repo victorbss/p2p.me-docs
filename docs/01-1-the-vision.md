@@ -124,7 +124,7 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 - **Multi-chain presence:** Solana deployment planned within six months; support for additional emerging high-performance chains to follow.
 - **Composability:** third-party apps shipping useful features on the SDK without asking permission.
 - **Self-serve legitimacy:** regulators and risk teams can read the spec, verify parameters on-chain, and understand how safety is achieved—without backdoors.
-- **Roadmap features:** for current feature-track proposals (including remittance and currency expansion), see [`/for-builders`](/for-builders).
+- **Roadmap features:** for current feature-track proposals (including remittance and currency expansion), see [`/for-builders`](/for-builders/start-here).
 
 ## 1.16 A short manifesto
 

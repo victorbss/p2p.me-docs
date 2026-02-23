@@ -20,6 +20,6 @@ The target model gives token holders direct control over protocol parameters, tr
 
 Governable parameters include fee percentages, spread configuration, staking and slashing rules, transaction volume limits, treasury allocation, smart contract upgrades, and token whitelisting.
 
-For contract-level governance detail (roles, permissions, dispute mechanics), see [`/for-builders`](/for-builders).
+For contract-level governance detail (roles, permissions, dispute mechanics), see [`/for-builders`](/for-builders/start-here).
 
 ---

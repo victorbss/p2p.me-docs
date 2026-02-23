@@ -6,20 +6,19 @@ This page covers the token thesis, economics, governance model, and investor FAQ
 
 **Quick links to key sections.**
 
-- [Investor thesis](#investor-thesis)
-- [Why the token exists](#why-the-token-exists)
-- [Token details and allocation](#token-details)
-- [MetaDAO sale](#metadao-sale)
-- [Vesting schedules](#vesting-schedules)
-- [Treasury and token value](#treasury-and-token-value)
-- [Staking mechanics](#staking-mechanics)
-- [Token-holder governance](#token-holder-governance)
-- [Progressive decentralization](#progressive-decentralization)
-- [Insurance](#insurance)
-- [Financials and estimates](#financials-and-estimates)
-- [FAQ](#faq)
+- [Investor thesis](/for-investors/investor-thesis)
+- [Why the token exists](/for-investors/why-the-token-exists)
+- [Token details and allocation](/for-investors/token-details)
+- [MetaDAO sale](/for-investors/metadao-sale)
+- [Vesting schedules](/for-investors/vesting-schedules)
+- [Buy-and-burn](/for-investors/buy-and-burn)
+- [Staking mechanics](/for-investors/staking-mechanics)
+- [Token-holder governance](/for-investors/token-holder-governance)
+- [Progressive decentralization](/for-investors/progressive-decentralization)
+- [Insurance](/for-investors/insurance)
+- [FAQ](/for-investors/faq)
 
-Also see [`/whitepaper`](/whitepaper) for protocol context and [`/for-builders`](/for-builders) for contract-level governance detail.
+Also see [`/whitepaper`](/whitepaper/abstract) for protocol context and [`/for-builders`](/for-builders/start-here) for contract-level governance detail.
 
 ---
 
@@ -172,7 +171,7 @@ The target model gives token holders direct control over protocol parameters, tr
 
 Governable parameters include fee percentages, spread configuration, staking and slashing rules, transaction volume limits, treasury allocation, smart contract upgrades, and token whitelisting.
 
-For contract-level governance detail (roles, permissions, dispute mechanics), see [`/for-builders`](/for-builders).
+For contract-level governance detail (roles, permissions, dispute mechanics), see [`/for-builders`](/for-builders/start-here).
 
 ---
 
@@ -278,7 +277,7 @@ Low fees and fast finality make frequent small transactions practical. Solana de
 
 ### How do I separate what's live from what's planned?
 
-Inline notes throughout the docs mark features planned for future releases. For contract-level detail on what is deployed, see [`/for-builders`](/for-builders).
+Inline notes throughout the docs mark features planned for future releases. For contract-level detail on what is deployed, see [`/for-builders`](/for-builders/start-here).
 
 ---
 

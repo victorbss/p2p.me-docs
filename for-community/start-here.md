@@ -9,14 +9,14 @@ The P2P Foundation Ambassador Program ("The Liberation Network") is a community-
 
 **Quick links to key sections.**
 
-- [Manifesto](#cypherpunk-20-manifesto)
-- [Hierarchy and roles](#hierarchy)
-- [Four tracks](#four-tracks)
-- [How to join](#how-to-join)
-- [Weekly updates and offboarding](#weekly-updates-and-offboarding)
-- [Remuneration](#remuneration)
-- [FAQ](#faq)
+- [Manifesto](/for-community/cypherpunk-20-manifesto)
+- [Hierarchy and roles](/for-community/hierarchy)
+- [Four tracks](/for-community/four-tracks)
+- [How to join](/for-community/how-to-join)
+- [Weekly updates and offboarding](/for-community/weekly-updates-and-offboarding)
+- [Remuneration](/for-community/remuneration)
+- [FAQ](/for-community/faq)
 
-Also see [`/whitepaper`](/whitepaper) for protocol context and [`/for-investors`](/for-investors) for the token thesis.
+Also see [`/whitepaper`](/whitepaper/abstract) for protocol context and [`/for-investors`](/for-investors/start-here) for the token thesis.
 
 ---

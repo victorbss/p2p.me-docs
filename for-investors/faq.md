@@ -35,6 +35,6 @@ Low fees and fast finality make frequent small transactions practical. Solana de
 
 ## How do I separate what's live from what's planned?
 
-Inline notes throughout the docs mark features planned for future releases. For contract-level detail on what is deployed, see [`/for-builders`](/for-builders).
+Inline notes throughout the docs mark features planned for future releases. For contract-level detail on what is deployed, see [`/for-builders`](/for-builders/start-here).
 
 ---
