@@ -11,12 +11,12 @@ Circles organize merchants into accountable groups, enable community oversight t
 
 ```mermaid
 flowchart TD
-    user[UserOrder]
-    orderFlow[OrderFlowFacet]
-    registry[MerchantRegistry]
-    country[CountryConfig]
-    assignment[EligibilityAndAssignmentChecks]
-    settlement[SettlementAndAccounting]
+    user[User order]
+    orderFlow[Order flow]
+    registry[Merchant registry]
+    country[Country config]
+    assignment[Eligibility and assignment checks]
+    settlement[Settlement and accounting]
 
     user --> orderFlow
     orderFlow --> registry

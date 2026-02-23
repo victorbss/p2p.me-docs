@@ -12,11 +12,11 @@ slug: how-to-place-an-order
 
 ```mermaid
 flowchart LR
-    start[StartInClientApp] --> choose[ChooseOrderType]
-    choose --> submit[SubmitOrder]
-    submit --> assign[MerchantAssigned]
-    assign --> transfer[CompleteTransferStep]
-    transfer --> finish[OrderFinalState]
+    start[Start in app] --> choose[Choose order type]
+    choose --> submit[Submit order]
+    submit --> assign[Merchant assigned]
+    assign --> transfer[Complete transfer step]
+    transfer --> finish[Order final state]
 ```
 
 ---

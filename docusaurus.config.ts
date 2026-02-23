@@ -236,16 +236,6 @@ const config: Config = {
                         },
                         {
                                 "type": "doc",
-                                "docId": "02-how-the-protocol-works-today-high-level-implementation-aware",
-                                "label": "How the protocol works today (high level, implementation-aware)"
-                        },
-                        {
-                                "type": "doc",
-                                "docId": "03-why-credibility-matters-and-why-over-collateralization-shouldnt-be-the-only-answer",
-                                "label": "Why credibility matters (and why over-collateralization shouldn't be the only answer)"
-                        },
-                        {
-                                "type": "doc",
                                 "docId": "02-2-design-goals-and-non-goals",
                                 "label": "2. Design Goals and Non-Goals"
                         },
@@ -331,7 +321,7 @@ const config: Config = {
                         },
                         {
                                 "type": "doc",
-                                "docId": "21-appendices",
+                                "docId": "19-appendices",
                                 "label": "Appendices"
                         }
                 ]

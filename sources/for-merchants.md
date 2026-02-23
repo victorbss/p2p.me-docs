@@ -49,10 +49,10 @@ Before operating, ensure you have the following.
 
 ```mermaid
 flowchart LR
-    register[RegisterMerchant] --> stake[StakeLiquidity]
-    stake --> addPc[AddPaymentChannels]
-    addPc --> approvePc[ChannelApproval]
-    approvePc --> live[AssignableMerchantState]
+    register[Register merchant] --> stake[Stake liquidity]
+    stake --> addPc[Add payment channels]
+    addPc --> approvePc[Channel approval]
+    approvePc --> live[Assignable merchant state]
 ```
 
 ---
@@ -93,12 +93,12 @@ Circles organize merchants into accountable groups, enable community oversight t
 
 ```mermaid
 flowchart TD
-    user[UserOrder]
-    orderFlow[OrderFlowFacet]
-    registry[MerchantRegistry]
-    country[CountryConfig]
-    assignment[EligibilityAndAssignmentChecks]
-    settlement[SettlementAndAccounting]
+    user[User order]
+    orderFlow[Order flow]
+    registry[Merchant registry]
+    country[Country config]
+    assignment[Eligibility and assignment checks]
+    settlement[Settlement and accounting]
 
     user --> orderFlow
     orderFlow --> registry
@@ -154,11 +154,11 @@ Disputes are settled on-chain by authorized admins under protocol fault rules an
 
 ```mermaid
 flowchart TD
-    order[OrderInProgress] --> issue[IssueDetected]
-    issue --> dispute[DisputeRaised]
-    dispute --> evidence[SubmitEvidence]
-    evidence --> settle[AdminSettlementOnChain]
-    settle --> outcome[FinalOutcome]
+    order[Order in progress] --> issue[Issue detected]
+    issue --> dispute[Dispute raised]
+    dispute --> evidence[Submit evidence]
+    evidence --> settle[Admin settlement on-chain]
+    settle --> outcome[Final outcome]
 ```
 
 *Jury-based escalation tiers and governance-vote finality for disputes are planned for a future release.*

@@ -5,9 +5,9 @@ title: "Abstract"
 slug: abstract
 ---
 
-Following the wake of centralized exchanges, early decentralized exchanges led the DeFi movement using order books and liquidity pools. Yet DeFi users still lacked a fully decentralized way to onramp from fiat to crypto and offramp back to fiat.
+In the wake of centralized exchanges, early decentralized exchanges led the DeFi movement using order books and liquidity pools. Yet DeFi users still lacked a fully decentralized way to onramp from fiat to crypto and offramp back to fiat.
 
-P2P Protocol reflects a departure from fiat escrows and traditional custodians by using zero-knowledge (ZK) proofs for non-custodial KYC, making on/off-ramps privacy-preserving and governed by users' collective interests. An evidence module for on-chain dispute resolution and bank transaction verification is on the roadmap.
+P2P Protocol reflects a departure from fiat escrows and traditional custodians by using zero-knowledge (ZK) proofs for non-custodial KYC, making on/off-ramps privacy-preserving and governed by users' collective interests.
 
 Currently deployed on the Base network, P2P Protocol trustlessly matches buyers and highly vetted merchants according to a Proof-of-Credibility reputation algorithm, settles trades with on-chain coordination, and resolves disputes through on-chain admin settlement rather than platform custody. Deployment on Solana is on the roadmap within six months. This paper formalizes design goals, protocol flows, reputation, dispute resolution, pricing, security and privacy models, governance, and token economics in preparation for a Token Generation Event (TGE) planned for March 2026.
 

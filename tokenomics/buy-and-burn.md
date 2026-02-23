@@ -12,6 +12,4 @@ slug: buy-and-burn
 - Buy-and-burn is one governance-approved mechanism: tokens purchased on the open market via DEX and sent to the zero address (permanently burned)
 - First treasury allocation expected Q2 2026 (approximately 3 months post-TGE)
 
-Every transaction the protocol processes makes the supply smaller.
-
 ---

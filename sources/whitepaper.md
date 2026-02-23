@@ -6,9 +6,9 @@
 
 ## Abstract
 
-Following the wake of centralized exchanges, early decentralized exchanges led the DeFi movement using order books and liquidity pools. Yet DeFi users still lacked a fully decentralized way to onramp from fiat to crypto and offramp back to fiat.
+In the wake of centralized exchanges, early decentralized exchanges led the DeFi movement using order books and liquidity pools. Yet DeFi users still lacked a fully decentralized way to onramp from fiat to crypto and offramp back to fiat.
 
-P2P Protocol reflects a departure from fiat escrows and traditional custodians by using zero-knowledge (ZK) proofs for non-custodial KYC, making on/off-ramps privacy-preserving and governed by users' collective interests. An evidence module for on-chain dispute resolution and bank transaction verification is on the roadmap.
+P2P Protocol reflects a departure from fiat escrows and traditional custodians by using zero-knowledge (ZK) proofs for non-custodial KYC, making on/off-ramps privacy-preserving and governed by users' collective interests.
 
 Currently deployed on the Base network, P2P Protocol trustlessly matches buyers and highly vetted merchants according to a Proof-of-Credibility reputation algorithm, settles trades with on-chain coordination, and resolves disputes through on-chain admin settlement rather than platform custody. Deployment on Solana is on the roadmap within six months. This paper formalizes design goals, protocol flows, reputation, dispute resolution, pricing, security and privacy models, governance, and token economics in preparation for a Token Generation Event (TGE) planned for March 2026.
 
@@ -32,7 +32,7 @@ In this model:
 
 - A user in any supported country can buy or sell stablecoins in ~minutes—targeting sub-90-second completion on fast rails—without giving custody to anyone.
 - Merchants are matched based on reliability and Proof-of-Credibility scores, with spread set at the protocol level rather than through merchant competition.
-- ZK-KYC unlocks higher limits and faster paths while keeping personal data off-chain. A planned evidence module for bank transaction verification will further extend privacy-preserving proofs to dispute resolution.
+- ZK-KYC unlocks higher limits and faster paths while keeping personal data off-chain.
 - Third-party apps and wallets integrate the protocol through open SDKs; Coins.me is only a reference consumer front-end, not a privileged gateway.
 - As credibility compounds, new products (installment payouts, escrowless commerce, cross-border salaries, dispute insurance) can be built without re-KYCing the world.
 
@@ -91,7 +91,7 @@ Vendors and chains will change; the principles cannot. The whitepaper commits to
 
 - No single L2, oracle, or proof provider baked into the logic.
 - Clear interfaces (verifier registry, oracle adapter, rail registry) so parts can be swapped without rewriting the paper or the social contract.
-- Open Sourcing and Decentralizing each part of the Protocol as public goods.
+- open-sourcing and decentralizing each part of the Protocol as public goods.
 
 ### 1.10 Credibility but with Privacy
 
@@ -126,7 +126,7 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 ### 1.14 What we won't compromise on
 
 - Non-custody of fiat (ever).
-- No honeypots of PII (Personal Identifiable Information) on-chain (ever).
+- No honeypots of PII (Personally Identifiable Information) on-chain (ever).
 - No privileged clients (ever). Everyone uses the same pipes.
 - No "trust us" black boxes. If it can't be proven or audited, it doesn't make core.
 
@@ -143,29 +143,11 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 
 > Privacy is a user interface problem as much as a math problem.
 
-> Reputation should be earned, portable, and revoke-able—never sold.
+> Reputation should be earned, portable, and revocable—never sold.
 
 > The best KYC is the one that proves what's needed and nothing else.
 
 > If only power users can use it, it isn't DeFi—it's a gated club.
-
----
-
-## How the protocol works today (high level, implementation-aware)
-
-1. **Placing orders.** A user clicks "Buy USDC" (or "Sell USDC") and enters an amount. Users sign in through the app's integrated wallet to start transacting.
-2. **Order matching.** An innovative Proof-of-Credibility algorithm keeps a list of carefully vetted stablecoin merchants queued for order matching. A fiat payment address is shared over the smart contract, encrypted via the user's keys; for off-ramps, a wallet address is presented.
-3. **Transfers and confirmation.** The payer completes the fiat or crypto transfer; the counterparty acknowledges receipt. Settlement completes within minutes in the common case.
-4. **Disputes.** If a party files a dispute, either side can submit evidence without disclosing unnecessary personal data. Under current contracts, disputes are raised by users within defined windows and settled by authorized admins on-chain.
-5. **On-chain operations.** Order state, matching, settlement accounting, and dispute state transitions are on-chain. An evidence module for on-chain dispute resolution and bank transaction verification is planned as the protocol evolves.
-
----
-
-## Why credibility matters (and why over-collateralization shouldn't be the only answer)
-
-Traditional DeFi often reaches for heavy collateral to feel safe. That works for some instruments, but it makes everyday finance clunky and exclusionary. Credibility-based DeFi says: let peers earn limits, speed, and price by behaving well over time, with ZK-KYC protecting identity privacy along the way.
-
-This strikes a better balance: useful for real people, privacy-preserving for those who need it most, and resilient because reputation is distributed and portable—not trapped in a single platform's database.
 
 ---
 
@@ -174,7 +156,7 @@ This strikes a better balance: useful for real people, privacy-preserving for th
 ### 2.1 Goals
 
 - Decentralized on/off-ramp between fiat and stablecoins without fiat escrow.
-- Privacy by design using ZK proofs for identity verification while keeping raw data off-chain. A planned evidence module will extend privacy-preserving verification to bank transaction events.
+- Privacy by design using ZK proofs for identity verification while keeping raw data off-chain. Bank transaction verification is planned (see Section 4.2).
 - Credible neutrality: protocol-level rules are open, transparent, and upgradable via governance.
 - Fast settlement: typical completion within minutes, targeting sub-~90s for common rails as network, liquidity, and automation improve.
 - Safety & integrity: explicit threat model, dispute flows, and rate/limit controls to minimize fraud.
@@ -197,15 +179,15 @@ The protocol involves several key participants working together to enable trustl
 
 **Merchants**, also known as liquidity peers, serve as the counterparties who mediate liquidity between stablecoins and fiat currencies. These are carefully vetted participants who maintain sufficient liquidity and have established strong reputations through the Proof-of-Credibility system.
 
-**Protocol Contracts** are the on-chain smart contracts that orchestrate the entire order lifecycle. They handle order queuing, matching based on credibility scores, state verification, and final settlement outcomes. These contracts currently operate on Base L2, with Solana deployment on the roadmap.
+**Protocol Contracts** are the on-chain smart contracts that orchestrate the entire order lifecycle. They handle order queuing, matching based on credibility scores, state verification, and final settlement outcomes. These contracts currently operate on Base L2 (Solana planned).
 
-**Proof Verifiers** currently validate ZK-KYC proofs for identity verification (government IDs, social accounts, and passports via Reclaim Protocol and other ZK verifiers). A planned evidence module will extend proof verification to bank transaction verification for on-chain dispute resolution.
+**Proof Verifiers** currently validate ZK-KYC proofs for identity verification (government IDs, social accounts, and passports via Reclaim Protocol and other ZK verifiers). Bank transaction verification is planned (see Section 4.2).
 
 **Governance** encompasses the mechanisms through which protocol parameters, upgrades, and treasury decisions are made. The current implementation is admin/multisig operated, with a planned transition to broader token-holder governance as the protocol matures.
 
 ### 3.2 Components
 
-- **Base L2 smart contracts** (Solana deployment planned) for order lifecycle, matching, dispute windows, parameter registry, and fee routing.
+- **Base L2 smart contracts** (Solana planned) for order lifecycle, matching, dispute windows, parameter registry, and fee routing.
 - **Reputation registry** implementing Proof-of-Credibility (inputs, scoring, decay).
 - **Oracle adapter** for reference pricing and safeguards (median/TWAP, fallbacks, circuit breakers).
 - **Client SDKs** and reference apps (e.g., Coins.me) that speak the protocol.
@@ -216,17 +198,17 @@ The protocol involves several key participants working together to enable trustl
 2. **Order Matching:** A list of carefully vetted merchants is queued via Proof-of-Credibility. A fiat payment address is shared over the smart contract, encrypted with the user's keys; for off-ramps, a USDC address on Base (Solana planned) is presented.
 3. **Fiat/Stablecoin Transfer:** The payer performs the transfer on the designated rail.
 4. **Confirmation/Settlement:** Within minutes, settlement succeeds once the merchant confirms receipt. Wallet balances update accordingly.
-5. **Dispute Window:** If a party contests, they submit evidence that a payment or action occurred (or did not). In the live implementation, authorized admins settle disputed orders on-chain according to protocol fault rules and dispute windows. A planned evidence module will enable privacy-preserving proof submission for bank transaction verification.
+5. **Dispute Window:** If a party contests, they submit evidence that a payment or action occurred (or did not). In the live implementation, authorized admins settle disputed orders on-chain according to protocol fault rules and dispute windows.
 
 ```mermaid
 flowchart LR
-    place[PlaceOrder] --> match[MerchantMatch]
-    match --> transfer[FiatOrStablecoinTransfer]
-    transfer --> confirm[ConfirmAndSettle]
+    place[Place order] --> match[Merchant match]
+    match --> transfer[Fiat or stablecoin transfer]
+    transfer --> confirm[Confirm and settle]
     confirm --> done[Completed]
-    confirm --> dispute[DisputeRaised]
-    dispute --> adminSettle[AdminSettlementOnChain]
-    adminSettle --> resolved[ResolvedState]
+    confirm --> dispute[Dispute raised]
+    dispute --> adminSettle[Admin settlement on-chain]
+    adminSettle --> resolved[Resolved]
 ```
 
 ### 3.4 On-Ramp Flow
@@ -322,7 +304,7 @@ flowchart LR
 - The **merchant** serves the function of mediating liquidity for the transactions.
 - The **onus of confirming payment** rests on the merchant (for off-ramps) or can be provided by either party.
 - **ZK-KYC performs trustless identity verification** for the user without exposing personal data.
-- **Evidence is submitted and reviewed** in disputes. In the current system, outcomes are executed via on-chain admin settlement. A planned evidence module will enable on-chain dispute resolution with privacy-preserving bank transaction verification; broader verifier and governance-driven resolution remains roadmap.
+- **Evidence is submitted and reviewed** in disputes. In the current system, outcomes are executed via on-chain admin settlement; broader verifier and governance-driven resolution remains roadmap (see Section 4.2).
 - **Reclaim Protocol** enables privacy-preserving identity verification via social accounts and government IDs.
 
 ---
@@ -440,13 +422,13 @@ The underlying RP mechanism practically eliminates the risk of money laundering 
 
 ### 7.3 Merchant Accountability
 
-The virtually handpicked nature of the peers fulfilling individual orders—via the breakthrough Proof-of-Credibility algorithm—means a serious disincentive and unlikelihood for any merchant to attempt a fraudulent transaction.
+The selected nature of the merchants fulfilling individual orders—via the Proof-of-Credibility algorithm—means a serious disincentive and unlikelihood for any merchant to attempt a fraudulent transaction.
 
 ---
 
 ## 8. Dispute Resolution
 
-The Protocol is designed to minimize unnecessary data disclosure during disputes. If a user files a dispute, the counterparty can submit evidence of the transaction without exposing additional personal data. In the current contract implementation, disputes are resolved on-chain by authorized admins based on submitted evidence and protocol fault rules. A planned evidence module for on-chain dispute resolution and bank transaction verification will enable privacy-preserving proof submission; deeper automated verifier-driven settlement is part of the roadmap.
+The Protocol is designed to minimize unnecessary data disclosure during disputes. If a user files a dispute, the counterparty can submit evidence of the transaction without exposing additional personal data. In the current contract implementation, disputes are resolved on-chain by authorized admins based on submitted evidence and protocol fault rules. Privacy-preserving bank transaction verification and deeper automated settlement are part of the roadmap (see Section 4.2).
 
 **Windows & Burdens:** Default onus: the party claiming completion provides evidence of completion. The challenger can present counter-evidence (e.g., bank statement showing non-receipt). Fail-to-prove paths trigger slashing or refunds according to the Protocol rules.
 
@@ -493,7 +475,7 @@ Quote commitment, minimum depth, and cancellation penalties are governed to redu
 ## 12. Privacy Model
 
 - **Data minimization:** contracts store only commitments, verdicts, and reputation deltas.
-- **Selective disclosure:** ZK-KYC proofs reveal only predicates required for identity verification and compliance tiers. A planned evidence module will extend selective disclosure to bank transaction verification for settlement.
+- **Selective disclosure:** ZK-KYC proofs reveal only predicates required for identity verification and compliance tiers. Bank transaction verification is planned (see Section 4.2).
 - **Retention & Access:** governance-set retention of attestations; no raw PII on-chain.
 - **Linkability:** user-facing guidance to avoid unintended linkage across sessions where feasible.
 
@@ -501,7 +483,7 @@ Quote commitment, minimum depth, and cancellation penalties are governed to redu
 
 ## 13. Compliance & Policy Positioning
 
-Unsurprisingly, while P2P Protocol leads the P2P market with its decentralized model and seamless UI client software, it aims to remain in good standing with legal regulations. The user is responsible for legitimate usage and taxation in their jurisdiction.
+P2P Protocol aims to remain in good standing with legal regulations. The user is responsible for legitimate usage and taxation in their jurisdiction.
 
 - **Non-custodial stance:** The Protocol coordinates peers and verifies evidence; it does not take custody of fiat.
 - **Risk controls:** transaction limits, reputation tiers, optional ZK-KYC, sanctions-screening interfaces for merchants, and governed regional parameter sets.
@@ -515,13 +497,13 @@ Likewise, it must be noted that the Protocol in no way intends to advocate tax e
 
 ### 13.2 Micro-Transactions for Mass Adoption
 
-Blockchain transactions have been traditionally notorious for high transfer fees and slow processing times. Currently deployed on Base, the Protocol can afford to charge very nominal fees for its on- and off-ramps, thanks to the faster validation times and lower gas costs. Solana deployment is planned within six months, further expanding chain coverage. The difference is especially pronounced for smaller transactions where newcomers routinely feel discouraged by the slow and expensive economics involved.
+Blockchain transactions have been traditionally notorious for high transfer fees and slow processing times. Currently deployed on Base (Solana planned), the Protocol can afford to charge very nominal fees for its on- and off-ramps, thanks to the faster validation times and lower gas costs. The difference is especially pronounced for smaller transactions where newcomers routinely feel discouraged by the slow and expensive economics involved.
 
-Fortunately, the Protocol's robust on-chain reputation management coupled with its transaction limits does more than just drive mass adoption of decentralized currencies and transactions. In fact, a sole emphasis on large transactions ironically coincides with the prospects of money laundering and other foul economic practices. P2P Protocol in the space particularly underscores the importance of micro-transactions instead, by making these both viable and useful for the community.
+The Protocol's robust on-chain reputation management coupled with its transaction limits does more than just drive mass adoption of decentralized currencies and transactions. In fact, a sole emphasis on large transactions ironically coincides with the prospects of money laundering and other foul economic practices. P2P Protocol in the space particularly underscores the importance of micro-transactions instead, by making these both viable and useful for the community.
 
 Besides mass consumer adoption of cryptocurrencies, microtransactions enable newfound financial access through web3 for underrepresented communities in today's banking system. Specifically, it has been noted that nearly **1.2 billion people have mobile phones but lack any reliable access to banks**. For them, being able to perform transactions in the neighborhood of $50-$500 in a way that is secure and egalitarian is paramount—a feat that P2P Protocol can readily help achieve.
 
-Indeed, the adoption of crypto for consumer payments has implications for both the Web2 and Web3 economies. Existing consumer tech companies can finally start accepting payments online using cryptocurrency. Likewise, the market can explore newly enabled ways of spending and deploying capital, thanks to a microtransaction economy powering fully decentralized finance.
+The adoption of crypto for consumer payments has implications for both the Web2 and Web3 economies. Existing consumer tech companies can finally start accepting payments online using cryptocurrency. Likewise, the market can explore newly enabled ways of spending and deploying capital, thanks to a microtransaction economy powering fully decentralized finance.
 
 ---
 
@@ -588,13 +570,11 @@ While the protocol is designed with safety and resilience in mind, users should 
 
 1. **Reclaim Protocol** — https://www.reclaimprotocol.org/
 
-*(Additional citations to be populated in the production draft.)*
 
 ---
 
 ## Appendices
 
-*(To be expanded later)*
 
 1. **State Machines & Sequence Diagrams** for on-/off-ramp and dispute flows.
 2. **Proof Interface Specs:** inputs/outputs for identity predicates; verifier APIs; planned evidence module interface.

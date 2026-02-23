@@ -19,7 +19,7 @@ In this model:
 
 - A user in any supported country can buy or sell stablecoins in ~minutes—targeting sub-90-second completion on fast rails—without giving custody to anyone.
 - Merchants are matched based on reliability and Proof-of-Credibility scores, with spread set at the protocol level rather than through merchant competition.
-- ZK-KYC unlocks higher limits and faster paths while keeping personal data off-chain. A planned evidence module for bank transaction verification will further extend privacy-preserving proofs to dispute resolution.
+- ZK-KYC unlocks higher limits and faster paths while keeping personal data off-chain.
 - Third-party apps and wallets integrate the protocol through open SDKs; Coins.me is only a reference consumer front-end, not a privileged gateway.
 - As credibility compounds, new products (installment payouts, escrowless commerce, cross-border salaries, dispute insurance) can be built without re-KYCing the world.
 
@@ -78,7 +78,7 @@ Vendors and chains will change; the principles cannot. The whitepaper commits to
 
 - No single L2, oracle, or proof provider baked into the logic.
 - Clear interfaces (verifier registry, oracle adapter, rail registry) so parts can be swapped without rewriting the paper or the social contract.
-- Open Sourcing and Decentralizing each part of the Protocol as public goods.
+- open-sourcing and decentralizing each part of the Protocol as public goods.
 
 ## 1.10 Credibility but with Privacy
 
@@ -113,7 +113,7 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 ## 1.14 What we won't compromise on
 
 - Non-custody of fiat (ever).
-- No honeypots of PII (Personal Identifiable Information) on-chain (ever).
+- No honeypots of PII (Personally Identifiable Information) on-chain (ever).
 - No privileged clients (ever). Everyone uses the same pipes.
 - No "trust us" black boxes. If it can't be proven or audited, it doesn't make core.
 
@@ -130,7 +130,7 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 
 > Privacy is a user interface problem as much as a math problem.
 
-> Reputation should be earned, portable, and revoke-able—never sold.
+> Reputation should be earned, portable, and revocable—never sold.
 
 > The best KYC is the one that proves what's needed and nothing else.
 

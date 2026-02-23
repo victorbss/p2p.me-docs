@@ -1,6 +1,6 @@
 ---
 id: 03-3-system-overview
-sidebar_position: 5
+sidebar_position: 3
 title: "3. System Overview"
 slug: system-overview
 ---
@@ -13,15 +13,15 @@ The protocol involves several key participants working together to enable trustl
 
 **Merchants**, also known as liquidity peers, serve as the counterparties who mediate liquidity between stablecoins and fiat currencies. These are carefully vetted participants who maintain sufficient liquidity and have established strong reputations through the Proof-of-Credibility system.
 
-**Protocol Contracts** are the on-chain smart contracts that orchestrate the entire order lifecycle. They handle order queuing, matching based on credibility scores, state verification, and final settlement outcomes. These contracts currently operate on Base L2, with Solana deployment on the roadmap.
+**Protocol Contracts** are the on-chain smart contracts that orchestrate the entire order lifecycle. They handle order queuing, matching based on credibility scores, state verification, and final settlement outcomes. These contracts currently operate on Base L2 (Solana planned).
 
-**Proof Verifiers** currently validate ZK-KYC proofs for identity verification (government IDs, social accounts, and passports via Reclaim Protocol and other ZK verifiers). A planned evidence module will extend proof verification to bank transaction verification for on-chain dispute resolution.
+**Proof Verifiers** currently validate ZK-KYC proofs for identity verification (government IDs, social accounts, and passports via Reclaim Protocol and other ZK verifiers). Bank transaction verification is planned (see Section 4.2).
 
 **Governance** encompasses the mechanisms through which protocol parameters, upgrades, and treasury decisions are made. The current implementation is admin/multisig operated, with a planned transition to broader token-holder governance as the protocol matures.
 
 ## 3.2 Components
 
-- **Base L2 smart contracts** (Solana deployment planned) for order lifecycle, matching, dispute windows, parameter registry, and fee routing.
+- **Base L2 smart contracts** (Solana planned) for order lifecycle, matching, dispute windows, parameter registry, and fee routing.
 - **Reputation registry** implementing Proof-of-Credibility (inputs, scoring, decay).
 - **Oracle adapter** for reference pricing and safeguards (median/TWAP, fallbacks, circuit breakers).
 - **Client SDKs** and reference apps (e.g., Coins.me) that speak the protocol.
@@ -32,17 +32,17 @@ The protocol involves several key participants working together to enable trustl
 2. **Order Matching:** A list of carefully vetted merchants is queued via Proof-of-Credibility. A fiat payment address is shared over the smart contract, encrypted with the user's keys; for off-ramps, a USDC address on Base (Solana planned) is presented.
 3. **Fiat/Stablecoin Transfer:** The payer performs the transfer on the designated rail.
 4. **Confirmation/Settlement:** Within minutes, settlement succeeds once the merchant confirms receipt. Wallet balances update accordingly.
-5. **Dispute Window:** If a party contests, they submit evidence that a payment or action occurred (or did not). In the live implementation, authorized admins settle disputed orders on-chain according to protocol fault rules and dispute windows. A planned evidence module will enable privacy-preserving proof submission for bank transaction verification.
+5. **Dispute Window:** If a party contests, they submit evidence that a payment or action occurred (or did not). In the live implementation, authorized admins settle disputed orders on-chain according to protocol fault rules and dispute windows.
 
 ```mermaid
 flowchart LR
-    place[PlaceOrder] --> match[MerchantMatch]
-    match --> transfer[FiatOrStablecoinTransfer]
-    transfer --> confirm[ConfirmAndSettle]
+    place[Place order] --> match[Merchant match]
+    match --> transfer[Fiat or stablecoin transfer]
+    transfer --> confirm[Confirm and settle]
     confirm --> done[Completed]
-    confirm --> dispute[DisputeRaised]
-    dispute --> adminSettle[AdminSettlementOnChain]
-    adminSettle --> resolved[ResolvedState]
+    confirm --> dispute[Dispute raised]
+    dispute --> adminSettle[Admin settlement on-chain]
+    adminSettle --> resolved[Resolved]
 ```
 
 ## 3.4 On-Ramp Flow
@@ -138,7 +138,7 @@ flowchart LR
 - The **merchant** serves the function of mediating liquidity for the transactions.
 - The **onus of confirming payment** rests on the merchant (for off-ramps) or can be provided by either party.
 - **ZK-KYC performs trustless identity verification** for the user without exposing personal data.
-- **Evidence is submitted and reviewed** in disputes. In the current system, outcomes are executed via on-chain admin settlement. A planned evidence module will enable on-chain dispute resolution with privacy-preserving bank transaction verification; broader verifier and governance-driven resolution remains roadmap.
+- **Evidence is submitted and reviewed** in disputes. In the current system, outcomes are executed via on-chain admin settlement; broader verifier and governance-driven resolution remains roadmap (see Section 4.2).
 - **Reclaim Protocol** enables privacy-preserving identity verification via social accounts and government IDs.
 
 ---

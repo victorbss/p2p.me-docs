@@ -19,10 +19,10 @@ slug: merchant-setup-flow
 
 ```mermaid
 flowchart LR
-    register[RegisterMerchant] --> stake[StakeLiquidity]
-    stake --> addPc[AddPaymentChannels]
-    addPc --> approvePc[ChannelApproval]
-    approvePc --> live[AssignableMerchantState]
+    register[Register merchant] --> stake[Stake liquidity]
+    stake --> addPc[Add payment channels]
+    addPc --> approvePc[Channel approval]
+    approvePc --> live[Assignable merchant state]
 ```
 
 ---
