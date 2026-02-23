@@ -220,55 +220,7 @@ const config: Config = {
         src: 'img/p2p-foundation-main.svg',
         srcDark: 'img/p2p-foundation-2.svg',
       },
-      items: [
-        {
-                "type": "docSidebar",
-                "sidebarId": "whitepaperSidebar",
-                "position": "left",
-                "label": "[ WHITEPAPER ]",
-                "className": "navbar__item--whitepaper navbar-icon-whitepaper"
-        },
-        {
-                "type": "docSidebar",
-                "sidebarId": "forInvestorsSidebar",
-                "position": "left",
-                "label": "[ FOR INVESTORS ]",
-                "docsPluginId": "for-investors",
-                "className": "navbar-icon-investors"
-        },
-        {
-                "type": "docSidebar",
-                "sidebarId": "forBuildersSidebar",
-                "position": "left",
-                "label": "[ FOR BUILDERS ]",
-                "docsPluginId": "for-builders",
-                "className": "navbar-icon-builders"
-        },
-        {
-                "type": "docSidebar",
-                "sidebarId": "forMerchantsSidebar",
-                "position": "left",
-                "label": "[ FOR MERCHANTS ]",
-                "docsPluginId": "for-merchants",
-                "className": "navbar-icon-merchants"
-        },
-        {
-                "type": "docSidebar",
-                "sidebarId": "forUsersSidebar",
-                "position": "left",
-                "label": "[ FOR USERS ]",
-                "docsPluginId": "for-users",
-                "className": "navbar-icon-users"
-        },
-        {
-                "type": "docSidebar",
-                "sidebarId": "forCommunitySidebar",
-                "position": "left",
-                "label": "[ FOR COMMUNITY ]",
-                "docsPluginId": "for-community",
-                "className": "navbar-icon-community"
-        }
-],
+      items: [],
     },
     footer: {
       style: 'dark',

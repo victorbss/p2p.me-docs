@@ -270,14 +270,12 @@ h6 {
   padding: 0.3rem 0.6rem;
 }
 
-/* Whitepaper nav button highlight */
+/* Whitepaper nav button - only highlight when active */
 .navbar__item--whitepaper {
-  background: #fff !important;
-  color: #000 !important;
   border-radius: 4px !important;
   padding: 0.3rem 0.8rem !important;
   font-weight: 700 !important;
-  border: 2px solid #fff !important;
+  border: 2px solid transparent !important;
   transition: all 0.15s ease !important;
 }
 
@@ -287,7 +285,13 @@ h6 {
   border-color: var(--p2p-blue) !important;
 }
 
-[data-theme="light"] .navbar__item--whitepaper {
+.navbar__item--whitepaper.navbar__link--active {
+  background: #fff !important;
+  color: #000 !important;
+  border-color: #fff !important;
+}
+
+[data-theme="light"] .navbar__item--whitepaper.navbar__link--active {
   background: #000 !important;
   color: #fff !important;
   border-color: #000 !important;
@@ -402,6 +406,13 @@ h6 {
 .theme-doc-sidebar-container {
   border-right: 1px solid var(--border-color) !important;
   background-color: var(--site-sidebar-bg) !important;
+}
+
+/* Separator between sidebar sections */
+.theme-doc-sidebar-menu > .menu__list-item + .menu__list-item {
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--border-color);
 }
 
 /* Top-level sidebar category (Documentation Title) */
