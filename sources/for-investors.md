@@ -11,7 +11,7 @@ This page covers the token thesis, economics, governance model, and investor FAQ
 - [Token details and allocation](#token-details)
 - [MetaDAO sale](#metadao-sale)
 - [Vesting schedules](#vesting-schedules)
-- [Buy-and-burn](#buy-and-burn)
+- [Treasury and token value](#treasury-and-token-value)
 - [Staking mechanics](#staking-mechanics)
 - [Token-holder governance](#token-holder-governance)
 - [Progressive decentralization](#progressive-decentralization)
@@ -28,7 +28,7 @@ Also see [`/whitepaper`](/whitepaper) for protocol context and [`/for-builders`]
 - **Expansion path is clear.** Remittance and multi-currency tracks build on existing rails. They add corridors and users, not new trust assumptions.
 - **Early-stage structure.** Compact launch supply with no insider tokens at TGE.
 - **Governance transition path.** Admin-operated today, with a documented multi-phase migration to token-governed control.
-- **Value capture is explicit.** Staking, delegation, and buy-and-burn connect protocol revenue to token economics.
+- **Value capture is explicit.** Staking, delegation, and treasury contributions connect protocol revenue to token economics.
 
 ---
 
@@ -42,7 +42,7 @@ The token enables four things.
 
 - **Decentralized governance.** Holders vote on fees, limits, merchant rules, and treasury allocation. No single operator controls these decisions.
 - **Trust staking ("Circles of Trust").** Token holders stake $P2P on merchant liquidity pools to attest to their trustworthiness, earning stablecoin yield from the Circle's transaction revenue.
-- **Revenue-linked ownership.** Protocol revenue funds buybacks and burns, directly connecting token value to network usage and growth.
+- **Revenue-linked ownership.** 20% of protocol revenue flows to the treasury. Via MetaDAO futarchy governance, the treasury can fund buy-and-burn or other value-accruing actions—directly connecting token value to network usage and growth.
 - **Censorship resistance.** Decentralized ownership means no single point of failure. The protocol can survive regulatory pressure in any one jurisdiction because control is distributed globally among token holders.
 
 ---
@@ -226,7 +226,7 @@ Yes, fixed at launch (25.8M). Future issuance requires governance approval via f
 
 ### Why Base chain?
 
-Low fees and fast finality make frequent small transactions practical. Multi-chain expansion is on the roadmap. Chain choice does not lock the token design.
+Low fees and fast finality make frequent small transactions practical. Solana deployment is planned within six months. Chain choice does not lock the token design.
 
 ### How do I separate what's live from what's planned?
 

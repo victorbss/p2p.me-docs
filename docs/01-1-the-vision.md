@@ -121,7 +121,7 @@ Most people want two things at once: privacy and legality. P2P Protocol makes th
 
 - **Ubiquity:** a credible merchant presence in every major region/rail pair.
 - **Geographic reach:** expansion to 20+ markets across Asia, Africa, Latin America, and MENA.
-- **Multi-chain presence:** support for additional networks including Solana and emerging high-performance chains.
+- **Multi-chain presence:** Solana deployment planned within six months; support for additional emerging high-performance chains to follow.
 - **Composability:** third-party apps shipping useful features on the SDK without asking permission.
 - **Self-serve legitimacy:** regulators and risk teams can read the spec, verify parameters on-chain, and understand how safety is achieved—without backdoors.
 - **Roadmap features:** for current feature-track proposals (including remittance and currency expansion), see [`/for-builders`](/for-builders).

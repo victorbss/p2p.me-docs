@@ -31,7 +31,7 @@ Yes, fixed at launch (25.8M). Future issuance requires governance approval via f
 
 ## Why Base chain?
 
-Low fees and fast finality make frequent small transactions practical. Multi-chain expansion is on the roadmap. Chain choice does not lock the token design.
+Low fees and fast finality make frequent small transactions practical. Solana deployment is planned within six months. Chain choice does not lock the token design.
 
 ## How do I separate what's live from what's planned?
 
