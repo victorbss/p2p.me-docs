@@ -27,4 +27,4 @@ RP hooks are whitelisted in the `ReputationManager`. Order volume updates, dispu
 
 ## Where does governance detail live for token holders?
 
-Token-holder governance (voting model, quorum, progressive decentralization) is documented in [`/for-investors`](/for-investors).
+Token-holder governance (voting model, quorum, progressive decentralization) is documented in [`/for-investors`](/for-investors/start-here).
