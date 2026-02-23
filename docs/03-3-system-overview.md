@@ -15,7 +15,7 @@ The protocol involves several key participants working together to enable trustl
 
 **Protocol Contracts** are the on-chain smart contracts that orchestrate the entire order lifecycle. They handle order queuing, matching based on credibility scores, state verification, and final settlement outcomes. These contracts operate transparently on Base L2.
 
-**Proof Verifiers** are responsible for validating ZK and TLS-backed proofs submitted during transactions or disputes. Verification can occur on-chain for compact claims, or through designated off-chain attesters for more complex rail-specific statements, with results posted back on-chain.
+**Proof Verifiers** currently validate ZK-KYC proofs for identity verification (government IDs, social accounts, and passports via Reclaim Protocol and other ZK verifiers). A planned evidence module will extend proof verification to bank transaction verification for on-chain dispute resolution.
 
 **Governance** encompasses the mechanisms through which protocol parameters, upgrades, and treasury decisions are made. The current implementation is admin/multisig operated, with a planned transition to broader token-holder governance as the protocol matures.
 
@@ -31,8 +31,8 @@ The protocol involves several key participants working together to enable trustl
 1. **Placing Orders:** A user clicks "Buy USDC" (or "Sell USDC") and enters amount. The app provides an integrated wallet for the transaction.
 2. **Order Matching:** A list of carefully vetted merchants is queued via Proof-of-Credibility. A fiat payment address is shared over the smart contract, encrypted with the user's keys; for off-ramps, a Base USDC address is presented.
 3. **Fiat/Stablecoin Transfer:** The payer performs the transfer on the designated rail.
-4. **Confirmation/Settlement:** Within minutes, settlement succeeds once the counter-proof condition is met (e.g., merchant confirms receipt or buyer submits transfer proof). Wallet balances update accordingly.
-5. **Dispute Window:** If a party contests, they submit evidence (including ZK/TLS-backed proofs where available) that a payment or action occurred (or did not). In the live implementation, authorized admins settle disputed orders on-chain according to protocol fault rules and dispute windows.
+4. **Confirmation/Settlement:** Within minutes, settlement succeeds once the merchant confirms receipt. Wallet balances update accordingly.
+5. **Dispute Window:** If a party contests, they submit evidence that a payment or action occurred (or did not). In the live implementation, authorized admins settle disputed orders on-chain according to protocol fault rules and dispute windows. A planned evidence module will enable privacy-preserving proof submission for bank transaction verification.
 
 ```mermaid
 flowchart LR
@@ -74,8 +74,7 @@ flowchart LR
 │        │──────────────────────────────────────────────►│                │
 │        │                      │                        │                │
 │        │                      │  5. Merchant confirms  │                │
-│        │                      │  OR user submits       │                │
-│        │                      │  ZK payment proof      │                │
+│        │                      │  receipt               │                │
 │        │                      │◄───────────────────────│                │
 │        │                      │                        │                │
 │        │  6. USDC released    │                        │                │
@@ -119,7 +118,7 @@ flowchart LR
 │        │◄──────────────────────────────────────────────│                │
 │        │                      │                        │                │
 │        │                      │  5. Merchant submits   │                │
-│        │                      │  ZK payment proof      │                │
+│        │                      │  payment confirmation  │                │
 │        │                      │◄───────────────────────│                │
 │        │                      │                        │                │
 │        │                      │  6. USDC released      │                │
@@ -137,10 +136,9 @@ flowchart LR
 ## 3.6 Key Considerations
 
 - The **merchant** serves the function of mediating liquidity for the transactions.
-- The **onus of sharing ZK proof** always rests on the merchant (for off-ramps) or can be provided by either party.
-- **ZK-proof performs trustless KYC** for the user without exposing personal data.
-- **ZK-proofs serve as verifiable evidence** in disputes. In the current system, outcomes are executed via on-chain admin settlement; broader verifier and governance-driven resolution remains roadmap.
-- **Reclaim Protocol** securely encrypts all in-transit data carried by the ZK proof.
-- All proof creation, storage, and transmission is handled via the **TLS 1.2/1.3 specification**.
+- The **onus of confirming payment** rests on the merchant (for off-ramps) or can be provided by either party.
+- **ZK-KYC performs trustless identity verification** for the user without exposing personal data.
+- **Evidence is submitted and reviewed** in disputes. In the current system, outcomes are executed via on-chain admin settlement. A planned evidence module will enable on-chain dispute resolution with privacy-preserving bank transaction verification; broader verifier and governance-driven resolution remains roadmap.
+- **Reclaim Protocol** enables privacy-preserving identity verification via social accounts and government IDs.
 
 ---

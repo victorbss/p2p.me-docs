@@ -19,7 +19,7 @@ Use the in-app dispute process. *Governance-driven escalation tiers are planned 
 
 ## Is my identity stored on-chain?
 
-No raw PII is stored on-chain. The protocol uses ZK proofs and attestation hashes. Only commitments and verdicts are public.
+No raw PII is stored on-chain. The protocol uses ZK-KYC proofs for identity verification and stores only commitments and verdicts on-chain.
 
 ## How do I know what to do next?
 

@@ -99,7 +99,7 @@ If your order remains in a state longer than expected, use in-app support/escala
 If the counterparty doesn't fulfill their obligation, take the following steps.
 
 1. Open a dispute within the allowed time window.
-2. Submit evidence in-app (ZK/TLS-backed proofs where available).
+2. Submit evidence in-app.
 3. Monitor dispute status.
 
 Disputes are resolved on-chain by authorized admins under protocol fault rules. *Jury-based escalation tiers are planned for a future release.*
@@ -141,7 +141,7 @@ Use the in-app dispute process. *Governance-driven escalation tiers are planned 
 
 ### Is my identity stored on-chain?
 
-No raw PII is stored on-chain. The protocol uses ZK proofs and attestation hashes. Only commitments and verdicts are public.
+No raw PII is stored on-chain. The protocol uses ZK-KYC proofs for identity verification and stores only commitments and verdicts on-chain.
 
 ### How do I know what to do next?
 
