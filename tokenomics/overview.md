@@ -5,7 +5,9 @@ title: "Overview"
 slug: overview
 ---
 
-The $P2P token is the governance and utility token of P2P Protocol. It enables community-driven protocol management, economic participation through staking and delegation, and value accrual through a buy-and-burn mechanism funded by protocol revenue.
+The $P2P token is an **ownership token**. Protocol IP, treasury funds, and mint authority are all controlled by token holders through futarchy-based governance—not by any single team, foundation, or entity. This makes $P2P real, unruggable ownership of revenue-generating infrastructure.
+
+The token enables community-driven protocol management, economic participation through staking and delegation, and value accrual through treasury contributions funded by protocol revenue. Via MetaDAO futarchy governance, token holders direct treasury funds toward buy-and-burn or other value-accruing actions.
 
 ## Token Details
 
