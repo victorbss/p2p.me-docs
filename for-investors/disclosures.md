@@ -1,6 +1,6 @@
 ---
 id: disclosures
-sidebar_position: 15
+sidebar_position: 16
 title: "Disclosures"
 slug: disclosures
 ---

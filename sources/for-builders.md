@@ -165,7 +165,7 @@ The bottleneck for geographic expansion is local knowledge. Open-source configs 
 
 ### Where are the contract ABIs?
 
-Contract references are listed in the [Contract References](#contract-references) section. Source code is available under the terms described in the protocol's licensing documentation.
+Contract references are listed in the [Contract References](/for-builders/contract-references) section. Source code is pending audits and will be opensourced by june 2026.
 
 ### Can I add a new country or currency?
 

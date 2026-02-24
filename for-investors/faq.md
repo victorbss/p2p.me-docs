@@ -28,13 +28,3 @@ Users commit USDC during a 4-day window. If oversubscribed, allocations are pro-
 ## Is supply fixed?
 
 Yes, fixed at launch (25.8M). Future issuance requires governance approval via futarchy. The protocol runs on transaction revenue, not token emissions.
-
-## Why Base chain?
-
-Low fees and fast finality make frequent small transactions practical. Solana deployment is planned within six months. Chain choice does not lock the token design.
-
-## How do I separate what's live from what's planned?
-
-Inline notes throughout the docs mark features planned for future releases. For contract-level detail on what is deployed, see [`/for-builders`](/for-builders/start-here).
-
----

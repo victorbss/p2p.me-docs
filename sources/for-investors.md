@@ -25,10 +25,11 @@ Also see [`/whitepaper`](/whitepaper/abstract) for protocol context and [`/for-b
 ## Investor Thesis
 
 - **Working core rails exist today.** Onramp/offramp, matching, disputes, and on-chain parameter controls are live and processing volume.
-- **Expansion path is clear.** Remittance and multi-currency tracks build on existing rails. They add corridors and users, not new trust assumptions.
+- **Expansion path is clear.** Remittance and multi-currency tracks build on existing rails. They add corridors and users, not new trust assumptions.B2B SDK for third party developers to integrate P2P protocol rails is set to launch by june 2026
 - **Early-stage structure.** Compact launch supply with no insider tokens at TGE.
 - **Governance transition path.** Admin-operated today, with a documented multi-phase migration to token-governed control.
 - **Value capture is explicit.** Staking, delegation, and treasury contributions connect protocol revenue to token economics.
+- **Sustainable growth is achieved.** Over the last 15 months an average month-on-month growth of 27% is recorded. We expect the protocol to continue with the same growth rate over the next 18 months to reach $500mn in monthly volume. Protocol metrics can be tracked on-chain [here](https://dune.com/p2pme/latest).
 
 ---
 
@@ -271,7 +272,7 @@ Users commit USDC during a 4-day window. If oversubscribed, allocations are pro-
 
 Yes, fixed at launch (25.8M). Future issuance requires governance approval via futarchy. The protocol runs on transaction revenue, not token emissions.
 
-### Why Base chain?
+## Why Base chain? When will you launch on solana?
 
 Low fees and fast finality make frequent small transactions practical. Solana deployment is planned within six months. Chain choice does not lock the token design.
 
