@@ -4,7 +4,7 @@ const sidebars: SidebarsConfig = {
   forMerchantsSidebar: [
     {
         "type": "category",
-        "label": "For Merchants",
+        "label": "For P2P Merchants",
         "collapsible": true,
         "collapsed": false,
         "link": {

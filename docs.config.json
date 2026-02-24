@@ -52,7 +52,7 @@
       "source": "sources/for-merchants.md",
       "outputDir": "for-merchants",
       "routeBasePath": "for-merchants",
-      "navbarLabel": "For Merchants",
+      "navbarLabel": "For P2P Merchants",
       "navbarPosition": "left",
       "sidebarId": "forMerchantsSidebar",
       "extractImages": false,

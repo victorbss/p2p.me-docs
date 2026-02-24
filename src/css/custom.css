@@ -98,7 +98,7 @@
   --ifm-color-primary: var(--p2p-blue);
   --ifm-color-primary-dark: var(--p2p-blue-dark);
   --ifm-color-primary-light: var(--p2p-blue-light);
-  --ifm-navbar-height: 3rem;
+  --ifm-navbar-height: 3.5rem;
 
   /* Common */
   --glass-backdrop: blur(12px);
@@ -249,13 +249,28 @@ h6 {
   margin-bottom: 0.5rem;
 }
 
-/* Navbar */
+/* Navbar
+   backdrop-filter lives on a ::before pseudo instead of the <nav> itself.
+   Reason: backdrop-filter on the <nav> creates a containing block that traps
+   the position:fixed mobile sidebar, making it invisible / hidden behind
+   page content when the hamburger menu opens. */
 .navbar {
-  backdrop-filter: var(--glass-backdrop);
-  -webkit-backdrop-filter: var(--glass-backdrop);
   border-bottom: 1px solid var(--border-color);
   padding-top: 0;
   padding-bottom: 0;
+  background: transparent !important;
+  position: relative;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  background: var(--ifm-navbar-background-color);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .navbar__inner {
@@ -263,11 +278,27 @@ h6 {
 }
 
 .navbar__link {
-  font-size: 0.75rem;
+  font-size: clamp(0.78rem, 0.55vw + 0.45rem, 0.92rem);
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  padding: 0.3rem 0.6rem;
+  padding: 0.4rem 0.7rem;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Dropdown toggle — vertically center the caret with text + icon */
+.navbar__item.dropdown .navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.navbar__link::after {
+  vertical-align: middle;
+  margin-top: 0;
 }
 
 /* Whitepaper nav button - only highlight when active */
@@ -312,10 +343,9 @@ h6 {
 .navbar-icon-community::before {
   content: "";
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin-right: 6px;
-  vertical-align: middle;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -398,7 +428,7 @@ h6 {
 }
 
 .navbar__logo img {
-  height: 26px;
+  height: 28px;
 }
 
 /* Sidebar Navigation - Contrast */
@@ -902,6 +932,32 @@ h6 {
 }
 
 /* Responsive Styles */
+
+/* Large desktop — navbar links can breathe */
+@media (min-width: 1280px) {
+  .navbar__link {
+    padding: 0.45rem 0.85rem;
+  }
+}
+
+/* Compact desktop — tighter spacing so all 6 items fit in one row */
+@media (max-width: 1279px) and (min-width: 997px) {
+  .navbar__link {
+    padding: 0.35rem 0.45rem;
+    letter-spacing: 0.01em;
+  }
+
+  .navbar-icon-whitepaper::before,
+  .navbar-icon-investors::before,
+  .navbar-icon-builders::before,
+  .navbar-icon-merchants::before,
+  .navbar-icon-users::before,
+  .navbar-icon-community::before {
+    width: 14px;
+    height: 14px;
+  }
+}
+
 @media (max-width: 996px) {
   /* Navbar mobile */
   .navbar__logo {
@@ -910,6 +966,12 @@ h6 {
 
   .navbar__logo img {
     height: 24px !important;
+  }
+
+  /* Mobile sidebar menu — comfortable touch targets */
+  .navbar-sidebar .navbar__link {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
   }
 
   /* Sidebar on mobile */

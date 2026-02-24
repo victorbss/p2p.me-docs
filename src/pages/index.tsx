@@ -1,4 +1,4 @@
-import React from "react";
+import type { JSX } from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -16,7 +16,7 @@ export default function Home(): JSX.Element {
     >
       <CursorGlow />
       <header className={clsx("hero", styles.heroBanner)}>
-        <div className="container" style={{ zIndex: 1, position: "relative" }}>
+        <div className="container" style={{ position: "relative" }}>
           <h1 className="hero-title">
             The Future of <br />
             <span className={styles.highlight}>Decentralized</span> Coordination

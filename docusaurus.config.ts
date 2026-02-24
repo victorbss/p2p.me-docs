@@ -504,7 +504,7 @@ const config: Config = {
         },
         {
                 "type": "dropdown",
-                "label": "For Merchants",
+                "label": "For P2P Merchants",
                 "position": "left",
                 "items": [
                         {
