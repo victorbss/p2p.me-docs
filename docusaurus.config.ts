@@ -405,6 +405,12 @@ const config: Config = {
                         },
                         {
                                 "type": "doc",
+                                "docId": "multichain-strategy",
+                                "label": "Multichain Strategy",
+                                "docsPluginId": "for-investors"
+                        },
+                        {
+                                "type": "doc",
                                 "docId": "insurance",
                                 "label": "Insurance",
                                 "docsPluginId": "for-investors"
@@ -417,20 +423,14 @@ const config: Config = {
                         },
                         {
                                 "type": "doc",
-                                "docId": "faq",
-                                "label": "FAQ",
-                                "docsPluginId": "for-investors"
-                        },
-                        {
-                                "type": "doc",
-                                "docId": "multichain-strategy",
-                                "label": "Multichain Strategy",
-                                "docsPluginId": "for-investors"
-                        },
-                        {
-                                "type": "doc",
                                 "docId": "disclosures",
                                 "label": "Disclosures",
+                                "docsPluginId": "for-investors"
+                        },
+                        {
+                                "type": "doc",
+                                "docId": "faq",
+                                "label": "FAQ",
                                 "docsPluginId": "for-investors"
                         }
                 ]

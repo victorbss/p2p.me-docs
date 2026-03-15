@@ -1,6 +1,6 @@
 ---
 id: faq
-sidebar_position: 14
+sidebar_position: 16
 title: "FAQ"
 slug: faq
 ---
