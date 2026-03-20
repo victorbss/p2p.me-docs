@@ -20,15 +20,24 @@ if (ExecutionEnvironment.canUseDOM) {
       });
     }
 
-    // Translate Search button placeholder
+    // Translate Search button placeholder and input
+    const searchPlaceholder = lang === 'pt' ? 'Pesquisar' : 'Search';
+
+    // DocSearch button placeholder
     document.querySelectorAll('.DocSearch-Button-Placeholder').forEach((el) => {
-      el.textContent = lang === 'pt' ? 'Pesquisar' : 'Search';
+      el.textContent = searchPlaceholder;
     });
 
+    // Search input fields
     document.querySelectorAll(
       'input[placeholder="Search"], input[placeholder="Pesquisar"]'
     ).forEach((input) => {
-      input.placeholder = lang === 'pt' ? 'Pesquisar' : 'Search';
+      input.placeholder = searchPlaceholder;
+    });
+
+    // Local search input (easyops-cn/docusaurus-search-local)
+    document.querySelectorAll('input.search-local-input').forEach((input) => {
+      input.placeholder = searchPlaceholder;
     });
   }
 

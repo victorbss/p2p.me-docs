@@ -3,8 +3,6 @@ id: 00-abstract
 sidebar_position: 0
 title: "Resumo"
 slug: abstract
-pagination_next: null
-pagination_prev: null
 ---
 
 No despertar das exchanges centralizadas, as primeiras exchanges descentralizadas lideraram o movimento DeFi usando livros de ordens e pools de liquidez. No entanto, os usuários de DeFi ainda não tinham uma forma totalmente descentralizada de converter moeda fiduciária em cripto (on-ramp) e vice-versa (off-ramp).

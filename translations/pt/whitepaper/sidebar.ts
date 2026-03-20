@@ -14,11 +14,6 @@ const sidebars: SidebarsConfig = {
         "items": [
             {
                 "type": "doc",
-                "id": "00-abstract",
-                "label": "Resumo"
-            },
-            {
-                "type": "doc",
                 "id": "01-1-the-vision",
                 "label": "1. A Visão"
             },
