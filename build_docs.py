@@ -15,6 +15,7 @@ import json
 import os
 import re
 import base64
+import html
 import shutil
 import argparse
 from pathlib import Path
@@ -384,11 +385,13 @@ export default sidebars;
         logo_alt = json.dumps(navbar_config.get("logo", {}).get("alt", "P2P Foundation"))
         logo_src = json.dumps(navbar_config.get("logo", {}).get("src", "img/p2p-foundation-main.svg"))
         logo_src_dark = json.dumps(navbar_config.get("logo", {}).get("srcDark", "img/p2p-foundation-2.svg"))
-        footer_copyright = json.dumps(footer_config.get("copyright", "P2P Foundation"))
-        social_discord = json.dumps(social_links.get('discord', '#'))
-        social_telegram = json.dumps(social_links.get('telegram', '#'))
-        social_twitter = json.dumps(social_links.get('twitter', '#'))
-        social_youtube = json.dumps(social_links.get('youtube', '#'))
+        # These land inside footer HTML (text and href attributes), so escape
+        # the HTML layer before JSON-encoding the JS-string layer
+        footer_copyright = json.dumps(html.escape(footer_config.get("copyright", "P2P Foundation")))
+        social_discord = json.dumps(html.escape(social_links.get('discord', '#')))
+        social_telegram = json.dumps(html.escape(social_links.get('telegram', '#')))
+        social_twitter = json.dumps(html.escape(social_links.get('twitter', '#')))
+        social_youtube = json.dumps(html.escape(social_links.get('youtube', '#')))
         # Build plugins array: Biel.ai + pre-generated docs plugins
         plugins = []
 
