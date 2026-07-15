@@ -602,6 +602,10 @@ h6 {
   content: "En esta página";
 }
 
+.lang-id .theme-doc-toc-desktop::before {
+  content: "Di halaman ini";
+}
+
 .table-of-contents__link {
   font-size: 0.85rem;
   border-left: 1px solid var(--border-color);

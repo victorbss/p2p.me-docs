@@ -130,6 +130,7 @@ if (ExecutionEnvironment.canUseDOM) {
     // Toggle lang-pt class on html element for CSS-based translations
     document.documentElement.classList.toggle('lang-pt', lang === 'pt');
     document.documentElement.classList.toggle('lang-es', lang === 'es');
+    document.documentElement.classList.toggle('lang-id', lang === 'id');
 
     // Translate Ask AI selection tooltip
     const askAiLabel = document.querySelector('#ask-ai-tooltip span');
@@ -153,9 +154,16 @@ if (ExecutionEnvironment.canUseDOM) {
         if (el.textContent.trim() === 'Next') el.textContent = 'Siguiente';
       });
     }
+    if (lang === 'id') {
+      document.querySelectorAll('.pagination-nav__sublabel').forEach((el) => {
+        if (el.textContent.trim() === 'Previous') el.textContent = 'Sebelumnya';
+        if (el.textContent.trim() === 'Next') el.textContent = 'Berikutnya';
+      });
+    }
 
     // Translate Search button placeholder and input
-    const searchPlaceholder = lang === 'pt' ? 'Pesquisar' : lang === 'es' ? 'Buscar' : 'Search';
+    const searchPlaceholder =
+      lang === 'pt' ? 'Pesquisar' : lang === 'es' ? 'Buscar' : lang === 'id' ? 'Cari' : 'Search';
 
     // DocSearch button placeholder
     document.querySelectorAll('.DocSearch-Button-Placeholder').forEach((el) => {
@@ -164,7 +172,7 @@ if (ExecutionEnvironment.canUseDOM) {
 
     // Search input fields
     document.querySelectorAll(
-      'input[placeholder="Search"], input[placeholder="Pesquisar"]'
+      'input[placeholder="Search"], input[placeholder="Pesquisar"], input[placeholder="Buscar"], input[placeholder="Cari"]'
     ).forEach((input) => {
       input.placeholder = searchPlaceholder;
     });
