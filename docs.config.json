@@ -1401,6 +1401,6 @@
     "buttonPosition": "bottom-right",
     "modalPosition": "sidebar-right",
     "buttonStyle": "dark",
-    "version": "latest"
+    "version": "0.1.83"
   }
 }
