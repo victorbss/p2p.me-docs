@@ -297,6 +297,12 @@ slug: {url_slug}
         first_doc_id = doc_ids[0] if doc_ids else None
         remaining_doc_ids = doc_ids[1:] if len(doc_ids) > 1 else []
 
+        # Optional extra sidebar links (e.g. static file downloads) from config
+        link_items = [
+            {'type': 'link', 'label': link['label'], 'href': link['href']}
+            for link in doc_config.get('sidebarLinks', [])
+        ]
+
         category = {
             'type': 'category',
             'label': doc_config['navbarLabel'],
@@ -306,7 +312,7 @@ slug: {url_slug}
                 'type': 'doc',
                 'id': first_doc_id,
             },
-            'items': remaining_doc_ids,
+            'items': remaining_doc_ids + link_items,
         }
 
         return category

@@ -119,7 +119,17 @@
       "numberSections": false,
       "generateTocLinks": false,
       "sidebarStyle": "flat",
-      "skipSections": []
+      "skipSections": [],
+      "sidebarLinks": [
+        { "label": "P2P Project Integration Agreement", "href": "pathname:///legal-files/p2p-project-integration-agreement.pdf" },
+        { "label": "Investor 1 Token Warrant", "href": "pathname:///legal-files/investor-1-token-warrant.pdf" },
+        { "label": "Investor 2 Token Warrant", "href": "pathname:///legal-files/investor-2-token-warrant.pdf" },
+        { "label": "Investor 3 Token Warrant", "href": "pathname:///legal-files/investor-3-token-warrant.pdf" },
+        { "label": "Investor 4 Token Warrant", "href": "pathname:///legal-files/investor-4-token-warrant.pdf" },
+        { "label": "Investor 1 Amended Token Warrant", "href": "pathname:///legal-files/investor-1-amended-token-warrant.pdf" },
+        { "label": "Investor 2 Amended Token Warrant", "href": "pathname:///legal-files/investor-2-amended-token-warrant.pdf" },
+        { "label": "Investor 3 Amended Token Warrant", "href": "pathname:///legal-files/investor-3-amended-token-warrant.pdf" }
+      ]
     },
     {
       "id": "translations-es",
