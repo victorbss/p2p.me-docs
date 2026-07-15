@@ -213,6 +213,8 @@ class DocBuilder:
         
         generated_files = []
         seen_filenames = {}  # filename -> section title, to catch silent overwrites
+        seen_url_slugs = {}  # served route slug -> section title; distinct filenames
+                             # can still collide here once the digit prefix is stripped
 
         for i, section in enumerate(sections):
             # Create filename with number prefix for ordering
@@ -243,7 +245,17 @@ class DocBuilder:
             
             # Clean the slug for URL (remove leading numbers like "00-")
             url_slug = re.sub(r'^\d+-', '', section['slug'])
-            
+
+            if url_slug in seen_url_slugs:
+                raise SystemExit(
+                    f"ERROR: Duplicate route slug '{url_slug}' in doc '{doc_config['id']}': "
+                    f"sections '{seen_url_slugs[url_slug]}' and '{section['title']}' would be "
+                    f"served at the same URL, and one would silently shadow the other. "
+                    f"Rename one of the headings so they produce unique slugs."
+                )
+            seen_url_slugs[url_slug] = section['title']
+
+
             # Add frontmatter with explicit id to match sidebar references
             # json.dumps escapes quotes/backslashes so titles can't break the YAML
             frontmatter = f"""---
