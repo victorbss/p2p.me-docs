@@ -68,47 +68,6 @@ if (ExecutionEnvironment.canUseDOM) {
     return 'en';
   }
 
-  function deepReplaceText(root, replacements) {
-    const walk = (node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        let text = node.textContent;
-        for (const [from, to] of Object.entries(replacements)) {
-          if (from && text.includes(from)) {
-            text = text.split(from).join(to);
-          }
-        }
-        if (text !== node.textContent) {
-          node.textContent = text;
-        }
-        return;
-      }
-      if (node.nodeType !== Node.ELEMENT_NODE) return;
-      if (node.shadowRoot) walk(node.shadowRoot);
-      for (const child of node.childNodes) walk(child);
-    };
-    walk(root);
-  }
-
-  function buildReplacementMap(lang) {
-    const target = TRANSLATIONS[lang] || TRANSLATIONS.en;
-    const replacements = {};
-    for (const strings of Object.values(TRANSLATIONS)) {
-      replacements[strings.assistant] = target.assistant;
-      replacements[strings.welcome] = target.welcome;
-      replacements[strings.footer] = target.footer;
-      replacements[strings.askAi] = target.askAi;
-      replacements[strings.inputPlaceholder] = target.inputPlaceholder;
-      replacements[strings.thinkModeAuto] = target.thinkModeAuto;
-      replacements[strings.thinkModeAutoDescription] = target.thinkModeAutoDescription;
-      replacements[strings.thinkModeFast] = target.thinkModeFast;
-      replacements[strings.thinkModeFastDescription] = target.thinkModeFastDescription;
-      replacements[strings.thinkModeThink] = target.thinkModeThink;
-      replacements[strings.thinkModeThinkDescription] = target.thinkModeThinkDescription;
-      replacements[strings.sendButton] = target.sendButton;
-    }
-    return { target, replacements };
-  }
-
   function deepQuery(selector, root = document) {
     const found = root.querySelector(selector);
     if (found) return found;
@@ -119,28 +78,6 @@ if (ExecutionEnvironment.canUseDOM) {
       }
     }
     return null;
-  }
-
-  const WELCOME_MARKERS = [
-    'Ask me anything about this document',
-    'Pergunte-me qualquer coisa sobre este documento',
-    'Pregúntame lo que quieras sobre este documento',
-    'Tanyakan apa saja tentang dokumen ini',
-  ];
-
-  function replaceWelcomeText(root, welcomeText) {
-    const walk = (node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        if (WELCOME_MARKERS.some((marker) => node.textContent.includes(marker))) {
-          node.textContent = welcomeText;
-        }
-        return;
-      }
-      if (node.nodeType !== Node.ELEMENT_NODE) return;
-      if (node.shadowRoot) walk(node.shadowRoot);
-      for (const child of node.childNodes) walk(child);
-    };
-    walk(root);
   }
 
   function applyBielAttributes(element, target) {
@@ -158,7 +95,7 @@ if (ExecutionEnvironment.canUseDOM) {
   }
 
   function updateBielTranslations(lang) {
-    const { target, replacements } = buildReplacementMap(lang);
+    const target = TRANSLATIONS[lang] || TRANSLATIONS.en;
     const bielBtn = document.querySelector('biel-button');
     const bielBot = deepQuery('biel-bot');
 
@@ -172,18 +109,6 @@ if (ExecutionEnvironment.canUseDOM) {
     if (bielBot) {
       applyBielAttributes(bielBot, target);
     }
-
-    replaceWelcomeText(document.body, target.welcome);
-    deepReplaceText(document.body, replacements);
-
-    const placeholders = new Set(
-      Object.values(TRANSLATIONS).map((strings) => strings.inputPlaceholder)
-    );
-    document.querySelectorAll('textarea, input').forEach((input) => {
-      if (placeholders.has(input.placeholder)) {
-        input.placeholder = target.inputPlaceholder;
-      }
-    });
   }
 
   let isUpdating = false;
@@ -200,7 +125,7 @@ if (ExecutionEnvironment.canUseDOM) {
 
     try {
     const lang = getCurrentLanguage();
-    const { target } = buildReplacementMap(lang);
+    const target = TRANSLATIONS[lang] || TRANSLATIONS.en;
 
     // Toggle lang-pt class on html element for CSS-based translations
     document.documentElement.classList.toggle('lang-pt', lang === 'pt');
@@ -314,11 +239,17 @@ if (ExecutionEnvironment.canUseDOM) {
     if (shouldUpdate) scheduleUpdateUITranslations();
   });
 
-  window.addEventListener('load', () => {
+  const startObserving = () => {
     observer.observe(document.body, {
       childList: true,
       subtree: true,
     });
-  });
+  };
+
+  if (document.readyState === 'complete') {
+    startObserving();
+  } else {
+    window.addEventListener('load', startObserving, { once: true });
+  }
 }
 
