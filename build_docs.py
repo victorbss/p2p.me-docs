@@ -378,7 +378,7 @@ export default sidebars;
         # can't break the generated file
         site_title = json.dumps(self.config.get("siteTitle", "P2P Foundation Docs"))
         site_tagline = json.dumps(self.config.get("siteTagline", "Documentation"))
-        site_description = json.dumps(self.config.get(
+        site_description = json.dumps(self.config.get("siteDescription") or self.config.get(
             "siteTagline",
             "Documentation for P2P Foundation - Building the future of peer-to-peer finance"))
         site_url = json.dumps(site_url)

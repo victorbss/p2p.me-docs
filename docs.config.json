@@ -1,6 +1,7 @@
 {
   "siteTitle": "P2P Foundation Docs",
   "siteTagline": "Documentation for P2P Foundation",
+  "siteDescription": "Documentation for P2P Protocol: a decentralized, non-custodial fiat on/off-ramp with privacy-preserving ZK-KYC and on-chain matching, settlement, and dispute resolution.",
   "url": "https://docs.p2p.foundation",
   "docs": [
     {
