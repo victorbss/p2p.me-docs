@@ -186,9 +186,14 @@ if (ExecutionEnvironment.canUseDOM) {
     }
   }
 
-  if (document.readyState === 'complete') {
+  // Run once as soon as the DOM is parsed (not gated on images finishing),
+  // and again at load for anything that mounts late; the update is idempotent.
+  if (document.readyState !== 'loading') {
     scheduleUpdateUITranslations();
   } else {
+    document.addEventListener('DOMContentLoaded', scheduleUpdateUITranslations, { once: true });
+  }
+  if (document.readyState !== 'complete') {
     window.addEventListener('load', scheduleUpdateUITranslations, { once: true });
   }
 
