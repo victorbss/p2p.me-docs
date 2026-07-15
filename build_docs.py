@@ -41,10 +41,6 @@ class DocBuilder:
         slug = re.sub(r'[-\s]+', '-', slug).strip('-')
         return slug
 
-    def _escape_ts(self, text: str) -> str:
-        """Escape a value for embedding in a single-quoted TypeScript string."""
-        return str(text).replace('\\', '\\\\').replace("'", "\\'")
-    
     def _extract_images(self, content: str, doc_id: str) -> Tuple[str, int]:
         """Extract base64 images from markdown and save them as files.
         
@@ -364,15 +360,23 @@ export default sidebars;
         footer_config = self.config.get('footer', {})
         social_links = footer_config.get('socialLinks', {})
         site_url = os.environ.get('DOCS_SITE_URL') or self.config.get('url', 'https://docs.p2p.foundation')
-        # Escape user-provided strings so quotes can't break the generated TS file
-        site_title = self._escape_ts(self.config.get("siteTitle", "P2P Foundation Docs"))
-        site_tagline = self._escape_ts(self.config.get("siteTagline", "Documentation"))
-        site_description = self._escape_ts(self.config.get(
+        # json.dumps emits a double-quoted string literal that is valid TS and
+        # escapes quotes, backslashes, newlines, and unicode, so config values
+        # can't break the generated file
+        site_title = json.dumps(self.config.get("siteTitle", "P2P Foundation Docs"))
+        site_tagline = json.dumps(self.config.get("siteTagline", "Documentation"))
+        site_description = json.dumps(self.config.get(
             "siteTagline",
             "Documentation for P2P Foundation - Building the future of peer-to-peer finance"))
-        logo_alt = self._escape_ts(navbar_config.get("logo", {}).get("alt", "P2P Foundation"))
-        logo_src = self._escape_ts(navbar_config.get("logo", {}).get("src", "img/p2p-foundation-main.svg"))
-        logo_src_dark = self._escape_ts(navbar_config.get("logo", {}).get("srcDark", "img/p2p-foundation-2.svg"))
+        site_url = json.dumps(site_url)
+        logo_alt = json.dumps(navbar_config.get("logo", {}).get("alt", "P2P Foundation"))
+        logo_src = json.dumps(navbar_config.get("logo", {}).get("src", "img/p2p-foundation-main.svg"))
+        logo_src_dark = json.dumps(navbar_config.get("logo", {}).get("srcDark", "img/p2p-foundation-2.svg"))
+        footer_copyright = json.dumps(footer_config.get("copyright", "P2P Foundation"))
+        social_discord = json.dumps(social_links.get('discord', '#'))
+        social_telegram = json.dumps(social_links.get('telegram', '#'))
+        social_twitter = json.dumps(social_links.get('twitter', '#'))
+        social_youtube = json.dumps(social_links.get('youtube', '#'))
         # Build plugins array: Biel.ai + pre-generated docs plugins
         plugins = []
 
@@ -388,10 +392,10 @@ export default sidebars;
                     plugins.append(f"""[
                                     "@docusaurus/plugin-content-docs",
                                     {{
-                                        id: "{plugin_id}",
-                                        path: "{plugin_path}",
-                                        routeBasePath: "{doc_config['routeBasePath']}",
-                                        sidebarPath: "{sidebar_path}",
+                                        id: {json.dumps(plugin_id)},
+                                        path: {json.dumps(plugin_path)},
+                                        routeBasePath: {json.dumps(doc_config['routeBasePath'])},
+                                        sidebarPath: {json.dumps(sidebar_path)},
                                     }},
                                     ]""")
                 else:
@@ -402,10 +406,10 @@ export default sidebars;
                     plugins.append(f"""[
                                     "@docusaurus/plugin-content-docs",
                                     {{
-                                        id: "{plugin_id}",
-                                        path: "{plugin_path}",
-                                        routeBasePath: "{doc_config['routeBasePath']}",
-                                        sidebarPath: "{sidebar_path}",
+                                        id: {json.dumps(plugin_id)},
+                                        path: {json.dumps(plugin_path)},
+                                        routeBasePath: {json.dumps(doc_config['routeBasePath'])},
+                                        sidebarPath: {json.dumps(sidebar_path)},
                                     }},
                                     ]""")
 
@@ -413,14 +417,14 @@ export default sidebars;
         biel_config = self.config.get('biel', {})
         if biel_config.get('enable', True) and biel_config.get('project'):
             biel_opts = [
-                f"enable: {str(biel_config.get('enable', True)).lower()}",
-                f"project: \"{biel_config.get('project')}\"",
-                f"headerTitle: \"{biel_config.get('headerTitle', 'Biel.ai chatbot')}\"",
-                f"footerText: \"{biel_config.get('footerText', '')}\"",
-                f"buttonPosition: \"{biel_config.get('buttonPosition', 'bottom-right')}\"",
-                f"modalPosition: \"{biel_config.get('modalPosition', 'sidebar-right')}\"",
-                f"buttonStyle: \"{biel_config.get('buttonStyle', 'dark')}\"",
-                f"version: \"{biel_config.get('version', 'latest')}\"",
+                f"enable: {json.dumps(bool(biel_config.get('enable', True)))}",
+                f"project: {json.dumps(biel_config.get('project'))}",
+                f"headerTitle: {json.dumps(biel_config.get('headerTitle', 'Biel.ai chatbot'))}",
+                f"footerText: {json.dumps(biel_config.get('footerText', ''))}",
+                f"buttonPosition: {json.dumps(biel_config.get('buttonPosition', 'bottom-right'))}",
+                f"modalPosition: {json.dumps(biel_config.get('modalPosition', 'sidebar-right'))}",
+                f"buttonStyle: {json.dumps(biel_config.get('buttonStyle', 'dark'))}",
+                f"version: {json.dumps(biel_config.get('version', 'latest'))}",
             ]
             plugins.append(f"""[
       "docusaurus-biel",
@@ -435,15 +439,15 @@ import type {{Config}} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {{
-  title: '{site_title}',
-  tagline: '{site_tagline}',
+  title: {site_title},
+  tagline: {site_tagline},
   favicon: 'img/favicon.svg',
 
   markdown: {{
     mermaid: true,
   }},
 
-  url: '{site_url}',
+  url: {site_url},
   baseUrl: '/',
 
   onBrokenLinks: 'throw',
@@ -482,14 +486,14 @@ const config: Config = {{
       tagName: 'meta',
       attributes: {{
         property: 'og:title',
-        content: '{site_title}',
+        content: {site_title},
       }},
     }},
     {{
       tagName: 'meta',
       attributes: {{
         property: 'og:description',
-        content: '{site_description}',
+        content: {site_description},
       }},
     }},
     {{
@@ -510,7 +514,7 @@ const config: Config = {{
       tagName: 'meta',
       attributes: {{
         property: 'og:url',
-        content: '{site_url}',
+        content: {site_url},
       }},
     }},
     {{
@@ -524,14 +528,14 @@ const config: Config = {{
       tagName: 'meta',
       attributes: {{
         name: 'twitter:title',
-        content: '{site_title}',
+        content: {site_title},
       }},
     }},
     {{
       tagName: 'meta',
       attributes: {{
         name: 'twitter:description',
-        content: '{site_description}',
+        content: {site_description},
       }},
     }},
     {{
@@ -545,7 +549,7 @@ const config: Config = {{
       tagName: 'meta',
       attributes: {{
         name: 'description',
-        content: '{site_description}',
+        content: {site_description},
       }},
     }},
   ],
@@ -609,9 +613,9 @@ const config: Config = {{
     navbar: {{
       title: '',
       logo: {{
-        alt: '{logo_alt}',
-        src: '{logo_src}',
-        srcDark: '{logo_src_dark}',
+        alt: {logo_alt},
+        src: {logo_src},
+        srcDark: {logo_src_dark},
       }},
       items: [
         {{
@@ -631,13 +635,13 @@ const config: Config = {{
             <img src="/img/p2p-logo.svg" alt="P2P Foundation" class="footer-logo" />
           </div>
           <div class="footer-center">
-            <span>© ${{new Date().getFullYear()}} {footer_config.get("copyright", "P2P Foundation")}.</span>
+            <span>© ${{new Date().getFullYear()}} ${{{footer_copyright}}}.</span>
           </div>
           <div class="footer-right">
-            <a href="{social_links.get('discord', '#')}" target="_blank" rel="noopener noreferrer" class="footer-social-link discord"></a>
-            <a href="{social_links.get('telegram', '#')}" target="_blank" rel="noopener noreferrer" class="footer-social-link telegram"></a>
-            <a href="{social_links.get('twitter', '#')}" target="_blank" rel="noopener noreferrer" class="footer-social-link twitter"></a>
-            <a href="{social_links.get('youtube', '#')}" target="_blank" rel="noopener noreferrer" class="footer-social-link youtube"></a>
+            <a href="${{{social_discord}}}" target="_blank" rel="noopener noreferrer" class="footer-social-link discord"></a>
+            <a href="${{{social_telegram}}}" target="_blank" rel="noopener noreferrer" class="footer-social-link telegram"></a>
+            <a href="${{{social_twitter}}}" target="_blank" rel="noopener noreferrer" class="footer-social-link twitter"></a>
+            <a href="${{{social_youtube}}}" target="_blank" rel="noopener noreferrer" class="footer-social-link youtube"></a>
           </div>
         </div>
       `,
