@@ -1,12 +1,11 @@
 import React from 'react';
+import Link from '@docusaurus/Link';
 import styles from './LegalLink.module.css';
 
 export default function LegalLink() {
   return (
-    <a
-      href="https://docsend.com/view/s/nyrupstkhcpu94wc"
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      to="/legal/legal-documents"
       className={styles.legalLink}>
       Legal Documents
       <svg
@@ -24,6 +23,6 @@ export default function LegalLink() {
           strokeLinejoin="round"
         />
       </svg>
-    </a>
+    </Link>
   );
 }

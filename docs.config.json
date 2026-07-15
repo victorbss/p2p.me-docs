@@ -107,6 +107,21 @@
       ]
     },
     {
+      "id": "legal",
+      "source": "content/legal.md",
+      "outputDir": "legal",
+      "routeBasePath": "legal",
+      "navbarLabel": "Legal",
+      "navbarPosition": "right",
+      "sidebarId": "legalSidebar",
+      "extractImages": false,
+      "splitByHeading": 1,
+      "numberSections": false,
+      "generateTocLinks": false,
+      "sidebarStyle": "flat",
+      "skipSections": []
+    },
+    {
       "id": "translations-es",
       "outputDir": "translations/es",
       "routeBasePath": "es",
