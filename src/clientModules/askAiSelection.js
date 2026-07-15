@@ -41,7 +41,8 @@ if (ExecutionEnvironment.canUseDOM) {
     storedText = text;
     const range = selection.getRangeAt(0);
     const rect = range.getBoundingClientRect();
-    const tooltipWidth = 110;
+    tooltip.style.display = 'flex';
+    const tooltipWidth = tooltip.offsetWidth || 110;
     let left = rect.left + (rect.width / 2) - (tooltipWidth / 2) + window.scrollX;
     let top = rect.top - 44 + window.scrollY;
     left = Math.max(8, Math.min(left, window.innerWidth - tooltipWidth - 8));
@@ -50,7 +51,6 @@ if (ExecutionEnvironment.canUseDOM) {
     }
     tooltip.style.left = `${left}px`;
     tooltip.style.top = `${top}px`;
-    tooltip.style.display = 'flex';
   };
 
   const hideTooltip = () => {
