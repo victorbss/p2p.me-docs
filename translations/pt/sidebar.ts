@@ -157,6 +157,58 @@ const sidebars: SidebarsConfig = {
             "for-community/community-resources",
             "for-community/faq"
         ]
+    },
+    {
+        "type": "category",
+        "label": "Documentos Legais",
+        "collapsible": true,
+        "collapsed": true,
+        "link": {
+            "type": "doc",
+            "id": "legal/legal-documents"
+        },
+        "items": [
+            {
+                "type": "link",
+                "label": "Acordo de Integração do Projeto P2P",
+                "href": "pathname:///legal-files/p2p-project-integration-agreement.pdf"
+            },
+            {
+                "type": "link",
+                "label": "Warrant de Token do Investidor 1",
+                "href": "pathname:///legal-files/investor-1-token-warrant.pdf"
+            },
+            {
+                "type": "link",
+                "label": "Warrant de Token do Investidor 2",
+                "href": "pathname:///legal-files/investor-2-token-warrant.pdf"
+            },
+            {
+                "type": "link",
+                "label": "Warrant de Token do Investidor 3",
+                "href": "pathname:///legal-files/investor-3-token-warrant.pdf"
+            },
+            {
+                "type": "link",
+                "label": "Warrant de Token do Investidor 4",
+                "href": "pathname:///legal-files/investor-4-token-warrant.pdf"
+            },
+            {
+                "type": "link",
+                "label": "Warrant de Token Alterado do Investidor 1",
+                "href": "pathname:///legal-files/investor-1-amended-token-warrant.pdf"
+            },
+            {
+                "type": "link",
+                "label": "Warrant de Token Alterado do Investidor 2",
+                "href": "pathname:///legal-files/investor-2-amended-token-warrant.pdf"
+            },
+            {
+                "type": "link",
+                "label": "Warrant de Token Alterado do Investidor 3",
+                "href": "pathname:///legal-files/investor-3-amended-token-warrant.pdf"
+            }
+        ]
     }
 ]
 };

@@ -959,6 +959,17 @@
               "title": "FAQ"
             }
           ]
+        },
+        {
+          "id": "legal",
+          "outputDir": "translations/pt/legal",
+          "routeBasePath": "pt/legal",
+          "preGeneratedFiles": [
+            {
+              "doc_id": "legal-documents",
+              "title": "Documentos Legais"
+            }
+          ]
         }
       ]
     },
